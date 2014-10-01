@@ -6,7 +6,7 @@
 package baseTolkien.Entidades;
 
 import java.io.Serializable;
-import trabalho02.controlador.BD;
+import baseTolkien.Controlador.BD;
 
 /**
  *
