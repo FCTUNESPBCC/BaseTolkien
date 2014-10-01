@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package trabalho02.controlador;
+package baseTolkien.Controlador;
 
 import baseTolkien.Entidades.Biblioteca;
 
