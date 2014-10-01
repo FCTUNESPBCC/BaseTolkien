@@ -16,6 +16,7 @@ public class Item implements Serializable{
     private String codEmprestimo;
     private String codLivro;
     private Calendar dataDevolucao;
+    private boolean devolvido = false;
 
     
     public Item(String codEmprestimo, String codLivro) {
@@ -48,6 +49,20 @@ public class Item implements Serializable{
 
     public void setCodLivro(String codLivro) {
         this.codLivro = codLivro;
+    }
+
+    public boolean isDevolvido() {
+        return devolvido;
+    }
+
+    public void devolver() {
+        this.devolvido = true;
+    }
+    
+    public boolean isAtrasado(){
+        if(this.dataDevolucao.after(Calendar.getInstance()))
+            return true;
+        return false;
     }
     
     
