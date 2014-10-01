@@ -33,5 +33,23 @@ public class Item implements Serializable{
     public void setDataDevolucao(Calendar dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
+
+    public String getCodEmprestimo() {
+        return codEmprestimo;
+    }
+
+    public void setCodEmprestimo(String codEmprestimo) {
+        this.codEmprestimo = codEmprestimo;
+    }
+
+    public String getCodLivro() {
+        return codLivro;
+    }
+
+    public void setCodLivro(String codLivro) {
+        this.codLivro = codLivro;
+    }
+    
+    
     
 }
