@@ -19,6 +19,7 @@ public class Config implements Serializable{
     private int diasProfessor = 20;
     private static int codLivro = 0;
     private static int codEmprestimo = 0;
+    private static int codUsuario = 0;
 
     public String getArquivoEmprestimos() {
         return arquivoEmprestimos;
@@ -75,7 +76,12 @@ public class Config implements Serializable{
     public static void setCodEmprestimo(int codEmprestimo) {
         Config.codEmprestimo = codEmprestimo;
     }
-    
-    
 
+    public static int getCodUsuario() {
+        return codUsuario;
+    }
+
+    public static void setCodUsuario(int codUsuario) {
+        Config.codUsuario = codUsuario;
+    }
 }
