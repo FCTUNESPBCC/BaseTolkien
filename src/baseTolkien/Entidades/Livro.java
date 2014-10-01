@@ -40,7 +40,7 @@ public class Livro implements Serializable{
         this.codLivro = codLivro;
     }
 
-    public boolean estaEmprestado() {
+    public boolean isEmprestado() {
         return emprestado;
     }
 
