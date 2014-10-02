@@ -21,4 +21,16 @@ public class Controlador {
     public void recuperarLivros(){
         BD.biblioteca.recuperarLivros();
     }
+    public void salvarUsuarios(){
+        BD.biblioteca.salvarUsuarios();
+    }
+    public void recuperarUsuarios(){
+        BD.biblioteca.recuperarUsuarios();
+    }
+    public void salvarEmprestimos(){
+        BD.biblioteca.salvarEmprestimos();
+    }
+    public void recuperarEmprestimos(){
+        BD.biblioteca.recuperarEmprestimos();
+    }
 }
