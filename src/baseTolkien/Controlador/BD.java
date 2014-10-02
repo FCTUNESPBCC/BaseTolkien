@@ -15,7 +15,14 @@ import baseTolkien.Entidades.Relatorios.AlunoRelatorio;
 import baseTolkien.Entidades.Relatorios.LivroRelatorio;
 import baseTolkien.Entidades.Relatorios.ProfessorRelatorio;
 import baseTolkien.Entidades.Usuario;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -270,5 +277,92 @@ public class BD {
                 ((ProfessorRelatorio)usuario).setLivros(getAllLivrosNaoDevolvidosOf(usuario.getCodUsuario()));
         }
         return usuarioPesquisa;
+    }
+    
+        public static void salvarDados(String dados) {
+            String nomeArquivo = "";
+            if(dados.equals("Livros"))
+                nomeArquivo = biblioteca.getConfiguracoes().getArquivoLivros();
+            else if(dados.equals("Usuarios"))
+                nomeArquivo = biblioteca.getConfiguracoes().getArquivoUsuarios();
+            else if(dados.equals("Emprestimos"))
+                nomeArquivo = biblioteca.getConfiguracoes().getArquivoEmprestimos();
+            
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+            fos = new FileOutputStream(nomeArquivo);
+            oos = new ObjectOutputStream(fos);
+            //oos.writeObject(this.livros);
+            //ou salvar livro a livro
+            Object obj = null;
+            if(dados.equals("Livros")){
+                obj = biblioteca.getAllLivros();
+            }
+            else if(dados.equals("Usuarios")){
+                obj = biblioteca.getAllUsuario();
+            }
+            else if(dados.equals("Emprestimos")){
+                obj = biblioteca.getAllEmprestimo();
+            }
+            oos.writeInt(((ArrayList<Object>) obj).size());
+            for (Object objects:((ArrayList<Object>)obj)) {
+                oos.writeObject(objects);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                oos.close();
+                fos.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    public void recuperarLivros(String dados) {
+        String nomeArquivo = "";
+            if(dados.equals("Livros"))
+                nomeArquivo = biblioteca.getConfiguracoes().getArquivoLivros();
+            else if(dados.equals("Usuarios"))
+                nomeArquivo = biblioteca.getConfiguracoes().getArquivoUsuarios();
+            else if(dados.equals("Emprestimos"))
+                nomeArquivo = biblioteca.getConfiguracoes().getArquivoEmprestimos();
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+        try {
+            fis = new FileInputStream(nomeArquivo);
+            ois = new ObjectInputStream(fis);
+            ///this.livros = (ArrayList<Livro>) ois.readObject();
+            ///ou ler livro por livro do arquivo -- depende de como salvou
+            Object lista = null;
+            if(dados.equals("Livros")){
+                lista = biblioteca.getAllLivros();
+            }
+            else if(dados.equals("Usuarios")){
+                lista = biblioteca.getAllUsuario();
+            }
+            else if(dados.equals("Emprestimos")){
+                lista = biblioteca.getAllEmprestimo();
+            }
+            ((ArrayList<Object>)lista).clear();
+            int numItens = ois.readInt();
+            for (int i=0; i<numItens; i++){
+                Object obj= (Object) ois.readObject();
+                ((ArrayList<Object>)lista).add(obj);
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                ois.close();
+                fis.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }
