@@ -55,12 +55,6 @@ public class Livro implements Serializable{
 
     public void devolver(){
         this.setEmprestado(false);
-        for(Item item:BD.biblioteca.getAllLivroEmprestado()){
-            if(item.getCodLivro().equals(getCodLivro())){
-                item.devolver();
-                break;
-            }
-        }
     }
 
     public String getNome() {
