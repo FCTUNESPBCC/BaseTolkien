@@ -61,6 +61,10 @@ public class Biblioteca {
     public ArrayList<Livro> getAllLivros(){
         return livros;
     }
+    
+    public ArrayList<Emprestimo> getAllEmprestimo(){
+        return emprestimos;
+    }
 
     public void salvarLivros() {
         String nomeArquivo = configuracoes.getArquivoLivros();
