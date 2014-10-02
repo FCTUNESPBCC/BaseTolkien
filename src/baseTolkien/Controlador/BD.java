@@ -321,7 +321,7 @@ public class BD {
         }
     }
 
-    public void recuperarLivros(String dados) {
+    public static void recuperarDados(String dados) {
         String nomeArquivo = "";
             if(dados.equals("Livros"))
                 nomeArquivo = biblioteca.getConfiguracoes().getArquivoLivros();

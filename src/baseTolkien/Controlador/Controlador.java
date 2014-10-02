@@ -16,21 +16,21 @@ public class Controlador {
         return BD.biblioteca.getConfiguracoes();
     }
     public void salvarLivros(){
-        BD.biblioteca.salvarLivros();
+        BD.salvarDados("Livros");
     }
     public void recuperarLivros(){
-        BD.biblioteca.recuperarLivros();
+        BD.recuperarDados("Livros");
     }
     public void salvarUsuarios(){
-        BD.biblioteca.salvarUsuarios();
+        BD.salvarDados("Usuarios");
     }
     public void recuperarUsuarios(){
-        BD.biblioteca.recuperarUsuarios();
+        BD.recuperarDados("Usuarios");
     }
     public void salvarEmprestimos(){
-        BD.biblioteca.salvarEmprestimos();
+        BD.salvarDados("Emprestimos");
     }
     public void recuperarEmprestimos(){
-        BD.biblioteca.recuperarEmprestimos();
+        BD.recuperarDados("Emprestimos");
     }
 }
