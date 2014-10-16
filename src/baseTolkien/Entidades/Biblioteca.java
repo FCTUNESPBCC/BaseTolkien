@@ -65,4 +65,6 @@ public class Biblioteca {
     public ArrayList<Emprestimo> getAllEmprestimo(){
         return emprestimos;
     }
+    
+    
 }

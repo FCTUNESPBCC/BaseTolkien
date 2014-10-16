@@ -24,39 +24,47 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelCurso" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelNomeAluno" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextFieldNomeAluno" min="-2" pref="471" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jTextFieldCurso" min="-2" pref="252" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="jButtonSalvar" pref="106" max="32767" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jButtonCancelar" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabelAno" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextFieldAno" min="-2" pref="56" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="jLabelCurso" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelNomeAluno" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="nomeAluno_Text" min="-2" pref="471" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="curso_Text" min="-2" pref="252" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="jButtonSalvar" pref="106" max="32767" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jButtonCancelar" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="jLabelAno" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="ano_Text" min="-2" pref="56" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
                               </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabelCod" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="codigo_Text" min="-2" pref="70" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabelCod" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jTextFieldCod" min="-2" pref="70" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
+                      <Component id="msg_Label" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="44" max="32767" attributes="0"/>
@@ -69,21 +77,23 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelNomeAluno" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldNomeAluno" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nomeAluno_Text" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelCurso" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCurso" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="curso_Text" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelAno" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldAno" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ano_Text" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelCod" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCod" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="codigo_Text" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="245" max="32767" attributes="0"/>
+              <EmptySpace pref="155" max="32767" attributes="0"/>
+              <Component id="msg_Label" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -102,14 +112,14 @@
         <Property name="text" type="java.lang.String" value="Nome :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldNomeAluno">
+    <Component class="javax.swing.JTextField" name="nomeAluno_Text">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="16" style="0"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldNomeAlunoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomeAluno_TextActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelCurso">
@@ -120,14 +130,14 @@
         <Property name="text" type="java.lang.String" value="Curso :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCurso">
+    <Component class="javax.swing.JTextField" name="curso_Text">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="16" style="0"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldCursoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="curso_TextActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelAno">
@@ -138,7 +148,7 @@
         <Property name="text" type="java.lang.String" value="Ano :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldAno">
+    <Component class="javax.swing.JTextField" name="ano_Text">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="16" style="0"/>
@@ -153,7 +163,7 @@
         <Property name="text" type="java.lang.String" value="C&#xf3;digo :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCod">
+    <Component class="javax.swing.JTextField" name="codigo_Text">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="16" style="0"/>
@@ -167,6 +177,10 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSalvarActionPerformed"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jButtonSalvarFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonCancelar">
       <Properties>
@@ -178,6 +192,17 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCancelarActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="msg_Label">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="18" style="0"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Aluno J&#xe1; Cadastrado!!!"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

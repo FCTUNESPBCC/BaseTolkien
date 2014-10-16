@@ -10,6 +10,7 @@
  */
 package baseTolkien.Window;
 
+import baseTolkien.Controlador.BD;
 import baseTolkien.Controlador.Controlador;
 
 /**
@@ -17,7 +18,7 @@ import baseTolkien.Controlador.Controlador;
  * @author Danilo Medeiros Eler
  */
 public class IUPrincipal extends javax.swing.JFrame {
-
+  public static BD dataB = new BD();
     /** Creates new form IUPrincipal */
     public IUPrincipal() {
         initComponents();
@@ -227,6 +228,7 @@ public class IUPrincipal extends javax.swing.JFrame {
     private void jMenuItemAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlunoActionPerformed
         Controlador control = new Controlador();
         IUCadastroAluno iuAluno = new IUCadastroAluno();
+        iuAluno.setLocationRelativeTo(this);
         iuAluno.setVisible(true);
     }//GEN-LAST:event_jMenuItemAlunoActionPerformed
 

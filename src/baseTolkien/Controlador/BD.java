@@ -31,6 +31,14 @@ import java.util.logging.Logger;
 public class BD {
     public static Biblioteca biblioteca = new Biblioteca();
     
+    public void addAluno(String codUsuario,String nome,String curso,int ano){
+        biblioteca.addAluno(new Aluno(codUsuario,nome,curso,ano,7));
+    }
+    
+    public void addProfessor(String codUsuario, String nome, String titulacao){
+        biblioteca.addProfessor(new Professor(codUsuario,nome,titulacao,10));
+    }
+    
     public ArrayList<LivroRelatorio> getAllLivrosOf(String codUsuario){
         ArrayList<LivroRelatorio> livroPesquisa = new ArrayList<LivroRelatorio>();
         Usuario usuarioEmprestimo = getUsuarioByCod(codUsuario);
