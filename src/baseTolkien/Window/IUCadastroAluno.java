@@ -185,7 +185,7 @@ public class IUCadastroAluno extends javax.swing.JFrame {
         if(jTextFieldCod.getText().equals(""))
             erro += "Por favor insira um código.\n";
         else
-            if(BD.existeUsuariojTextFieldCod.getText()))
+            if(BD.existeUsuario(jTextFieldCod.getText()))
                 erro += "Código já cadastrado.\n";
         try{
             Ano = Integer.parseInt(jTextFieldAno.getText().replace(" ", ""));
