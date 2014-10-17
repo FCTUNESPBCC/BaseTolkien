@@ -6,6 +6,9 @@
 
 package baseTolkien.Window;
 
+import baseTolkien.Entidades.Livro;
+import static java.lang.Integer.parseInt;
+
 /**
  *
  * @author Eloigdn
@@ -16,6 +19,7 @@ public class IUCadastroLivro extends javax.swing.JFrame {
      * Creates new form IUCadastroLivro
      */
     public IUCadastroLivro() {
+        this.msg_Label.setVisible(false);
         initComponents();
     }
 
@@ -28,34 +32,35 @@ public class IUCadastroLivro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextFieldNome = new javax.swing.JTextField();
+        nomeLivro_Text = new javax.swing.JTextField();
         jLabelNome = new javax.swing.JLabel();
-        jTextFieldCod = new javax.swing.JTextField();
+        codLivro_Text = new javax.swing.JTextField();
         jLabelCod = new javax.swing.JLabel();
         jButtonCancelar = new javax.swing.JButton();
         jButtonSalvar = new javax.swing.JButton();
-        jTextFieldAno = new javax.swing.JTextField();
+        anoLivro_Text = new javax.swing.JTextField();
         jLabelAno = new javax.swing.JLabel();
         jLabelDescricao = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextAreaDescricao = new javax.swing.JTextArea();
+        descLivro_Text = new javax.swing.JTextArea();
+        msg_Label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextFieldNome.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
+        nomeLivro_Text.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        nomeLivro_Text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNomeActionPerformed(evt);
+                nomeLivro_TextActionPerformed(evt);
             }
         });
 
         jLabelNome.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelNome.setText("Nome :");
 
-        jTextFieldCod.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jTextFieldCod.addActionListener(new java.awt.event.ActionListener() {
+        codLivro_Text.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        codLivro_Text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCodActionPerformed(evt);
+                codLivro_TextActionPerformed(evt);
             }
         });
 
@@ -72,8 +77,18 @@ public class IUCadastroLivro extends javax.swing.JFrame {
 
         jButtonSalvar.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jButtonSalvar.setText("Salvar");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarActionPerformed(evt);
+            }
+        });
+        jButtonSalvar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jButtonSalvarFocusLost(evt);
+            }
+        });
 
-        jTextFieldAno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        anoLivro_Text.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jLabelAno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelAno.setText("Ano :");
@@ -81,58 +96,71 @@ public class IUCadastroLivro extends javax.swing.JFrame {
         jLabelDescricao.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelDescricao.setText("Descrição :");
 
-        jTextAreaDescricao.setColumns(20);
-        jTextAreaDescricao.setRows(5);
-        jScrollPane1.setViewportView(jTextAreaDescricao);
+        descLivro_Text.setColumns(20);
+        descLivro_Text.setRows(5);
+        jScrollPane1.setViewportView(descLivro_Text);
+
+        msg_Label.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        msg_Label.setForeground(new java.awt.Color(255, 0, 0));
+        msg_Label.setText("Livro já Cadastrado!!!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonCancelar)
-                .addGap(32, 32, 32))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelDescricao)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelNome)
-                            .addComponent(jLabelAno))
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelDescricao)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelNome)
+                                    .addComponent(jLabelAno))
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(anoLivro_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabelCod)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(codLivro_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(nomeLivro_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(48, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabelCod)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldCod, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                                .addComponent(jButtonCancelar)
+                                .addGap(32, 32, 32))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(msg_Label)
+                                .addGap(200, 200, 200))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeLivro_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelAno)
-                    .addComponent(jTextFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(anoLivro_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCod)
-                    .addComponent(jTextFieldCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(codLivro_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabelDescricao)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                .addGap(44, 44, 44)
+                .addComponent(msg_Label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSalvar)
                     .addComponent(jButtonCancelar))
@@ -142,17 +170,49 @@ public class IUCadastroLivro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
+    private void nomeLivro_TextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeLivro_TextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNomeActionPerformed
+    }//GEN-LAST:event_nomeLivro_TextActionPerformed
 
-    private void jTextFieldCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodActionPerformed
+    private void codLivro_TextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codLivro_TextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCodActionPerformed
+    }//GEN-LAST:event_codLivro_TextActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        String codLivro = codLivro_Text.getText();
+        String nome = nomeLivro_Text.getText();
+        String descricao = descLivro_Text.getText();
+        int ano = parseInt(anoLivro_Text.getText());
+        IUPrincipal.dataB.addLivro(codLivro, nome, descricao, ano);
+        this.dispose();
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
+
+    private void jButtonSalvarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButtonSalvarFocusLost
+        String codLivro = codLivro_Text.getText();
+        Livro livro = (Livro) IUPrincipal.dataB.getLivroByCod(codLivro);
+        if(livro != null){
+            nomeLivro_Text.setText(livro.getNome());
+            codLivro_Text.setText(codLivro);
+            descLivro_Text.setText(livro.getDescricao());
+            anoLivro_Text.setText(String.valueOf(livro.getAno()));
+            jButtonSalvar.setEnabled(false);
+            this.msg_Label.setText("Aluno já Cadastrado!!!");
+            this.msg_Label.setVisible(true);
+            
+        }
+        else{
+            nomeLivro_Text.setText("");
+            descLivro_Text.setText("");
+            anoLivro_Text.setText("");
+            jButtonSalvar.setEnabled(true);
+            this.msg_Label.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_jButtonSalvarFocusLost
 
     /**
      * @param args the command line arguments
@@ -190,6 +250,9 @@ public class IUCadastroLivro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField anoLivro_Text;
+    private javax.swing.JTextField codLivro_Text;
+    private javax.swing.JTextArea descLivro_Text;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonSalvar;
     private javax.swing.JLabel jLabelAno;
@@ -197,9 +260,7 @@ public class IUCadastroLivro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelDescricao;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextAreaDescricao;
-    private javax.swing.JTextField jTextFieldAno;
-    private javax.swing.JTextField jTextFieldCod;
-    private javax.swing.JTextField jTextFieldNome;
+    private javax.swing.JLabel msg_Label;
+    private javax.swing.JTextField nomeLivro_Text;
     // End of variables declaration//GEN-END:variables
 }

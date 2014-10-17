@@ -156,8 +156,8 @@ public class IUCadastroProfessor extends javax.swing.JFrame {
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         String codUsuario = codigo_Text.getText();
         String nome = nomeProfessor_Text.getText();
-//        String titulacao = jComboTitulacao.get
-//        IUPrincipal.dataB.addAluno(codUsuario,nome);
+        String titulacao = jComboTitulacao.getSelectedItem()+"";
+        IUPrincipal.dataB.addProfessor(codUsuario,nome,titulacao);
         this.dispose();
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 

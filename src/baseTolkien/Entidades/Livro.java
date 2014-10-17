@@ -15,15 +15,25 @@ import baseTolkien.Controlador.BD;
 public class Livro implements Serializable{
     private String codLivro;
     private String nome;
+    private String descricao;
     private int ano;
     private boolean emprestado;
 
-    public Livro(String codLivro, String nome, int ano) {
+    public Livro(String codLivro, String nome,String descricao, int ano) {
         this.codLivro = codLivro;
         this.nome = nome;
         this.ano = ano;
         this.emprestado = false;
     }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+    
 
     public int getAno() {
         return ano;
