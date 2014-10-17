@@ -9,7 +9,11 @@ package baseTolkien.Window;
 import baseTolkien.Controlador.BD;
 import static baseTolkien.Controlador.BD.biblioteca;
 import baseTolkien.Entidades.Aluno;
+import baseTolkien.Entidades.Config;
+import baseTolkien.Entidades.Livro;
 import static java.lang.Integer.parseInt;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,7 +26,7 @@ public class IUCadastroAluno extends javax.swing.JFrame {
      */
     public IUCadastroAluno() {
         initComponents();
-        this.msg_Label.setVisible(false);
+        setResizable(false);
     }
 
     /**
@@ -35,48 +39,47 @@ public class IUCadastroAluno extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabelNomeAluno = new javax.swing.JLabel();
-        nomeAluno_Text = new javax.swing.JTextField();
+        jTextFieldNome = new javax.swing.JTextField();
         jLabelCurso = new javax.swing.JLabel();
-        curso_Text = new javax.swing.JTextField();
+        jTextFieldCurso = new javax.swing.JTextField();
         jLabelAno = new javax.swing.JLabel();
-        ano_Text = new javax.swing.JTextField();
+        jTextFieldAno = new javax.swing.JTextField();
         jLabelCod = new javax.swing.JLabel();
-        codigo_Text = new javax.swing.JTextField();
+        jTextFieldCod = new javax.swing.JTextField();
         jButtonSalvar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
-        msg_Label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabelNomeAluno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelNomeAluno.setText("Nome :");
 
-        nomeAluno_Text.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        nomeAluno_Text.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNome.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeAluno_TextActionPerformed(evt);
+                jTextFieldNomeActionPerformed(evt);
             }
         });
 
         jLabelCurso.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelCurso.setText("Curso :");
 
-        curso_Text.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        curso_Text.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldCurso.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextFieldCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                curso_TextActionPerformed(evt);
+                jTextFieldCursoActionPerformed(evt);
             }
         });
 
         jLabelAno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelAno.setText("Ano :");
 
-        ano_Text.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextFieldAno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jLabelCod.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelCod.setText("Código :");
 
-        codigo_Text.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextFieldCod.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jButtonSalvar.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jButtonSalvar.setText("Salvar");
@@ -99,46 +102,37 @@ public class IUCadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        msg_Label.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        msg_Label.setForeground(new java.awt.Color(255, 0, 0));
-        msg_Label.setText("Aluno Já Cadastrado!!!");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelCurso)
+                            .addComponent(jLabelNomeAluno))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTextFieldCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelCurso)
-                                    .addComponent(jLabelNomeAluno))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(nomeAluno_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(curso_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(10, 10, 10)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jButtonSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jButtonCancelar))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabelAno)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(ano_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 0, Short.MAX_VALUE))))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelCod)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(codigo_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(jButtonSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButtonCancelar))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabelAno)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(212, 212, 212)
-                        .addComponent(msg_Label)))
+                        .addComponent(jLabelCod)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldCod, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -147,20 +141,18 @@ public class IUCadastroAluno extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNomeAluno)
-                    .addComponent(nomeAluno_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCurso)
-                    .addComponent(curso_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelAno)
-                    .addComponent(ano_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCod)
-                    .addComponent(codigo_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
-                .addComponent(msg_Label)
-                .addGap(68, 68, 68)
+                    .addComponent(jTextFieldCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSalvar)
                     .addComponent(jButtonCancelar))
@@ -170,13 +162,13 @@ public class IUCadastroAluno extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nomeAluno_TextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeAluno_TextActionPerformed
+    private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nomeAluno_TextActionPerformed
+    }//GEN-LAST:event_jTextFieldNomeActionPerformed
 
-    private void curso_TextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_curso_TextActionPerformed
+    private void jTextFieldCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCursoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_curso_TextActionPerformed
+    }//GEN-LAST:event_jTextFieldCursoActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         dispose();
@@ -184,36 +176,35 @@ public class IUCadastroAluno extends javax.swing.JFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         
-        String codUsuario = codigo_Text.getText();
-        String nome = nomeAluno_Text.getText();
-        String curso = curso_Text.getText();
-        int ano = parseInt(ano_Text.getText());
-        IUPrincipal.dataB.addAluno(codUsuario,nome,curso,ano);
-        this.dispose();
+        String erro = "";
+        int Ano = -1;
+        if(jTextFieldNome.getText().equals(""))
+            erro += "Por favor insira um nome.\n";
+        if(jTextFieldCurso.getText().equals(""))
+            erro += "Por favor insira o curso.\n";
+        if(jTextFieldCod.getText().equals(""))
+            erro += "Por favor insira um código.\n";
+        else
+            if(BD.existeUsuariojTextFieldCod.getText()))
+                erro += "Código já cadastrado.\n";
+        try{
+            Ano = Integer.parseInt(jTextFieldAno.getText().replace(" ", ""));
+            if(Ano <=0 || Ano >10)
+                erro += "Por favor insira um ano válido.\n";
+        }catch(NumberFormatException e){
+            erro += "Por favor insira um ano válido.\n";
+        }
+        if(!erro.equals(""))
+            JOptionPane.showMessageDialog(this, erro, "Erro", 0);
+        else{
+            BD.addAluno(new Aluno(jTextFieldCod.getText(), jTextFieldNome.getText(), jTextFieldCurso.getText(),Ano, Config.getDiasAluno()));
+            dispose();
+        }
         
         
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonSalvarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButtonSalvarFocusLost
-        String codUsuario = codigo_Text.getText();
-        Aluno aluno = (Aluno) IUPrincipal.dataB.getUsuarioByCod(codUsuario);
-        if(aluno != null){
-            nomeAluno_Text.setText(aluno.getNome());
-            codigo_Text.setText(codUsuario);
-            curso_Text.setText(aluno.getCurso());
-            ano_Text.setText(String.valueOf(aluno.getAno()));
-            jButtonSalvar.setEnabled(false);
-            this.msg_Label.setText("Aluno já Cadastrado!!!");
-            this.msg_Label.setVisible(true);
-            
-        }
-        else{
-            nomeAluno_Text.setText("");
-            curso_Text.setText("");
-            ano_Text.setText("");
-            jButtonSalvar.setEnabled(true);
-            this.msg_Label.setVisible(true);
-        }
         
     }//GEN-LAST:event_jButtonSalvarFocusLost
 
@@ -253,16 +244,15 @@ public class IUCadastroAluno extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ano_Text;
-    private javax.swing.JTextField codigo_Text;
-    private javax.swing.JTextField curso_Text;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonSalvar;
     private javax.swing.JLabel jLabelAno;
     private javax.swing.JLabel jLabelCod;
     private javax.swing.JLabel jLabelCurso;
     private javax.swing.JLabel jLabelNomeAluno;
-    private javax.swing.JLabel msg_Label;
-    private javax.swing.JTextField nomeAluno_Text;
+    private javax.swing.JTextField jTextFieldAno;
+    private javax.swing.JTextField jTextFieldCod;
+    private javax.swing.JTextField jTextFieldCurso;
+    private javax.swing.JTextField jTextFieldNome;
     // End of variables declaration//GEN-END:variables
 }

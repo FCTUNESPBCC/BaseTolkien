@@ -6,7 +6,12 @@
 
 package baseTolkien.Window;
 
+import baseTolkien.Controlador.BD;
+import baseTolkien.Entidades.Aluno;
+import baseTolkien.Entidades.Config;
+import baseTolkien.Entidades.Professor;
 import static java.lang.Integer.parseInt;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,9 +36,9 @@ public class IUCadastroProfessor extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabelCod = new javax.swing.JLabel();
-        codigo_Text = new javax.swing.JTextField();
+        jTextFieldCod = new javax.swing.JTextField();
         jLabelNome = new javax.swing.JLabel();
-        nomeProfessor_Text = new javax.swing.JTextField();
+        jTextFieldNome = new javax.swing.JTextField();
         jButtonCancelar = new javax.swing.JButton();
         jButtonSalvar = new javax.swing.JButton();
         jLabelTitulacao = new javax.swing.JLabel();
@@ -44,20 +49,20 @@ public class IUCadastroProfessor extends javax.swing.JFrame {
         jLabelCod.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelCod.setText("Código :");
 
-        codigo_Text.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        codigo_Text.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldCod.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextFieldCod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codigo_TextActionPerformed(evt);
+                jTextFieldCodActionPerformed(evt);
             }
         });
 
         jLabelNome.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelNome.setText("Nome :");
 
-        nomeProfessor_Text.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        nomeProfessor_Text.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNome.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeProfessor_TextActionPerformed(evt);
+                jTextFieldNomeActionPerformed(evt);
             }
         });
 
@@ -99,7 +104,7 @@ public class IUCadastroProfessor extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabelNome)
                             .addGap(10, 10, 10)
-                            .addComponent(nomeProfessor_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
@@ -107,7 +112,7 @@ public class IUCadastroProfessor extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelCod)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(codigo_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldCod, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelTitulacao)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -119,15 +124,15 @@ public class IUCadastroProfessor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nomeProfessor_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCod)
-                    .addComponent(codigo_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelTitulacao)
                     .addComponent(jComboTitulacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 285, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSalvar)
                     .addComponent(jButtonCancelar))
@@ -137,28 +142,37 @@ public class IUCadastroProfessor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nomeProfessor_TextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeProfessor_TextActionPerformed
+    private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nomeProfessor_TextActionPerformed
+    }//GEN-LAST:event_jTextFieldNomeActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
-    private void codigo_TextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigo_TextActionPerformed
+    private void jTextFieldCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_codigo_TextActionPerformed
+    }//GEN-LAST:event_jTextFieldCodActionPerformed
 
     private void jComboTitulacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboTitulacaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboTitulacaoActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        String codUsuario = codigo_Text.getText();
-        String nome = nomeProfessor_Text.getText();
-        String titulacao = jComboTitulacao.getSelectedItem()+"";
-        IUPrincipal.dataB.addProfessor(codUsuario,nome,titulacao);
-        this.dispose();
+        String erro = "";
+        if(jTextFieldNome.getText().equals(""))
+            erro += "Por favor insira um nome.\n";
+        if(jTextFieldCod.getText().equals(""))
+            erro += "Por favor insira um código.\n";
+        else
+            if(BD.existeUsuario(jTextFieldCod.getText()))
+                erro += "Código já cadastrado.\n";
+        if(!erro.equals(""))
+            JOptionPane.showMessageDialog(this, erro, "Erro", 0);
+        else{
+            BD.addProfessor(new Professor(jTextFieldCod.getText(), jTextFieldNome.getText(), jComboTitulacao.getSelectedItem().toString(), Config.getDiasProfessor()));
+            dispose();
+        }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     /**
@@ -197,13 +211,13 @@ public class IUCadastroProfessor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField codigo_Text;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonSalvar;
     private javax.swing.JComboBox jComboTitulacao;
     private javax.swing.JLabel jLabelCod;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelTitulacao;
-    private javax.swing.JTextField nomeProfessor_Text;
+    private javax.swing.JTextField jTextFieldCod;
+    private javax.swing.JTextField jTextFieldNome;
     // End of variables declaration//GEN-END:variables
 }
