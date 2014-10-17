@@ -9,6 +9,8 @@ package baseTolkien.Window;
 import baseTolkien.Entidades.Livro;
 import baseTolkien.Entidades.Relatorios.LivroRelatorio;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -215,6 +217,7 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
            
             ArrayList<LivroRelatorio> livros = IUPrincipal.dataB.getAllLivrosOf(codigo);
             IUHistoricoEmprestimos emprestimos = new IUHistoricoEmprestimos();
+            DefaultTableModel modelo = (DefaultTableModel) emprestimos.getLivros_Table().getModel();
             
             //Como adicionar a linha nessa tabele? do jeito do professor nas outras eu consegui
             for(LivroRelatorio livr: livros){
@@ -222,10 +225,14 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
                 linha[0] = livr.getNome();
                 linha[1] = livr.getCodLivro();
                 linha[2] = livr.getAno();
-                //emprestimos.getLivros_Table().getModel()
+                modelo.addRow(linha);
             }
             
             emprestimos.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"É necessário selecionar um Usuário!!!");
+          this.codigo=null;
         }
     }//GEN-LAST:event_jButtonHistoricoEmprestimosActionPerformed
 
