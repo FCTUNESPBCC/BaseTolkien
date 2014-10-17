@@ -6,12 +6,20 @@
 
 package baseTolkien.Window;
 
+
+import baseTolkien.Entidades.Aluno;
+import baseTolkien.Entidades.Professor;
+import baseTolkien.Entidades.Relatorios.LivroRelatorio;
+import baseTolkien.Entidades.Usuario;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Eloigdn
  */
 public class IURelatorioLivros extends javax.swing.JFrame {
-
+    private String codUsuario;
     /**
      * Creates new form IURelatorioLivros
      */
@@ -28,15 +36,16 @@ public class IURelatorioLivros extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        groupButton = new javax.swing.ButtonGroup();
         jButtonTodos = new javax.swing.JRadioButton();
         jButtonDisponivel = new javax.swing.JRadioButton();
         jButtonEmprestados = new javax.swing.JRadioButton();
         jButtonAtraso = new javax.swing.JRadioButton();
         jLabelLivros = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        livros_Table = new javax.swing.JTable();
         jButtonVoltar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        quemEmprestou_Button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,18 +59,33 @@ public class IURelatorioLivros extends javax.swing.JFrame {
 
         jButtonDisponivel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonDisponivel.setText("Disponíveis");
+        jButtonDisponivel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDisponivelActionPerformed(evt);
+            }
+        });
 
         jButtonEmprestados.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonEmprestados.setText("Emprestados");
+        jButtonEmprestados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEmprestadosActionPerformed(evt);
+            }
+        });
 
         jButtonAtraso.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonAtraso.setText("Em atraso");
+        jButtonAtraso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAtrasoActionPerformed(evt);
+            }
+        });
 
         jLabelLivros.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabelLivros.setText("Tipos de Livros");
 
-        jTable1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        livros_Table.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        livros_Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -84,13 +108,13 @@ public class IURelatorioLivros extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setColumnSelectionAllowed(true);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
+        livros_Table.setColumnSelectionAllowed(true);
+        jScrollPane1.setViewportView(livros_Table);
+        livros_Table.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (livros_Table.getColumnModel().getColumnCount() > 0) {
+            livros_Table.getColumnModel().getColumn(0).setResizable(false);
+            livros_Table.getColumnModel().getColumn(1).setResizable(false);
+            livros_Table.getColumnModel().getColumn(2).setResizable(false);
         }
 
         jButtonVoltar.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -101,8 +125,13 @@ public class IURelatorioLivros extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton1.setText("Quem Pegou Emprestado?");
+        quemEmprestou_Button.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        quemEmprestou_Button.setText("Quem Pegou Emprestado?");
+        quemEmprestou_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quemEmprestou_ButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,7 +152,7 @@ public class IURelatorioLivros extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(quemEmprestou_Button)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
@@ -145,7 +174,7 @@ public class IURelatorioLivros extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(quemEmprestou_Button)
                     .addComponent(jButtonVoltar))
                 .addGap(46, 46, 46))
         );
@@ -154,12 +183,103 @@ public class IURelatorioLivros extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTodosActionPerformed
-        // TODO add your handling code here:
+        
+        ArrayList<LivroRelatorio> livros = IUPrincipal.dataB.getAllLivros();
+        DefaultTableModel modelo = (DefaultTableModel) livros_Table.getModel();
+        
+        for(LivroRelatorio liv: livros) {
+            Object[] linha = new Object[3];
+            linha[0] = liv.getNomeUsuario();
+            linha[1] = liv.getCodUsuario();
+            linha[2] = liv.getAno();
+            modelo.addRow(linha);
+        }
+        
     }//GEN-LAST:event_jButtonTodosActionPerformed
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jButtonVoltarActionPerformed
+
+    private void jButtonDisponivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDisponivelActionPerformed
+        ArrayList<LivroRelatorio> livros = IUPrincipal.dataB.getAllLivroDisponivel();
+        DefaultTableModel modelo = (DefaultTableModel) livros_Table.getModel();
+        
+        for(LivroRelatorio liv: livros) {
+            Object[] linha = new Object[3];
+            linha[0] = liv.getNomeUsuario();
+            linha[1] = liv.getCodUsuario();
+            linha[2] = liv.getAno();
+            modelo.addRow(linha);
+        }
+    }//GEN-LAST:event_jButtonDisponivelActionPerformed
+
+    private void jButtonEmprestadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmprestadosActionPerformed
+        ArrayList<LivroRelatorio> livros = IUPrincipal.dataB.getAllLivroEmprestado();
+        DefaultTableModel modelo = (DefaultTableModel) livros_Table.getModel();
+        
+        for(LivroRelatorio liv: livros) {
+            Object[] linha = new Object[3];
+            linha[0] = liv.getNomeUsuario();
+            linha[1] = liv.getCodUsuario();
+            linha[2] = liv.getAno();
+            modelo.addRow(linha);
+        }
+    }//GEN-LAST:event_jButtonEmprestadosActionPerformed
+
+    private void jButtonAtrasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrasoActionPerformed
+        ArrayList<LivroRelatorio> livros = IUPrincipal.dataB.getAllLivroAtrasado();
+        DefaultTableModel modelo = (DefaultTableModel) livros_Table.getModel();
+        
+        for(LivroRelatorio liv: livros) {
+            Object[] linha = new Object[3];
+            linha[0] = liv.getNomeUsuario();
+            linha[1] = liv.getCodUsuario();
+            linha[2] = liv.getAno();
+            modelo.addRow(linha);
+        }
+    }//GEN-LAST:event_jButtonAtrasoActionPerformed
+
+    private void quemEmprestou_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quemEmprestou_ButtonActionPerformed
+        
+        
+        
+        if(livros_Table.getSelectedRowCount()>0){
+            int index = livros_Table.getSelectedRow();
+            this.codUsuario = (String) livros_Table.getModel().getValueAt(index,1);
+            
+            Usuario user =  IUPrincipal.dataB.getUsuarioByCod(codUsuario);
+            String nome = user.getNome();
+            if(user instanceof Aluno){
+                IUAlunoEmprestou emprestimoAluno = new IUAlunoEmprestou();
+                Aluno aluno = (Aluno)user;
+            
+                String curso = aluno.getCurso();
+                String ano = aluno.getAno()+"";
+            
+                emprestimoAluno.getJTextFieldNome().setText(nome);
+                emprestimoAluno.getJTextFieldCod().setText(this.codUsuario);
+                emprestimoAluno.getJTextFieldCurso().setText(curso);
+                emprestimoAluno.getJTextFieldAno().setText(ano);
+                emprestimoAluno.setVisible(true);
+            }
+            else{
+                IUProfessorEmprestou emprestimoProfessor = new IUProfessorEmprestou();
+                Professor prof = (Professor)user;
+            
+            
+                String titulacao = prof.getTitulacao();
+                
+            
+                emprestimoProfessor.getNome_Text().setText(nome);
+                emprestimoProfessor.getCod_Text().setText(this.codUsuario);
+                emprestimoProfessor.getTitulacao_Text().setText(titulacao);
+                emprestimoProfessor.setVisible(true);
+            }
+        }
+        
+        
+    }//GEN-LAST:event_quemEmprestou_ButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,7 +317,7 @@ public class IURelatorioLivros extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.ButtonGroup groupButton;
     private javax.swing.JRadioButton jButtonAtraso;
     private javax.swing.JRadioButton jButtonDisponivel;
     private javax.swing.JRadioButton jButtonEmprestados;
@@ -205,6 +325,7 @@ public class IURelatorioLivros extends javax.swing.JFrame {
     private javax.swing.JButton jButtonVoltar;
     private javax.swing.JLabel jLabelLivros;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable livros_Table;
+    private javax.swing.JButton quemEmprestou_Button;
     // End of variables declaration//GEN-END:variables
 }
