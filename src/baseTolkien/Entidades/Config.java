@@ -15,8 +15,8 @@ public class Config implements Serializable{
     private String arquivoLivros = ".\\livros.dat";
     private String arquivoUsuarios = ".\\usuarios.dat";
     private String arquivoEmprestimos = ".\\emprestimos.dat";
-    private int diasAluno = 10;
-    private int diasProfessor = 20;
+    private static int diasAluno = 10;
+    private static int diasProfessor = 20;
     private static int codLivro = 0;
     private static int codEmprestimo = 0;
     private static int codUsuario = 0;
@@ -45,7 +45,7 @@ public class Config implements Serializable{
         this.arquivoUsuarios = arquivoUsuarios;
     }
 
-    public int getDiasAluno() {
+    public static int getDiasAluno() {
         return diasAluno;
     }
 
@@ -53,7 +53,7 @@ public class Config implements Serializable{
         this.diasAluno = diasAluno;
     }
 
-    public int getDiasProfessor() {
+    public static int getDiasProfessor() {
         return diasProfessor;
     }
 
