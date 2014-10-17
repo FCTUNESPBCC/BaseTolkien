@@ -31,19 +31,19 @@ import java.util.logging.Logger;
 public class BD {
     public static Biblioteca biblioteca = new Biblioteca();
     
-    public void addAluno(String codUsuario,String nome,String curso,int ano){
-        biblioteca.addAluno(new Aluno(codUsuario,nome,curso,ano,7));
+    public static void addAluno(Aluno aluno){
+        biblioteca.addAluno(aluno);
     }
     
-    public void addProfessor(String codUsuario, String nome, String titulacao){
-        biblioteca.addProfessor(new Professor(codUsuario,nome,titulacao,10));
+    public static void addProfessor(Professor professor){
+        biblioteca.addProfessor(professor);
     }
     
-    public void addLivro(String codLivro, String nome,String descricao, int ano){
-        biblioteca.addLivro(new Livro(codLivro,nome,descricao,ano));
+    public static void addLivro(Livro livro){
+        biblioteca.addLivro(livro);
     }
     
-    public ArrayList<LivroRelatorio> getAllLivrosOf(String codUsuario){
+    public static ArrayList<LivroRelatorio> getAllLivrosOf(String codUsuario){
         ArrayList<LivroRelatorio> livroPesquisa = new ArrayList<LivroRelatorio>();
         Usuario usuarioEmprestimo = getUsuarioByCod(codUsuario);
         for(Emprestimo emprestimo: biblioteca.getAllEmprestimo()){
@@ -60,7 +60,7 @@ public class BD {
         return livroPesquisa;
     }
     
-    public ArrayList<LivroRelatorio> getAllLivrosNaoDevolvidosOf(String codUsuario){
+    public static ArrayList<LivroRelatorio> getAllLivrosNaoDevolvidosOf(String codUsuario){
         ArrayList<LivroRelatorio> livroPesquisa = new ArrayList<LivroRelatorio>();
         Usuario usuarioEmprestimo = getUsuarioByCod(codUsuario);
         for(Emprestimo emprestimo: biblioteca.getAllEmprestimo()){
@@ -79,7 +79,7 @@ public class BD {
         return livroPesquisa;
     }
     
-    public ArrayList<LivroRelatorio> getAllLivroDisponivel(){
+    public static ArrayList<LivroRelatorio> getAllLivroDisponivel(){
         ArrayList<LivroRelatorio> livroPesquisa = new ArrayList<LivroRelatorio>();
         for (Livro livro: biblioteca.getAllLivros()) {
             if (!livro.isEmprestado()) {
@@ -91,7 +91,7 @@ public class BD {
         return livroPesquisa;
     }
     
-    public ArrayList<LivroRelatorio> getAllLivroEmprestado(){
+    public static ArrayList<LivroRelatorio> getAllLivroEmprestado(){
         ArrayList<LivroRelatorio> livroPesquisa = new ArrayList<LivroRelatorio>();
         for (Emprestimo emprestimo : biblioteca.getAllEmprestimo()){
             Usuario usuarioEmprestimo = getUsuarioByCod(emprestimo.getCodUsuario());
@@ -107,7 +107,7 @@ public class BD {
         return livroPesquisa;
     }
     
-    public ArrayList<LivroRelatorio> getAllLivroAtrasado(){
+    public static ArrayList<LivroRelatorio> getAllLivroAtrasado(){
         ArrayList<LivroRelatorio> livroPesquisa = new ArrayList<LivroRelatorio>();
         for (Emprestimo emprestimo : biblioteca.getAllEmprestimo()){
             Usuario usuarioEmprestimo = getUsuarioByCod(emprestimo.getCodUsuario());
@@ -123,7 +123,7 @@ public class BD {
         return livroPesquisa;
     }
     
-    public ArrayList<Usuario> getAllUsuarioComAtraso(){
+    public static ArrayList<Usuario> getAllUsuarioComAtraso(){
         ArrayList<Usuario> usuarioPesquisa = new ArrayList<Usuario>();
         Usuario usuarioEmprestimo;
         for (Emprestimo emprestimo : biblioteca.getAllEmprestimo()) {
@@ -156,7 +156,7 @@ public class BD {
         return usuarioPesquisa;
     }
     
-    public Usuario getUsuarioByCod(String codUsuario) {
+    public static Usuario getUsuarioByCod(String codUsuario) {
         for (Usuario usuarioRelatorio : biblioteca.getAllUsuario()) {
             if(usuarioRelatorio.getCodUsuario()==codUsuario){
                 if(usuarioRelatorio instanceof ProfessorRelatorio)
@@ -172,7 +172,7 @@ public class BD {
         return null;
     }
 
-    public Livro getLivroByCod(String codLivro) {
+    public static Livro getLivroByCod(String codLivro) {
         Usuario user = null;
         for (Livro livro : biblioteca.getAllLivros()) {
             if(livro.getCodLivro()==codLivro) {
@@ -186,7 +186,17 @@ public class BD {
         return null;
     }
     
-    public ArrayList<LivroRelatorio> getLivroByNome(String nome){
+    public static boolean existeLivro(String codLivro) {
+        Usuario user = null;
+        for (Livro livro : biblioteca.getAllLivros()) {
+            if(livro.getCodLivro()==codLivro) {
+                    return true;
+            }
+        }
+        return false;
+    }
+    
+    public static ArrayList<LivroRelatorio> getLivroByNome(String nome){
         ArrayList<LivroRelatorio> livroPesquisa = new ArrayList<LivroRelatorio>();
         Usuario user = null;
         for (Livro livro : biblioteca.getAllLivros()) {
@@ -201,7 +211,7 @@ public class BD {
         return livroPesquisa;
     }
     
-    public ArrayList<LivroRelatorio> getLivroByNomeAndAno(String nome, int ano){
+    public static ArrayList<LivroRelatorio> getLivroByNomeAndAno(String nome, int ano){
         ArrayList<LivroRelatorio> livroPesquisa = new ArrayList<LivroRelatorio>();
         Usuario user = null;
         for (Livro livro : biblioteca.getAllLivros()) {
@@ -216,7 +226,7 @@ public class BD {
         return livroPesquisa;
     }
     
-    public Usuario getUsuarioQueEmprestouLivro(String codLivro){
+    public static Usuario getUsuarioQueEmprestouLivro(String codLivro){
         for (Emprestimo emprestimo : biblioteca.getAllEmprestimo()){
             for(Item item: emprestimo.getItens())
             if (!item.isDevolvido()){
@@ -227,7 +237,7 @@ public class BD {
         return null;
     }
     
-    public String getDataDevolucaoOf(String codLivro, String codUsuario){
+    public static String getDataDevolucaoOf(String codLivro, String codUsuario){
         for (Emprestimo emprestimo : biblioteca.getAllEmprestimo()){
             if(codUsuario==emprestimo.getCodUsuario()){
                 for(Item item: emprestimo.getItens())
@@ -240,7 +250,7 @@ public class BD {
         return null;
     }
     
-    public ArrayList<Usuario> getAllUsuario(){
+    public static ArrayList<Usuario> getAllUsuario(){
         ArrayList<Usuario> usuarioPesquisa = new ArrayList<Usuario>();
         for (Usuario usuarioRelatorio : biblioteca.getAllUsuario()) {
             if(usuarioRelatorio instanceof Professor)
@@ -262,7 +272,7 @@ public class BD {
         return usuarioPesquisa;
     }
     
-    public ArrayList<Usuario> getAllAluno(){
+    public static ArrayList<Usuario> getAllAluno(){
         ArrayList<Usuario> usuarioPesquisa = new ArrayList<Usuario>();
         for (Usuario usuarioRelatorio : biblioteca.getAllUsuario()) {
             if(usuarioRelatorio instanceof Professor)
@@ -277,7 +287,7 @@ public class BD {
         return usuarioPesquisa;
     }
     
-    public ArrayList<Usuario> getAllProfessor(){
+    public static ArrayList<Usuario> getAllProfessor(){
         ArrayList<Usuario> usuarioPesquisa = new ArrayList<Usuario>();
         for (Usuario usuarioRelatorio : biblioteca.getAllUsuario()) {
             if(usuarioRelatorio instanceof Professor)
