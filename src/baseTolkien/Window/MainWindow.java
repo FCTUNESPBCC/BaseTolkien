@@ -30,10 +30,10 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        barraDeFerramentas1 = new baseTolkien.Window.Panels.barraDeFerramentas();
+        barraDeFerramentas = new baseTolkien.Window.Panels.barraDeFerramentas();
         jPanelRelatorio = new baseTolkien.Window.Panels.JPanelRelatorio();
         jPanelUsuario = new baseTolkien.Window.Panels.JPanelUsuario();
-        jPanelLivro1 = new baseTolkien.Window.Panels.JPanelLivro();
+        jPanelLivro = new baseTolkien.Window.Panels.JPanelLivro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -41,27 +41,27 @@ public class MainWindow extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(815, 198));
         setPreferredSize(new java.awt.Dimension(800, 195));
 
-        barraDeFerramentas1.setBackground(new java.awt.Color(200, 200, 200));
+        barraDeFerramentas.setBackground(new java.awt.Color(200, 200, 200));
 
-        javax.swing.GroupLayout barraDeFerramentas1Layout = new javax.swing.GroupLayout(barraDeFerramentas1);
-        barraDeFerramentas1.setLayout(barraDeFerramentas1Layout);
-        barraDeFerramentas1Layout.setHorizontalGroup(
-            barraDeFerramentas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(barraDeFerramentas1Layout.createSequentialGroup()
+        javax.swing.GroupLayout barraDeFerramentasLayout = new javax.swing.GroupLayout(barraDeFerramentas);
+        barraDeFerramentas.setLayout(barraDeFerramentasLayout);
+        barraDeFerramentasLayout.setHorizontalGroup(
+            barraDeFerramentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(barraDeFerramentasLayout.createSequentialGroup()
                 .addGap(4, 4, 4)
-                .addComponent(jPanelLivro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        barraDeFerramentas1Layout.setVerticalGroup(
-            barraDeFerramentas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(barraDeFerramentas1Layout.createSequentialGroup()
+        barraDeFerramentasLayout.setVerticalGroup(
+            barraDeFerramentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(barraDeFerramentasLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addGroup(barraDeFerramentas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanelLivro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(barraDeFerramentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanelLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanelRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5))
@@ -72,13 +72,13 @@ public class MainWindow extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(barraDeFerramentas1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(barraDeFerramentas, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(barraDeFerramentas1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(barraDeFerramentas, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
@@ -121,8 +121,8 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private baseTolkien.Window.Panels.barraDeFerramentas barraDeFerramentas1;
-    private baseTolkien.Window.Panels.JPanelLivro jPanelLivro1;
+    private baseTolkien.Window.Panels.barraDeFerramentas barraDeFerramentas;
+    private baseTolkien.Window.Panels.JPanelLivro jPanelLivro;
     private baseTolkien.Window.Panels.JPanelRelatorio jPanelRelatorio;
     private baseTolkien.Window.Panels.JPanelUsuario jPanelUsuario;
     // End of variables declaration//GEN-END:variables
