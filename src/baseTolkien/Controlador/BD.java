@@ -43,6 +43,8 @@ public class BD {
         biblioteca.addLivro(livro);
     }
     
+     
+    
     public static ArrayList<LivroRelatorio> getAllLivros(){
         ArrayList<LivroRelatorio> livroPesquisa = new ArrayList<LivroRelatorio>();
         for (Livro livro: biblioteca.getAllLivros()) {

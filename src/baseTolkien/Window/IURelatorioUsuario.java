@@ -6,17 +6,25 @@
 
 package baseTolkien.Window;
 
+import baseTolkien.Entidades.Livro;
+import baseTolkien.Entidades.Relatorios.LivroRelatorio;
+import java.util.ArrayList;
+
 /**
  *
  * @author Eloigdn
  */
 public class IURelatorioUsuario extends javax.swing.JFrame {
-
+   private String codigo;
     /**
      * Creates new form IURelatorioUsuario
      */
     public IURelatorioUsuario() {
         initComponents();
+    }
+
+    public String getCodigo() {
+        return codigo;
     }
 
     /**
@@ -30,7 +38,7 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
 
         buttonGroupOpcoes = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TabelaUsuarios = new javax.swing.JTable();
+        usuarios_Table = new javax.swing.JTable();
         radioTodosUsuarios = new javax.swing.JRadioButton();
         radioProfessores = new javax.swing.JRadioButton();
         radioAlunos = new javax.swing.JRadioButton();
@@ -45,7 +53,7 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        TabelaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+        usuarios_Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -68,15 +76,15 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        TabelaUsuarios.setColumnSelectionAllowed(true);
-        TabelaUsuarios.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(TabelaUsuarios);
-        TabelaUsuarios.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (TabelaUsuarios.getColumnModel().getColumnCount() > 0) {
-            TabelaUsuarios.getColumnModel().getColumn(0).setResizable(false);
-            TabelaUsuarios.getColumnModel().getColumn(1).setResizable(false);
-            TabelaUsuarios.getColumnModel().getColumn(2).setResizable(false);
-            TabelaUsuarios.getColumnModel().getColumn(3).setResizable(false);
+        usuarios_Table.setColumnSelectionAllowed(true);
+        usuarios_Table.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(usuarios_Table);
+        usuarios_Table.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (usuarios_Table.getColumnModel().getColumnCount() > 0) {
+            usuarios_Table.getColumnModel().getColumn(0).setResizable(false);
+            usuarios_Table.getColumnModel().getColumn(1).setResizable(false);
+            usuarios_Table.getColumnModel().getColumn(2).setResizable(false);
+            usuarios_Table.getColumnModel().getColumn(3).setResizable(false);
         }
 
         radioTodosUsuarios.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -200,7 +208,25 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonHistoricoEmprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHistoricoEmprestimosActionPerformed
-        // TODO add your handling code here:
+       
+        if(usuarios_Table.getSelectedRowCount()>0){
+            int index = usuarios_Table.getSelectedRow();
+            this.codigo = (String) usuarios_Table.getModel().getValueAt(index,1);
+           
+            ArrayList<LivroRelatorio> livros = IUPrincipal.dataB.getAllLivrosOf(codigo);
+            IUHistoricoEmprestimos emprestimos = new IUHistoricoEmprestimos();
+            
+            //Como adicionar a linha nessa tabele? do jeito do professor nas outras eu consegui
+            for(LivroRelatorio livr: livros){
+                Object[] linha = new Object[3];
+                linha[0] = livr.getNome();
+                linha[1] = livr.getCodLivro();
+                linha[2] = livr.getAno();
+                //emprestimos.getLivros_Table().getModel()
+            }
+            
+            emprestimos.setVisible(true);
+        }
     }//GEN-LAST:event_jButtonHistoricoEmprestimosActionPerformed
 
     /**
@@ -239,7 +265,6 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TabelaUsuarios;
     private javax.swing.ButtonGroup buttonGroupOpcoes;
     private javax.swing.JButton jButtonEmprestimos;
     private javax.swing.JButton jButtonHistoricoEmprestimos;
@@ -253,5 +278,6 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
     private javax.swing.JRadioButton radioAlunos;
     private javax.swing.JRadioButton radioProfessores;
     private javax.swing.JRadioButton radioTodosUsuarios;
+    private javax.swing.JTable usuarios_Table;
     // End of variables declaration//GEN-END:variables
 }

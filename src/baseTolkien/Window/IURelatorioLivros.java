@@ -12,6 +12,7 @@ import baseTolkien.Entidades.Professor;
 import baseTolkien.Entidades.Relatorios.LivroRelatorio;
 import baseTolkien.Entidades.Usuario;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Eloigdn
  */
 public class IURelatorioLivros extends javax.swing.JFrame {
-    private String codUsuario;
+    private String codLivro;
     /**
      * Creates new form IURelatorioLivros
      */
@@ -246,9 +247,11 @@ public class IURelatorioLivros extends javax.swing.JFrame {
         
         if(livros_Table.getSelectedRowCount()>0){
             int index = livros_Table.getSelectedRow();
-            this.codUsuario = (String) livros_Table.getModel().getValueAt(index,1);
+            this.codLivro = (String) livros_Table.getModel().getValueAt(index,1);
             
-            Usuario user =  IUPrincipal.dataB.getUsuarioByCod(codUsuario);
+            Usuario user =  IUPrincipal.dataB.getUsuarioQueEmprestouLivro(codLivro);
+            
+            String codUsuario= user.getCodUsuario();
             String nome = user.getNome();
             if(user instanceof Aluno){
                 IUAlunoEmprestou emprestimoAluno = new IUAlunoEmprestou();
@@ -258,7 +261,7 @@ public class IURelatorioLivros extends javax.swing.JFrame {
                 String ano = aluno.getAno()+"";
             
                 emprestimoAluno.getJTextFieldNome().setText(nome);
-                emprestimoAluno.getJTextFieldCod().setText(this.codUsuario);
+                emprestimoAluno.getJTextFieldCod().setText(codUsuario);
                 emprestimoAluno.getJTextFieldCurso().setText(curso);
                 emprestimoAluno.getJTextFieldAno().setText(ano);
                 emprestimoAluno.setVisible(true);
@@ -272,10 +275,14 @@ public class IURelatorioLivros extends javax.swing.JFrame {
                 
             
                 emprestimoProfessor.getNome_Text().setText(nome);
-                emprestimoProfessor.getCod_Text().setText(this.codUsuario);
+                emprestimoProfessor.getCod_Text().setText(codUsuario);
                 emprestimoProfessor.getTitulacao_Text().setText(titulacao);
                 emprestimoProfessor.setVisible(true);
             }
+        }
+        else{
+          JOptionPane.showMessageDialog(null,"É necessário selecionar um livro!!!");
+          this.codLivro=null;
         }
         
         
