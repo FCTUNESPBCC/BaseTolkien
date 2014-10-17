@@ -171,6 +171,15 @@ public class BD {
         }
         return null;
     }
+    
+    public static boolean existeUsuario(String codUsuario) {
+        for (Usuario usuarioRelatorio : biblioteca.getAllUsuario()) {
+            if(usuarioRelatorio.getCodUsuario().equals(codUsuario)){
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static Livro getLivroByCod(String codLivro) {
         Usuario user = null;
