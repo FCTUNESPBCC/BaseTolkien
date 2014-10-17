@@ -6,8 +6,6 @@
 
 package baseTolkien.Window;
 
-import baseTolkien.Window.Panels.jPanelCadastroAluno;
-import javax.swing.JPanel;
 
 /**
  *
@@ -20,11 +18,7 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
-        /*try {
-            areaDoCorpo1 = new JImagePanel(new File("images/background.jpg"));
-        } catch (IOException ex) {
-            Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        setResizable(false);
     }
 
     /**
@@ -37,6 +31,9 @@ public class MainWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         barraDeFerramentas1 = new baseTolkien.Window.Panels.barraDeFerramentas();
+        jPanelRelatorio = new baseTolkien.Window.Panels.JPanelRelatorio();
+        jPanelUsuario = new baseTolkien.Window.Panels.JPanelUsuario();
+        jPanelLivro1 = new baseTolkien.Window.Panels.JPanelLivro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -45,6 +42,30 @@ public class MainWindow extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(800, 195));
 
         barraDeFerramentas1.setBackground(new java.awt.Color(200, 200, 200));
+
+        javax.swing.GroupLayout barraDeFerramentas1Layout = new javax.swing.GroupLayout(barraDeFerramentas1);
+        barraDeFerramentas1.setLayout(barraDeFerramentas1Layout);
+        barraDeFerramentas1Layout.setHorizontalGroup(
+            barraDeFerramentas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(barraDeFerramentas1Layout.createSequentialGroup()
+                .addGap(4, 4, 4)
+                .addComponent(jPanelLivro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        barraDeFerramentas1Layout.setVerticalGroup(
+            barraDeFerramentas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(barraDeFerramentas1Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(barraDeFerramentas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanelLivro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,6 +122,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private baseTolkien.Window.Panels.barraDeFerramentas barraDeFerramentas1;
+    private baseTolkien.Window.Panels.JPanelLivro jPanelLivro1;
+    private baseTolkien.Window.Panels.JPanelRelatorio jPanelRelatorio;
+    private baseTolkien.Window.Panels.JPanelUsuario jPanelUsuario;
     // End of variables declaration//GEN-END:variables
 
     //private JImagePanel areaDoCorpo1;
