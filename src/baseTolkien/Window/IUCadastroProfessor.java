@@ -24,6 +24,8 @@ public class IUCadastroProfessor extends javax.swing.JFrame {
      */
     public IUCadastroProfessor() {
         initComponents();
+        setVisible(true);
+        setResizable(false);
     }
 
     /**
@@ -147,7 +149,7 @@ public class IUCadastroProfessor extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNomeActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jTextFieldCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodActionPerformed
@@ -170,7 +172,8 @@ public class IUCadastroProfessor extends javax.swing.JFrame {
         if(!erro.equals(""))
             JOptionPane.showMessageDialog(this, erro, "Erro", 0);
         else{
-            BD.addProfessor(new Professor(jTextFieldCod.getText(), jTextFieldNome.getText(), jComboTitulacao.getSelectedItem().toString(), Config.getDiasProfessor()));
+            BD.addProfessor(new Professor(jTextFieldCod.getText(), jTextFieldNome.getText(), jComboTitulacao.getSelectedItem().toString(), BD.biblioteca.getConfiguracoes().getDiasProfessor()));
+            BD.salvarUsuarios();
             dispose();
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
