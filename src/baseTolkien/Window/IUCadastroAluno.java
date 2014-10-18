@@ -27,6 +27,7 @@ public class IUCadastroAluno extends javax.swing.JFrame {
     public IUCadastroAluno() {
         initComponents();
         setResizable(false);
+        setVisible(true);
     }
 
     /**
@@ -197,7 +198,8 @@ public class IUCadastroAluno extends javax.swing.JFrame {
         if(!erro.equals(""))
             JOptionPane.showMessageDialog(this, erro, "Erro", 0);
         else{
-            //BD.addAluno(new Aluno(jTextFieldCod.getText(), jTextFieldNome.getText(), jTextFieldCurso.getText(),Ano, Config.getDiasAluno()));
+            BD.addAluno(new Aluno(jTextFieldCod.getText(), jTextFieldNome.getText(), jTextFieldCurso.getText(),Ano, BD.biblioteca.getConfiguracoes().getDiasAluno()));
+            BD.salvarUsuarios();
             BD.salvarLivros();
             dispose();
         }
