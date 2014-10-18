@@ -25,6 +25,7 @@ public class IUCadastroLivro extends javax.swing.JFrame {
         setVisible(true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
+        jTextAreaDescricao.setLineWrap(true);
     }
 
     /**
@@ -193,6 +194,7 @@ public class IUCadastroLivro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, erro, "Erro", 0);
         else{
             BD.biblioteca.addLivro(new Livro(jTextFieldCod.getText(), jTextFieldNome.getText(), jTextAreaDescricao.getText(),Ano));
+            BD.salvarLivros();
             dispose();
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed

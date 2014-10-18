@@ -15,6 +15,7 @@ import baseTolkien.Entidades.Relatorios.AlunoRelatorio;
 import baseTolkien.Entidades.Relatorios.LivroRelatorio;
 import baseTolkien.Entidades.Relatorios.ProfessorRelatorio;
 import baseTolkien.Entidades.Usuario;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -323,7 +324,7 @@ public class BD {
         return usuarioPesquisa;
     }
     
-        public static void salvarDados(String dados) {
+    private static void salvarDados(String dados) {
             String nomeArquivo = "";
             if(dados.equals("Livros"))
                 nomeArquivo = biblioteca.getConfiguracoes().getArquivoLivros();
@@ -332,6 +333,24 @@ public class BD {
             else if(dados.equals("Emprestimos"))
                 nomeArquivo = biblioteca.getConfiguracoes().getArquivoEmprestimos();
             
+            File arquivo = (new File(BD.biblioteca.getConfiguracoes().getPathArquivos() + nomeArquivo));
+            if(!arquivo.exists()){
+                if(!(new File(arquivo.getAbsolutePath())).exists())
+                    arquivo.mkdir();
+                try {
+                    arquivo.getParentFile().createNewFile();
+                } catch (IOException ex) {
+                    Logger.getLogger(BD.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+            if(!(new File(nomeArquivo)).exists()){
+                try {
+                        (new File(nomeArquivo)).createNewFile();
+                } catch (IOException ex) {
+                    Logger.getLogger(BD.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {
@@ -365,7 +384,7 @@ public class BD {
         }
     }
 
-    public static void recuperarDados(String dados) {
+    private static void recuperarDados(String dados) {
         String nomeArquivo = "";
             if(dados.equals("Livros"))
                 nomeArquivo = biblioteca.getConfiguracoes().getArquivoLivros();
@@ -373,40 +392,66 @@ public class BD {
                 nomeArquivo = biblioteca.getConfiguracoes().getArquivoUsuarios();
             else if(dados.equals("Emprestimos"))
                 nomeArquivo = biblioteca.getConfiguracoes().getArquivoEmprestimos();
-        FileInputStream fis = null;
-        ObjectInputStream ois = null;
-        try {
-            fis = new FileInputStream(nomeArquivo);
-            ois = new ObjectInputStream(fis);
-            ///this.livros = (ArrayList<Livro>) ois.readObject();
-            ///ou ler livro por livro do arquivo -- depende de como salvou
-            Object lista = null;
-            if(dados.equals("Livros")){
-                lista = biblioteca.getAllLivros();
-            }
-            else if(dados.equals("Usuarios")){
-                lista = biblioteca.getAllUsuario();
-            }
-            else if(dados.equals("Emprestimos")){
-                lista = biblioteca.getAllEmprestimo();
-            }
-            ((ArrayList<Object>)lista).clear();
-            int numItens = ois.readInt();
-            for (int i=0; i<numItens; i++){
-                Object obj= (Object) ois.readObject();
-                ((ArrayList<Object>)lista).add(obj);
-            }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
-        } finally{
+        if((new File(nomeArquivo)).exists()){
+            FileInputStream fis = null;
+            ObjectInputStream ois = null;
             try {
-                ois.close();
-                fis.close();
+                fis = new FileInputStream(nomeArquivo);
+                ois = new ObjectInputStream(fis);
+                ///this.livros = (ArrayList<Livro>) ois.readObject();
+                ///ou ler livro por livro do arquivo -- depende de como salvou
+                Object lista = null;
+                if(dados.equals("Livros")){
+                    lista = biblioteca.getAllLivros();
+                }
+                else if(dados.equals("Usuarios")){
+                    lista = biblioteca.getAllUsuario();
+                }
+                else if(dados.equals("Emprestimos")){
+                    lista = biblioteca.getAllEmprestimo();
+                }
+                ((ArrayList<Object>)lista).clear();
+                int numItens = ois.readInt();
+                for (int i=0; i<numItens; i++){
+                    Object obj= (Object) ois.readObject();
+                    ((ArrayList<Object>)lista).add(obj);
+                }
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
                 Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
+            } finally{
+                try {
+                    ois.close();
+                    fis.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
+    }
+    
+    public static void salvarLivros(){
+        salvarDados("Livros");
+    }
+    public static void recuperarLivros(){
+        recuperarDados("Livros");
+    }
+    public static void salvarUsuarios(){
+        salvarDados("Usuarios");
+    }
+    public static void recuperarUsuarios(){
+        recuperarDados("Usuarios");
+    }
+    public static void salvarEmprestimos(){
+        salvarDados("Emprestimos");
+    }
+    public static void recuperarEmprestimos(){
+        recuperarDados("Emprestimos");
+    }
+    public static void recuperarTudo(){
+        recuperarDados("Emprestimos");
+        recuperarDados("Usuarios");
+        recuperarDados("Livros");
     }
 }

@@ -198,6 +198,7 @@ public class IUCadastroAluno extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, erro, "Erro", 0);
         else{
             BD.addAluno(new Aluno(jTextFieldCod.getText(), jTextFieldNome.getText(), jTextFieldCurso.getText(),Ano, Config.getDiasAluno()));
+            BD.salvarLivros();
             dispose();
         }
         

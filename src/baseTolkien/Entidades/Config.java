@@ -12,14 +12,16 @@ import java.io.Serializable;
  * @author Danilo Medeiros Eler
  */
 public class Config implements Serializable{
-    private String arquivoLivros = ".\\livros.dat";
-    private String arquivoUsuarios = ".\\usuarios.dat";
-    private String arquivoEmprestimos = ".\\emprestimos.dat";
-    private static int diasAluno = 10;
-    private static int diasProfessor = 20;
-    private static int codLivro = 0;
-    private static int codEmprestimo = 0;
-    private static int codUsuario = 0;
+    private String pathArquivos = "";
+    private String arquivoLivros = "livros.dat";
+    private String arquivoUsuarios = "usuarios.dat";
+    private String arquivoEmprestimos = "emprestimos.dat";
+    private String arquivoConfig = "config.dat";
+    private int diasAluno = 10;
+    private int diasProfessor = 20;
+    private int codLivro = 0;
+    private int codEmprestimo = 0;
+    private int codUsuario = 0;
 
     public String getArquivoEmprestimos() {
         return arquivoEmprestimos;
@@ -45,7 +47,7 @@ public class Config implements Serializable{
         this.arquivoUsuarios = arquivoUsuarios;
     }
 
-    public static int getDiasAluno() {
+    public int getDiasAluno() {
         return diasAluno;
     }
 
@@ -53,7 +55,7 @@ public class Config implements Serializable{
         this.diasAluno = diasAluno;
     }
 
-    public static int getDiasProfessor() {
+    public int getDiasProfessor() {
         return diasProfessor;
     }
 
@@ -61,27 +63,45 @@ public class Config implements Serializable{
         this.diasProfessor = diasProfessor;
     }
 
-    public static int getCodLivro() {
+    public int getCodLivro() {
         return codLivro;
     }
 
-    public static void setCodLivro(int codLivro) {
-        Config.codLivro = codLivro;
+    public void setCodLivro(int codLivro) {
+        this.codLivro = codLivro;
     }
 
-    public static int getCodEmprestimo() {
+    public int getCodEmprestimo() {
         return codEmprestimo;
     }
 
-    public static void setCodEmprestimo(int codEmprestimo) {
-        Config.codEmprestimo = codEmprestimo;
+    public void setCodEmprestimo(int codEmprestimo) {
+        this.codEmprestimo = codEmprestimo;
     }
 
-    public static int getCodUsuario() {
+    public int getCodUsuario() {
         return codUsuario;
     }
 
-    public static void setCodUsuario(int codUsuario) {
-        Config.codUsuario = codUsuario;
+    public void setCodUsuario(int codUsuario) {
+        this.codUsuario = codUsuario;
     }
+
+    public String getPathArquivos() {
+        return pathArquivos;
+    }
+
+    public void setPathArquivos(String pathArquivos) {
+        this.pathArquivos = pathArquivos;
+    }
+
+    public String getArquivoConfig() {
+        return arquivoConfig;
+    }
+
+    public void setArquivoConfig(String arquivoConfig) {
+        this.arquivoConfig = arquivoConfig;
+    }
+    
+    
 }

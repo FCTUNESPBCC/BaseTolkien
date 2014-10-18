@@ -6,6 +6,8 @@
 
 package baseTolkien.Window;
 
+import baseTolkien.Controlador.BD;
+
 
 /**
  *
@@ -20,6 +22,7 @@ public class MainWindow extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setTitle("Base Tolkien");
+        BD.recuperarTudo();
     }
 
     /**

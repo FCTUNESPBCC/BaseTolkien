@@ -23,6 +23,7 @@ public class Livro implements Serializable{
         this.codLivro = codLivro;
         this.nome = nome;
         this.ano = ano;
+        this.descricao = descricao;
         this.emprestado = false;
     }
 

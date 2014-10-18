@@ -20,6 +20,8 @@ public class IUDetalheLivro extends javax.swing.JFrame {
     public IUDetalheLivro(LivroRelatorio livro) {
         initComponents();
         
+        jTextAreaDescricao.setLineWrap(true);
+        
         jTextFieldAno.setEditable(false);
         jTextFieldNome.setEditable(false);
         jTextFieldCod.setEditable(false);

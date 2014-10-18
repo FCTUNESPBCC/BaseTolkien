@@ -15,7 +15,7 @@ public class Controlador {
     public Config getConfiguracoes(){
         return BD.biblioteca.getConfiguracoes();
     }
-    public void salvarLivros(){
+    /*public void salvarLivros(){
         BD.salvarDados("Livros");
     }
     public void recuperarLivros(){
@@ -33,4 +33,9 @@ public class Controlador {
     public void recuperarEmprestimos(){
         BD.recuperarDados("Emprestimos");
     }
+    public void recuperarTudo(){
+        BD.recuperarDados("Emprestimos");
+        BD.recuperarDados("Usuarios");
+        BD.recuperarDados("Livros");
+    }*/
 }
