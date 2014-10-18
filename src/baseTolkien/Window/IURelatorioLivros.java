@@ -26,6 +26,15 @@ public class IURelatorioLivros extends javax.swing.JFrame {
      */
     public IURelatorioLivros() {
         initComponents();
+        
+        grupo_Button.clearSelection();
+        grupo_Button.add(jButtonDisponivel);
+        grupo_Button.add(jButtonAtraso);
+        grupo_Button.add(jButtonEmprestados);
+        grupo_Button.add(jButtonTodos);
+        
+        
+        
     }
 
     /**
@@ -37,7 +46,7 @@ public class IURelatorioLivros extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        groupButton = new javax.swing.ButtonGroup();
+        grupo_Button = new javax.swing.ButtonGroup();
         jButtonTodos = new javax.swing.JRadioButton();
         jButtonDisponivel = new javax.swing.JRadioButton();
         jButtonEmprestados = new javax.swing.JRadioButton();
@@ -324,7 +333,7 @@ public class IURelatorioLivros extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup groupButton;
+    private javax.swing.ButtonGroup grupo_Button;
     private javax.swing.JRadioButton jButtonAtraso;
     private javax.swing.JRadioButton jButtonDisponivel;
     private javax.swing.JRadioButton jButtonEmprestados;
