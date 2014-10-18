@@ -137,6 +137,30 @@ public class BD {
         return livroPesquisa;
     }
     
+    public static boolean isUsuarioComEmprestimo(String codUsuario){
+        for (Emprestimo emprestimo : biblioteca.getAllEmprestimo()) {
+            if(emprestimo.getCodUsuario().equals(codUsuario)){
+                for(Item item: emprestimo.getItens())
+                    if (!item.isDevolvido()) {
+                        return true;
+                    }
+            }
+        }
+        return false;
+    }
+    
+    public static boolean isUsuarioComAtraso(String codUsuario){
+        for (Emprestimo emprestimo : biblioteca.getAllEmprestimo()) {
+            if(emprestimo.getCodUsuario().equals(codUsuario)){
+                for(Item item: emprestimo.getItens())
+                    if (!item.isAtrasado()) {
+                        return true;
+                    }
+            }
+        }
+        return false;
+    }
+    
     public static ArrayList<Usuario> getAllUsuarioComAtraso(){
         ArrayList<Usuario> usuarioPesquisa = new ArrayList<Usuario>();
         Usuario usuarioEmprestimo;
@@ -184,6 +208,23 @@ public class BD {
             }
         }
         return null;
+    }
+    
+    public static ArrayList<Usuario> getUsuarioByNome(String nomeUsuario) {
+        ArrayList<Usuario> retorno = new ArrayList<Usuario>();
+        for (Usuario usuarioRelatorio : biblioteca.getAllUsuario()) {
+            if(usuarioRelatorio.getCodUsuario().contains(nomeUsuario)){
+                if(usuarioRelatorio instanceof ProfessorRelatorio)
+                    retorno.add(new ProfessorRelatorio(usuarioRelatorio.getCodUsuario(), 
+                                usuarioRelatorio.getNome(), ((Professor)usuarioRelatorio).getTitulacao(), usuarioRelatorio.getDiasEmprestimo(),
+                                new ArrayList<LivroRelatorio>()));
+                else retorno.add(new AlunoRelatorio(usuarioRelatorio.getCodUsuario(),
+                                usuarioRelatorio.getNome(), ((Aluno)usuarioRelatorio).getCurso(), ((Aluno)usuarioRelatorio).getAno(),
+                                usuarioRelatorio.getDiasEmprestimo(),
+                                new ArrayList<LivroRelatorio>()));
+            }
+        }
+        return retorno;
     }
     
     public static boolean existeUsuario(String codUsuario) {
@@ -339,14 +380,6 @@ public class BD {
                     arquivo.mkdir();
                 try {
                     arquivo.getParentFile().createNewFile();
-                } catch (IOException ex) {
-                    Logger.getLogger(BD.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            
-            if(!(new File(nomeArquivo)).exists()){
-                try {
-                        (new File(nomeArquivo)).createNewFile();
                 } catch (IOException ex) {
                     Logger.getLogger(BD.class.getName()).log(Level.SEVERE, null, ex);
                 }
