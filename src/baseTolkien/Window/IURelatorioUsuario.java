@@ -6,8 +6,12 @@
 
 package baseTolkien.Window;
 
+import baseTolkien.Entidades.Aluno;
 import baseTolkien.Entidades.Livro;
+import baseTolkien.Entidades.Relatorios.AlunoRelatorio;
 import baseTolkien.Entidades.Relatorios.LivroRelatorio;
+import baseTolkien.Entidades.Relatorios.ProfessorRelatorio;
+import baseTolkien.Entidades.Usuario;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -91,9 +95,19 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
 
         radioTodosUsuarios.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         radioTodosUsuarios.setText("Todos Usuários");
+        radioTodosUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioTodosUsuariosActionPerformed(evt);
+            }
+        });
 
         radioProfessores.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         radioProfessores.setText("Professores");
+        radioProfessores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioProfessoresActionPerformed(evt);
+            }
+        });
 
         radioAlunos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         radioAlunos.setText("Alunos");
@@ -202,11 +216,26 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void radioAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioAlunosActionPerformed
-        // TODO add your handling code here:
+      ArrayList<Usuario> usuarios = IUPrincipal.dataB.getAllUsuario();
+      DefaultTableModel modelo = (DefaultTableModel) usuarios_Table.getModel();  
+        
+        
+        for(int i=0;i<usuarios.size();i++) {
+            Object[] linha = new Object[4];
+            
+            
+            AlunoRelatorio aluno = (AlunoRelatorio) usuarios.get(i);    
+            linha[0] = aluno.getNome();
+            linha[1] = aluno.getCodUsuario();
+            linha[2] = aluno.getCurso();
+            linha[3] = aluno.getAno();
+            modelo.addRow(linha);
+        }    
+            
     }//GEN-LAST:event_radioAlunosActionPerformed
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonHistoricoEmprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHistoricoEmprestimosActionPerformed
@@ -235,6 +264,48 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
           this.codigo=null;
         }
     }//GEN-LAST:event_jButtonHistoricoEmprestimosActionPerformed
+
+    private void radioTodosUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioTodosUsuariosActionPerformed
+       ArrayList<Usuario> usuarios = IUPrincipal.dataB.getAllUsuario();
+       DefaultTableModel modelo = (DefaultTableModel) usuarios_Table.getModel();
+        
+        
+        for(int i=0;i<usuarios.size();i++) {
+            Object[] linha = new Object[4];
+            
+            if(usuarios.get(i) instanceof AlunoRelatorio){
+                AlunoRelatorio aluno = (AlunoRelatorio) usuarios.get(i);    
+                linha[0] = aluno.getNome();
+                linha[1] = aluno.getCodUsuario();
+                linha[2] = aluno.getCurso();
+                linha[3] = aluno.getAno();
+                modelo.addRow(linha);
+            }
+            else{
+                ProfessorRelatorio professor = (ProfessorRelatorio) usuarios.get(i);    
+                linha[0] = professor.getNome();
+                linha[1] = professor.getCodUsuario();
+                linha[2] = professor.getTitulacao();
+                modelo.addRow(linha);
+            }
+        }
+    }//GEN-LAST:event_radioTodosUsuariosActionPerformed
+
+    private void radioProfessoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioProfessoresActionPerformed
+        ArrayList<Usuario> usuarios = IUPrincipal.dataB.getAllUsuario();
+        DefaultTableModel modelo = (DefaultTableModel) usuarios_Table.getModel();
+        
+        
+        for(int i=0;i<usuarios.size();i++) {
+            Object[] linha = new Object[4];
+            
+            ProfessorRelatorio professor = (ProfessorRelatorio) usuarios.get(i);    
+            linha[0] = professor.getNome();
+            linha[1] = professor.getCodUsuario();
+            linha[2] = professor.getTitulacao();
+            modelo.addRow(linha);
+            }
+    }//GEN-LAST:event_radioProfessoresActionPerformed
 
     /**
      * @param args the command line arguments
