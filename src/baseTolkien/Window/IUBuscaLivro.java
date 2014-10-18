@@ -198,7 +198,8 @@ public class IUBuscaLivro extends javax.swing.JFrame {
             while(model.getRowCount()>0)
                 model.removeRow(0);
         }
-        livros.add(BD.getLivroByCod(jTextCodigo.getText()));
+        LivroRelatorio livroTemp = BD.getLivroByCod(jTextCodigo.getText());
+        if(livroTemp!=null) livros.add(livroTemp);
         if(!livros.isEmpty())
             for(LivroRelatorio livro: livros){
                 model.addRow(new Object[]{livro.getCodLivro(), livro.getNome(), livro.getAno(), livro.isEmprestado()});
