@@ -6,6 +6,10 @@
 
 package baseTolkien.Window.Panels;
 
+import baseTolkien.Window.IUBuscaUsuario;
+import baseTolkien.Window.IUCadastroAluno;
+import baseTolkien.Window.IUCadastroProfessor;
+
 /**
  *
  * @author Leonardo Dias
@@ -30,10 +34,11 @@ public class JPanelUsuario extends javax.swing.JPanel {
 
         livrosLabel1 = new javax.swing.JLabel();
         icone = new javax.swing.JLabel();
-        btInserir = new javax.swing.JButton();
+        btCadastrarAluno = new javax.swing.JButton();
         btBuscar = new javax.swing.JButton();
         livrosLabel = new javax.swing.JLabel();
         livrosLabel2 = new javax.swing.JLabel();
+        btCadastrarProfessor = new javax.swing.JButton();
 
         livrosLabel1.setBackground(new java.awt.Color(250, 250, 250));
         livrosLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/topToolBar.jpg"))); // NOI18N
@@ -45,14 +50,31 @@ public class JPanelUsuario extends javax.swing.JPanel {
 
         icone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user_ico.png"))); // NOI18N
 
-        btInserir.setText("Inserir");
+        btCadastrarAluno.setText("Cadastrar Aluno");
+        btCadastrarAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastrarAlunoActionPerformed(evt);
+            }
+        });
 
         btBuscar.setText("Buscar");
+        btBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarActionPerformed(evt);
+            }
+        });
 
         livrosLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/usuariosLabel.jpg"))); // NOI18N
 
         livrosLabel2.setBackground(new java.awt.Color(250, 250, 250));
         livrosLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/topToolBar.jpg"))); // NOI18N
+
+        btCadastrarProfessor.setText("Cadastrar Professor");
+        btCadastrarProfessor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastrarProfessorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -62,10 +84,11 @@ public class JPanelUsuario extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(icone)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(0, 0, 0)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                            .addComponent(btInserir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btCadastrarProfessor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btCadastrarAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -81,22 +104,35 @@ public class JPanelUsuario extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btInserir)
-                        .addGap(30, 30, 30)
+                        .addComponent(btCadastrarAluno)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btCadastrarProfessor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btBuscar))
                     .addComponent(icone, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(livrosLabel))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btCadastrarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarAlunoActionPerformed
+        new IUCadastroAluno();
+    }//GEN-LAST:event_btCadastrarAlunoActionPerformed
+
+    private void btCadastrarProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarProfessorActionPerformed
+        new IUCadastroProfessor();
+    }//GEN-LAST:event_btCadastrarProfessorActionPerformed
+
+    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+        new IUBuscaUsuario();
+    }//GEN-LAST:event_btBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscar;
-    private javax.swing.JButton btInserir;
+    private javax.swing.JButton btCadastrarAluno;
+    private javax.swing.JButton btCadastrarProfessor;
     private javax.swing.JLabel icone;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel livrosLabel;
     private javax.swing.JLabel livrosLabel1;
     private javax.swing.JLabel livrosLabel2;

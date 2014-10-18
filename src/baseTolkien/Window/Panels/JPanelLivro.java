@@ -36,7 +36,6 @@ public class JPanelLivro extends javax.swing.JPanel {
         btBuscar = new javax.swing.JButton();
         livrosLabel = new javax.swing.JLabel();
         livrosLabel1 = new javax.swing.JLabel();
-        btInserirExemplares = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(250, 250, 250));
         setMaximumSize(new java.awt.Dimension(32767, 150));
@@ -64,13 +63,6 @@ public class JPanelLivro extends javax.swing.JPanel {
         livrosLabel1.setBackground(new java.awt.Color(250, 250, 250));
         livrosLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/topToolBar.jpg"))); // NOI18N
 
-        btInserirExemplares.setText("Inserir Exemplares");
-        btInserirExemplares.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btInserirExemplaresActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -82,8 +74,7 @@ public class JPanelLivro extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btCadastrarNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btInserirExemplares)))
+                            .addComponent(btCadastrarNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(livrosLabel)
                     .addComponent(livrosLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -97,8 +88,6 @@ public class JPanelLivro extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btCadastrarNovo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btInserirExemplares)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btBuscar))
                     .addComponent(icone, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -110,10 +99,6 @@ public class JPanelLivro extends javax.swing.JPanel {
         new IUCadastroLivro();
     }//GEN-LAST:event_btCadastrarNovoActionPerformed
 
-    private void btInserirExemplaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirExemplaresActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btInserirExemplaresActionPerformed
-
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         new IUBuscaLivro();
     }//GEN-LAST:event_btBuscarActionPerformed
@@ -122,7 +107,6 @@ public class JPanelLivro extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscar;
     private javax.swing.JButton btCadastrarNovo;
-    private javax.swing.JButton btInserirExemplares;
     private javax.swing.JLabel icone;
     private javax.swing.JLabel livrosLabel;
     private javax.swing.JLabel livrosLabel1;

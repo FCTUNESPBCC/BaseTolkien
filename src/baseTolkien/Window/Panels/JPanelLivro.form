@@ -38,7 +38,6 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btBuscar" max="32767" attributes="0"/>
                           <Component id="btCadastrarNovo" max="32767" attributes="0"/>
-                          <Component id="btInserirExemplares" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="livrosLabel" min="-2" max="-2" attributes="0"/>
@@ -56,8 +55,6 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="btCadastrarNovo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btInserirExemplares" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btBuscar" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -109,14 +106,6 @@
           <Image iconType="3" name="/images/topToolBar.jpg"/>
         </Property>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btInserirExemplares">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Inserir Exemplares"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btInserirExemplaresActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>
