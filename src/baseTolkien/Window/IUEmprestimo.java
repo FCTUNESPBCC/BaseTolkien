@@ -6,6 +6,11 @@
 
 package baseTolkien.Window;
 
+import baseTolkien.Entidades.Livro;
+import baseTolkien.Entidades.Relatorios.LivroRelatorio;
+import baseTolkien.Entidades.Usuario;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Eloigdn
@@ -30,23 +35,23 @@ public class IUEmprestimo extends javax.swing.JFrame {
 
         jPanelUsuario = new javax.swing.JPanel();
         jLabelCodEmprestimo = new javax.swing.JLabel();
-        TextFieldCodEmprstimo = new javax.swing.JTextField();
+        codEmprestimo_Text = new javax.swing.JTextField();
         jLabelCodUsuario = new javax.swing.JLabel();
-        TextFieldCodUsuario = new javax.swing.JTextField();
+        codUsuario_Text = new javax.swing.JTextField();
         jLabelNomeUsuario = new javax.swing.JLabel();
-        jTextFieldNomeUsuario = new javax.swing.JTextField();
+        nomeUsuario_Text = new javax.swing.JTextField();
         jButtonLocalizarUsuario = new javax.swing.JButton();
         jLabelDataEmprestimo = new javax.swing.JLabel();
-        TextFieldDataEmprestimo = new javax.swing.JTextField();
+        dataEmprestimo_Text = new javax.swing.JTextField();
         jLabelDataDevolucao = new javax.swing.JLabel();
-        TextFieldDatadevolucao = new javax.swing.JTextField();
+        dataDevolucao_Text = new javax.swing.JTextField();
         jPanelLivro = new javax.swing.JPanel();
         jLabelCodEmprestimo1 = new javax.swing.JLabel();
-        TextFieldCodEmprstimo1 = new javax.swing.JTextField();
+        codLivro_Text = new javax.swing.JTextField();
         jLabelNomeLivro = new javax.swing.JLabel();
-        jTextFieldNomeLivro = new javax.swing.JTextField();
+        nomeLivro_Text = new javax.swing.JTextField();
         jButtonLocalizarLivro = new javax.swing.JButton();
-        jButtonAdicionarLivro = new javax.swing.JButton();
+        add_Button = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableLivros = new javax.swing.JTable();
         jButtonSalvar = new javax.swing.JButton();
@@ -59,38 +64,45 @@ public class IUEmprestimo extends javax.swing.JFrame {
         jLabelCodEmprestimo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabelCodEmprestimo.setText("Codigo de Emprestimo");
 
-        TextFieldCodEmprstimo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        codEmprestimo_Text.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         jLabelCodUsuario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabelCodUsuario.setText("Codigo do Usuário");
 
-        TextFieldCodUsuario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        codUsuario_Text.setEditable(false);
+        codUsuario_Text.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         jLabelNomeUsuario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabelNomeUsuario.setText("Nome");
 
-        jTextFieldNomeUsuario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        nomeUsuario_Text.setEditable(false);
+        nomeUsuario_Text.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         jButtonLocalizarUsuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButtonLocalizarUsuario.setText("Localizar");
+        jButtonLocalizarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLocalizarUsuarioActionPerformed(evt);
+            }
+        });
 
         jLabelDataEmprestimo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabelDataEmprestimo.setText("Data Empréstimo");
 
-        TextFieldDataEmprestimo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        TextFieldDataEmprestimo.addActionListener(new java.awt.event.ActionListener() {
+        dataEmprestimo_Text.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        dataEmprestimo_Text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextFieldDataEmprestimoActionPerformed(evt);
+                dataEmprestimo_TextActionPerformed(evt);
             }
         });
 
         jLabelDataDevolucao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabelDataDevolucao.setText("Data Devolução");
 
-        TextFieldDatadevolucao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        TextFieldDatadevolucao.addActionListener(new java.awt.event.ActionListener() {
+        dataDevolucao_Text.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        dataDevolucao_Text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextFieldDatadevolucaoActionPerformed(evt);
+                dataDevolucao_TextActionPerformed(evt);
             }
         });
 
@@ -101,14 +113,14 @@ public class IUEmprestimo extends javax.swing.JFrame {
             .addGroup(jPanelUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(TextFieldCodUsuario)
+                    .addComponent(codUsuario_Text)
                     .addComponent(jLabelCodUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelCodEmprestimo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TextFieldCodEmprstimo, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(codEmprestimo_Text, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(39, 39, 39)
                 .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelUsuarioLayout.createSequentialGroup()
-                        .addComponent(jTextFieldNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nomeUsuario_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonLocalizarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
                     .addGroup(jPanelUsuarioLayout.createSequentialGroup()
@@ -119,9 +131,9 @@ public class IUEmprestimo extends javax.swing.JFrame {
                                 .addGap(64, 64, 64)
                                 .addComponent(jLabelDataDevolucao))
                             .addGroup(jPanelUsuarioLayout.createSequentialGroup()
-                                .addComponent(TextFieldDataEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(dataEmprestimo_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(23, 23, 23)
-                                .addComponent(TextFieldDatadevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(dataDevolucao_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -134,17 +146,17 @@ public class IUEmprestimo extends javax.swing.JFrame {
                     .addComponent(jLabelDataDevolucao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TextFieldCodEmprstimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextFieldDataEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextFieldDatadevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(codEmprestimo_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dataEmprestimo_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dataDevolucao_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCodUsuario)
                     .addComponent(jLabelNomeUsuario))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TextFieldCodUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(codUsuario_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeUsuario_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonLocalizarUsuario))
                 .addGap(0, 33, Short.MAX_VALUE))
         );
@@ -154,12 +166,14 @@ public class IUEmprestimo extends javax.swing.JFrame {
         jLabelCodEmprestimo1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabelCodEmprestimo1.setText("Codigo do Livro");
 
-        TextFieldCodEmprstimo1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        codLivro_Text.setEditable(false);
+        codLivro_Text.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         jLabelNomeLivro.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabelNomeLivro.setText("Nome");
 
-        jTextFieldNomeLivro.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        nomeLivro_Text.setEditable(false);
+        nomeLivro_Text.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         jButtonLocalizarLivro.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButtonLocalizarLivro.setText("Localizar");
@@ -169,8 +183,13 @@ public class IUEmprestimo extends javax.swing.JFrame {
             }
         });
 
-        jButtonAdicionarLivro.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButtonAdicionarLivro.setText("Adicionar");
+        add_Button.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        add_Button.setText("Adicionar");
+        add_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_ButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelLivroLayout = new javax.swing.GroupLayout(jPanelLivro);
         jPanelLivro.setLayout(jPanelLivroLayout);
@@ -182,11 +201,11 @@ public class IUEmprestimo extends javax.swing.JFrame {
                     .addGroup(jPanelLivroLayout.createSequentialGroup()
                         .addGroup(jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelCodEmprestimo1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TextFieldCodEmprstimo1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(codLivro_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addGroup(jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelLivroLayout.createSequentialGroup()
-                                .addComponent(jTextFieldNomeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(nomeLivro_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButtonLocalizarLivro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanelLivroLayout.createSequentialGroup()
@@ -194,7 +213,7 @@ public class IUEmprestimo extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLivroLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonAdicionarLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(add_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanelLivroLayout.setVerticalGroup(
@@ -205,11 +224,11 @@ public class IUEmprestimo extends javax.swing.JFrame {
                     .addComponent(jLabelNomeLivro))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TextFieldCodEmprstimo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldNomeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(codLivro_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeLivro_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonLocalizarLivro))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(jButtonAdicionarLivro))
+                .addComponent(add_Button))
         );
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Livros do Empréstimo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
@@ -293,16 +312,53 @@ public class IUEmprestimo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLocalizarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizarLivroActionPerformed
-        // TODO add your handling code here:
+        IULocalizarLivro localiza = new IULocalizarLivro();
+        localiza.setVisible(true);
+        String codLivro = localiza.getCodigo();
+        if (codLivro != null){
+            Livro livro = IUPrincipal.dataB.getLivroByCod(codLivro);
+            nomeUsuario_Text.setText(livro.getNome());
+            codUsuario_Text.setText(codLivro);
+        }
+        localiza.dispose();
     }//GEN-LAST:event_jButtonLocalizarLivroActionPerformed
 
-    private void TextFieldDataEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldDataEmprestimoActionPerformed
+    private void dataEmprestimo_TextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataEmprestimo_TextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldDataEmprestimoActionPerformed
+    }//GEN-LAST:event_dataEmprestimo_TextActionPerformed
 
-    private void TextFieldDatadevolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldDatadevolucaoActionPerformed
+    private void dataDevolucao_TextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataDevolucao_TextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldDatadevolucaoActionPerformed
+    }//GEN-LAST:event_dataDevolucao_TextActionPerformed
+
+    private void jButtonLocalizarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizarUsuarioActionPerformed
+        
+        IULocalizar localiza = new IULocalizar();
+        localiza.setVisible(true);
+        String codUsuario = localiza.getCodigo();
+        if (codUsuario != null){
+            Usuario user = IUPrincipal.dataB.getUsuarioByCod(codUsuario);
+            nomeUsuario_Text.setText(user.getNome());
+            codUsuario_Text.setText(codUsuario);
+        }
+        localiza.dispose();
+    }//GEN-LAST:event_jButtonLocalizarUsuarioActionPerformed
+
+    private void add_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_ButtonActionPerformed
+       String nome = nomeLivro_Text.getText();
+       String codLivro = codLivro_Text.getText();
+       Object dataEmprest = (Object) dataEmprestimo_Text.getText();
+       Object dataDevo = (Object) dataDevolucao_Text.getText();
+       
+       DefaultTableModel model = (DefaultTableModel) jTableLivros.getModel();
+       Object[] linha = new Object[4];
+       linha[0] = nome;
+       linha[1] = codLivro;
+       linha[2] = dataEmprest;
+       linha[3] = dataDevo;
+       model.addRow(linha);
+       
+    }//GEN-LAST:event_add_ButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,12 +396,12 @@ public class IUEmprestimo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField TextFieldCodEmprstimo;
-    private javax.swing.JTextField TextFieldCodEmprstimo1;
-    private javax.swing.JTextField TextFieldCodUsuario;
-    private javax.swing.JTextField TextFieldDataEmprestimo;
-    private javax.swing.JTextField TextFieldDatadevolucao;
-    private javax.swing.JButton jButtonAdicionarLivro;
+    private javax.swing.JButton add_Button;
+    private javax.swing.JTextField codEmprestimo_Text;
+    private javax.swing.JTextField codLivro_Text;
+    private javax.swing.JTextField codUsuario_Text;
+    private javax.swing.JTextField dataDevolucao_Text;
+    private javax.swing.JTextField dataEmprestimo_Text;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonLocalizarLivro;
     private javax.swing.JButton jButtonLocalizarUsuario;
@@ -361,7 +417,7 @@ public class IUEmprestimo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelUsuario;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableLivros;
-    private javax.swing.JTextField jTextFieldNomeLivro;
-    private javax.swing.JTextField jTextFieldNomeUsuario;
+    private javax.swing.JTextField nomeLivro_Text;
+    private javax.swing.JTextField nomeUsuario_Text;
     // End of variables declaration//GEN-END:variables
 }

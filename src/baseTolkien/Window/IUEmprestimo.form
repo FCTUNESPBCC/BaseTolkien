@@ -79,15 +79,15 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="TextFieldCodUsuario" max="32767" attributes="0"/>
+                      <Component id="codUsuario_Text" max="32767" attributes="0"/>
                       <Component id="jLabelCodUsuario" max="32767" attributes="0"/>
                       <Component id="jLabelCodEmprestimo" alignment="0" max="32767" attributes="0"/>
-                      <Component id="TextFieldCodEmprstimo" alignment="0" max="32767" attributes="0"/>
+                      <Component id="codEmprestimo_Text" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jTextFieldNomeUsuario" min="-2" pref="354" max="-2" attributes="0"/>
+                          <Component id="nomeUsuario_Text" min="-2" pref="354" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jButtonLocalizarUsuario" pref="98" max="32767" attributes="0"/>
                       </Group>
@@ -100,9 +100,9 @@
                                   <Component id="jLabelDataDevolucao" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="TextFieldDataEmprestimo" min="-2" pref="138" max="-2" attributes="0"/>
+                                  <Component id="dataEmprestimo_Text" min="-2" pref="138" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                                  <Component id="TextFieldDatadevolucao" min="-2" pref="138" max="-2" attributes="0"/>
+                                  <Component id="dataDevolucao_Text" min="-2" pref="138" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -122,9 +122,9 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="TextFieldCodEmprstimo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TextFieldDataEmprestimo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TextFieldDatadevolucao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="codEmprestimo_Text" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="dataEmprestimo_Text" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="dataDevolucao_Text" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -133,8 +133,8 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="TextFieldCodUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldNomeUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="codUsuario_Text" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nomeUsuario_Text" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonLocalizarUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="33" max="32767" attributes="0"/>
@@ -151,7 +151,7 @@
             <Property name="text" type="java.lang.String" value="Codigo de Emprestimo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextFieldCodEmprstimo">
+        <Component class="javax.swing.JTextField" name="codEmprestimo_Text">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="0"/>
@@ -166,8 +166,9 @@
             <Property name="text" type="java.lang.String" value="Codigo do Usu&#xe1;rio"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextFieldCodUsuario">
+        <Component class="javax.swing.JTextField" name="codUsuario_Text">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="0"/>
             </Property>
@@ -181,8 +182,9 @@
             <Property name="text" type="java.lang.String" value="Nome"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldNomeUsuario">
+        <Component class="javax.swing.JTextField" name="nomeUsuario_Text">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="0"/>
             </Property>
@@ -195,6 +197,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Localizar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLocalizarUsuarioActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelDataEmprestimo">
           <Properties>
@@ -204,14 +209,14 @@
             <Property name="text" type="java.lang.String" value="Data Empr&#xe9;stimo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextFieldDataEmprestimo">
+        <Component class="javax.swing.JTextField" name="dataEmprestimo_Text">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextFieldDataEmprestimoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dataEmprestimo_TextActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelDataDevolucao">
@@ -222,14 +227,14 @@
             <Property name="text" type="java.lang.String" value="Data Devolu&#xe7;&#xe3;o"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextFieldDatadevolucao">
+        <Component class="javax.swing.JTextField" name="dataDevolucao_Text">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextFieldDatadevolucaoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dataDevolucao_TextActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -255,12 +260,12 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabelCodEmprestimo1" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
-                              <Component id="TextFieldCodEmprstimo1" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
+                              <Component id="codLivro_Text" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jTextFieldNomeLivro" min="-2" pref="354" max="-2" attributes="0"/>
+                                  <Component id="nomeLivro_Text" min="-2" pref="354" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jButtonLocalizarLivro" max="32767" attributes="0"/>
                               </Group>
@@ -272,7 +277,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jButtonAdicionarLivro" min="-2" pref="175" max="-2" attributes="0"/>
+                          <Component id="add_Button" min="-2" pref="175" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -288,12 +293,12 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="TextFieldCodEmprstimo1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldNomeLivro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="codLivro_Text" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nomeLivro_Text" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonLocalizarLivro" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="30" max="32767" attributes="0"/>
-                  <Component id="jButtonAdicionarLivro" min="-2" max="-2" attributes="0"/>
+                  <Component id="add_Button" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -307,8 +312,9 @@
             <Property name="text" type="java.lang.String" value="Codigo do Livro"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextFieldCodEmprstimo1">
+        <Component class="javax.swing.JTextField" name="codLivro_Text">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="0"/>
             </Property>
@@ -322,8 +328,9 @@
             <Property name="text" type="java.lang.String" value="Nome"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldNomeLivro">
+        <Component class="javax.swing.JTextField" name="nomeLivro_Text">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="0"/>
             </Property>
@@ -340,13 +347,16 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLocalizarLivroActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonAdicionarLivro">
+        <Component class="javax.swing.JButton" name="add_Button">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Adicionar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="add_ButtonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
