@@ -6,6 +6,7 @@
 
 package baseTolkien.Window.Panels;
 
+import baseTolkien.Window.IUBuscaLivro;
 import baseTolkien.Window.IUCadastroLivro;
 
 /**
@@ -114,7 +115,7 @@ public class JPanelLivro extends javax.swing.JPanel {
     }//GEN-LAST:event_btInserirExemplaresActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        // TODO add your handling code here:
+        new IUBuscaLivro();
     }//GEN-LAST:event_btBuscarActionPerformed
 
 
