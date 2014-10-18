@@ -194,7 +194,7 @@ public class BD {
         return false;
     }
 
-    public static Livro getLivroByCod(String codLivro) {
+    public static LivroRelatorio getLivroByCod(String codLivro) {
         Usuario user = null;
         for (Livro livro : biblioteca.getAllLivros()) {
             if(livro.getCodLivro().equals(codLivro)) {
