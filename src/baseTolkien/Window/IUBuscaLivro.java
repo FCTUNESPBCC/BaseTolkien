@@ -66,7 +66,7 @@ public class IUBuscaLivro extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "Ano", "Emprestado"
+                "Código", "Nome", "Ano", "Situação"
             }
         ) {
             Class[] types = new Class [] {
@@ -150,7 +150,6 @@ public class IUBuscaLivro extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jTextCodigo)
                         .addGap(1, 1, 1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabelNome)
@@ -188,7 +187,7 @@ public class IUBuscaLivro extends javax.swing.JFrame {
         livros = BD.getLivroByNome(jTextNome.getText());
         if(!livros.isEmpty())
             for(LivroRelatorio livro: livros){
-                model.addRow(new Object[]{livro.getCodLivro(), livro.getNome(), livro.getAno(), livro.isEmprestado()});
+                model.addRow(new Object[]{livro.getCodLivro(), livro.getNome(), livro.getAno(), !livro.isEmprestado()?"Disponível":(!livro.isAtrasado()?"Emprestado":"Atrasado")});
             }
     }//GEN-LAST:event_btPesquisarNomeActionPerformed
 
@@ -202,7 +201,7 @@ public class IUBuscaLivro extends javax.swing.JFrame {
         if(livroTemp!=null) livros.add(livroTemp);
         if(!livros.isEmpty())
             for(LivroRelatorio livro: livros){
-                model.addRow(new Object[]{livro.getCodLivro(), livro.getNome(), livro.getAno(), livro.isEmprestado()});
+                model.addRow(new Object[]{livro.getCodLivro(), livro.getNome(), livro.getAno(), !livro.isEmprestado()?"Disponível":(!livro.isAtrasado()?"Emprestado":"Atrasado")});
             }
     }//GEN-LAST:event_btPesquisarCodActionPerformed
 

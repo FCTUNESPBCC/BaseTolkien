@@ -131,7 +131,7 @@
                     <Column editable="false" title="C&#xf3;digo" type="java.lang.String"/>
                     <Column editable="false" title="Nome" type="java.lang.String"/>
                     <Column editable="false" title="Ano" type="java.lang.String"/>
-                    <Column editable="false" title="Emprestado" type="java.lang.String"/>
+                    <Column editable="false" title="Situa&#xe7;&#xe3;o" type="java.lang.String"/>
                   </Table>
                 </Property>
               </Properties>
