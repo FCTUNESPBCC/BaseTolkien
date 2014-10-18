@@ -6,6 +6,7 @@
 
 package baseTolkien.Window;
 
+import baseTolkien.Controlador.BD;
 import baseTolkien.Entidades.Aluno;
 import baseTolkien.Entidades.Livro;
 import baseTolkien.Entidades.Relatorios.AlunoRelatorio;
@@ -244,7 +245,7 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
             int index = usuarios_Table.getSelectedRow();
             this.codigo = (String) usuarios_Table.getModel().getValueAt(index,1);
            
-            ArrayList<LivroRelatorio> livros = IUPrincipal.dataB.getAllLivrosOf(codigo);
+            ArrayList<LivroRelatorio> livros = BD.getAllLivrosOf(codigo);
             IUHistoricoEmprestimos emprestimos = new IUHistoricoEmprestimos();
             DefaultTableModel modelo = (DefaultTableModel) emprestimos.getLivros_Table().getModel();
             
@@ -266,7 +267,7 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonHistoricoEmprestimosActionPerformed
 
     private void radioTodosUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioTodosUsuariosActionPerformed
-       ArrayList<Usuario> usuarios = IUPrincipal.dataB.getAllUsuario();
+       ArrayList<Usuario> usuarios = BD.getAllUsuario();
        DefaultTableModel modelo = (DefaultTableModel) usuarios_Table.getModel();
         
         
@@ -292,7 +293,7 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_radioTodosUsuariosActionPerformed
 
     private void radioProfessoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioProfessoresActionPerformed
-        ArrayList<Usuario> usuarios = IUPrincipal.dataB.getAllUsuario();
+        ArrayList<Usuario> usuarios = BD.getAllUsuario();
         DefaultTableModel modelo = (DefaultTableModel) usuarios_Table.getModel();
         
         

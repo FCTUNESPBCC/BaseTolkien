@@ -6,6 +6,7 @@
 
 package baseTolkien.Window;
 
+import baseTolkien.Controlador.BD;
 import baseTolkien.Entidades.Livro;
 import baseTolkien.Entidades.Relatorios.LivroRelatorio;
 import baseTolkien.Entidades.Usuario;
@@ -273,6 +274,11 @@ public class IUEmprestimo extends javax.swing.JFrame {
 
         jButtonCancelar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -337,7 +343,7 @@ public class IUEmprestimo extends javax.swing.JFrame {
         localiza.setVisible(true);
         String codUsuario = localiza.getCodigo();
         if (codUsuario != null){
-            Usuario user = IUPrincipal.dataB.getUsuarioByCod(codUsuario);
+            Usuario user = BD.getUsuarioByCod(codUsuario);
             nomeUsuario_Text.setText(user.getNome());
             codUsuario_Text.setText(codUsuario);
         }
@@ -359,6 +365,10 @@ public class IUEmprestimo extends javax.swing.JFrame {
        model.addRow(linha);
        
     }//GEN-LAST:event_add_ButtonActionPerformed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+       dispose();
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     /**
      * @param args the command line arguments

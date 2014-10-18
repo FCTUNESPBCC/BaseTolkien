@@ -6,6 +6,7 @@
 
 package baseTolkien.Window;
 
+import baseTolkien.Controlador.BD;
 import baseTolkien.Entidades.Usuario;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -24,7 +25,7 @@ public class IULocalizar extends javax.swing.JFrame {
         initComponents();
         
         //Preenche a Tabela
-        ArrayList<Usuario> usuarios = IUPrincipal.dataB.getAllUsuario();
+        ArrayList<Usuario> usuarios = BD.getAllUsuario();
         DefaultTableModel modelo = (DefaultTableModel) localizar_Table.getModel();
         
         for(Usuario user:usuarios){

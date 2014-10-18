@@ -6,6 +6,7 @@
 
 package baseTolkien.Window;
 
+import baseTolkien.Controlador.BD;
 import baseTolkien.Entidades.Livro;
 import baseTolkien.Entidades.Relatorios.LivroRelatorio;
 import baseTolkien.Entidades.Usuario;
@@ -25,7 +26,7 @@ public class IULocalizarLivro extends IULocalizar {
     public IULocalizarLivro() {
         initComponents();
         
-        ArrayList<LivroRelatorio> livros = IUPrincipal.dataB.getAllLivros();
+        ArrayList<LivroRelatorio> livros = BD.getAllLivros();
         DefaultTableModel modelo = (DefaultTableModel) localizar_Table.getModel();
         
         for(LivroRelatorio book:livros){
