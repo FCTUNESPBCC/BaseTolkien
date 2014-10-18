@@ -213,8 +213,8 @@ public class BD {
     public static ArrayList<Usuario> getUsuarioByNome(String nomeUsuario) {
         ArrayList<Usuario> retorno = new ArrayList<Usuario>();
         for (Usuario usuarioRelatorio : biblioteca.getAllUsuario()) {
-            if(usuarioRelatorio.getCodUsuario().contains(nomeUsuario)){
-                if(usuarioRelatorio instanceof ProfessorRelatorio)
+            if(usuarioRelatorio.getNome().contains(nomeUsuario)){
+                if(usuarioRelatorio instanceof Professor)
                     retorno.add(new ProfessorRelatorio(usuarioRelatorio.getCodUsuario(), 
                                 usuarioRelatorio.getNome(), ((Professor)usuarioRelatorio).getTitulacao(), usuarioRelatorio.getDiasEmprestimo(),
                                 new ArrayList<LivroRelatorio>()));

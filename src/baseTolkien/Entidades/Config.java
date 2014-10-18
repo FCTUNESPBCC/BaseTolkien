@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author Danilo Medeiros Eler
  */
 public class Config implements Serializable{
-    private String pathArquivos = "";
+    private String pathArquivos = "/";
     private String arquivoLivros = "livros.dat";
     private String arquivoUsuarios = "usuarios.dat";
     private String arquivoEmprestimos = "emprestimos.dat";
