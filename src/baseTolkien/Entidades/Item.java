@@ -5,6 +5,7 @@
 
 package baseTolkien.Entidades;
 
+import baseTolkien.Controlador.BD;
 import java.io.Serializable;
 import java.util.Calendar;
 
@@ -57,6 +58,7 @@ public class Item implements Serializable{
 
     public void devolver() {
         this.devolvido = true;
+        BD.getLivroByCod(codLivro).devolver();
     }
     
     public boolean isAtrasado(){

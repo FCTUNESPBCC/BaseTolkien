@@ -9,7 +9,9 @@ package baseTolkien.Window;
 import baseTolkien.Controlador.BD;
 import baseTolkien.Entidades.Aluno;
 import baseTolkien.Entidades.Livro;
+import baseTolkien.Entidades.Relatorios.AlunoRelatorio;
 import baseTolkien.Entidades.Relatorios.LivroRelatorio;
+import baseTolkien.Entidades.Relatorios.ProfessorRelatorio;
 import baseTolkien.Entidades.Usuario;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -202,8 +204,13 @@ public class IUBuscaUsuario extends javax.swing.JFrame {
             while(model.getRowCount()>0)
                 model.removeRow(0);
         }
+        else
+            usuarios = new ArrayList<Usuario>();
+        
         Usuario usuarioTemp = BD.getUsuarioByCod(jTextCodigo.getText());
-        if(usuarioTemp!=null) usuarios.add(usuarioTemp);
+        if(usuarioTemp!=null) 
+            usuarios.add(usuarioTemp);
+        
         if(!usuarios.isEmpty())
             for(Usuario usuario: usuarios){
                 model.addRow(new Object[]{usuario.getCodUsuario(), usuario.getNome(), (usuario instanceof Aluno)?"Aluno":"Professor"
@@ -213,8 +220,12 @@ public class IUBuscaUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btPesquisarCodActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(jTableUsuarios.getSelectedRow()!=-1)
-            new IUDetalheUsuario(usuarios.get(jTableUsuarios.getSelectedRow()));       
+        if(jTableUsuarios.getSelectedRow()!=-1){
+            if(usuarios.get(jTableUsuarios.getSelectedRow()) instanceof Aluno)
+                new IUDetalheAluno((AlunoRelatorio)usuarios.get(jTableUsuarios.getSelectedRow()));       
+            else
+                new IUDetalheProfessor((ProfessorRelatorio)usuarios.get(jTableUsuarios.getSelectedRow()));
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCodigoActionPerformed

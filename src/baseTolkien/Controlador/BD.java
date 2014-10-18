@@ -44,6 +44,18 @@ public class BD {
         biblioteca.addLivro(livro);
     }
     
+    
+    public static void devolverLivro(String codLivro, String codUsuario){
+        for(Emprestimo emprestimo: biblioteca.getAllEmprestimo()){
+            if(emprestimo.getCodUsuario().equals(codUsuario)){
+                for(Item item: emprestimo.getItens()){
+                    if(item.getCodLivro().equals(codLivro))
+                        item.devolver();
+                    return;
+                }
+            }
+        }
+    }
      
     
     public static ArrayList<LivroRelatorio> getAllLivros(){
@@ -197,14 +209,14 @@ public class BD {
     public static Usuario getUsuarioByCod(String codUsuario) {
         for (Usuario usuarioRelatorio : biblioteca.getAllUsuario()) {
             if(usuarioRelatorio.getCodUsuario().equals(codUsuario)){
-                if(usuarioRelatorio instanceof ProfessorRelatorio)
+                if(usuarioRelatorio instanceof Professor)
                     return (new ProfessorRelatorio(usuarioRelatorio.getCodUsuario(), 
                                 usuarioRelatorio.getNome(), ((Professor)usuarioRelatorio).getTitulacao(), usuarioRelatorio.getDiasEmprestimo(),
-                                new ArrayList<LivroRelatorio>()));
+                                null));
                 else return (new AlunoRelatorio(usuarioRelatorio.getCodUsuario(),
                                 usuarioRelatorio.getNome(), ((Aluno)usuarioRelatorio).getCurso(), ((Aluno)usuarioRelatorio).getAno(),
                                 usuarioRelatorio.getDiasEmprestimo(),
-                                new ArrayList<LivroRelatorio>()));
+                                null));
             }
         }
         return null;
@@ -217,11 +229,11 @@ public class BD {
                 if(usuarioRelatorio instanceof Professor)
                     retorno.add(new ProfessorRelatorio(usuarioRelatorio.getCodUsuario(), 
                                 usuarioRelatorio.getNome(), ((Professor)usuarioRelatorio).getTitulacao(), usuarioRelatorio.getDiasEmprestimo(),
-                                new ArrayList<LivroRelatorio>()));
+                                getAllLivrosNaoDevolvidosOf(usuarioRelatorio.getCodUsuario())));
                 else retorno.add(new AlunoRelatorio(usuarioRelatorio.getCodUsuario(),
                                 usuarioRelatorio.getNome(), ((Aluno)usuarioRelatorio).getCurso(), ((Aluno)usuarioRelatorio).getAno(),
                                 usuarioRelatorio.getDiasEmprestimo(),
-                                new ArrayList<LivroRelatorio>()));
+                                null));
             }
         }
         return retorno;
