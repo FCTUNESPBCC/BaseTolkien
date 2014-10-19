@@ -250,7 +250,7 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
        }
        else{
            if(jRadioAtraso.isSelected()){
-             usuarios = BD.getAllUsuarioComAtraso();
+             usuarios = BD.getAllAlunoComAtraso();
              for(int i=0;i<usuarios.size();i++) {
              Object[] linha = new Object[4];
            
@@ -266,6 +266,7 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
              if(jRadioDevolver.isSelected()){  
              usuarios = BD.getAllAluno();
              for(int i=0;i<usuarios.size();i++) {
+             if(BD.isUsuarioComEmprestimo(usuarios.get(i).getCodUsuario())){    
              Object[] linha = new Object[4];
             
                 AlunoRelatorio aluno = (AlunoRelatorio) usuarios.get(i);    
@@ -274,7 +275,7 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
                 linha[2] = aluno.getCurso();
                 linha[3] = aluno.getAno();
                 modelo.addRow(linha);
-            
+             }            
              }
             } 
            }
@@ -367,6 +368,7 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
              if(jRadioDevolver.isSelected()){  
              usuarios = BD.getAllUsuario();
              for(int i=0;i<usuarios.size();i++) {
+             if(BD.isUsuarioComEmprestimo(usuarios.get(i).getCodUsuario())){    
              Object[] linha = new Object[4];
             
              if(usuarios.get(i) instanceof AlunoRelatorio){
@@ -384,6 +386,7 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
                 linha[2] = professor.getTitulacao();
                 modelo.addRow(linha);
                 }
+             }
              }
             } 
            }
@@ -409,7 +412,7 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
        }
        else{
            if(jRadioAtraso.isSelected()){
-             usuarios = BD.getAllUsuarioComAtraso();
+             usuarios = BD.getAllProfessorComAtraso();
              for(int i=0;i<usuarios.size();i++) {
                 Object[] linha = new Object[4];
             
@@ -424,15 +427,17 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
            else{
              if(jRadioDevolver.isSelected()){  
              usuarios = BD.getAllProfessor();
+             
              for(int i=0;i<usuarios.size();i++) {
                 Object[] linha = new Object[4];
-            
+                if(BD.isUsuarioComEmprestimo(usuarios.get(i).getCodUsuario())){
                 ProfessorRelatorio professor = (ProfessorRelatorio) usuarios.get(i);    
                 linha[0] = professor.getNome();
                 linha[1] = professor.getCodUsuario();
                 linha[2] = professor.getTitulacao();
                 modelo.addRow(linha);
                 }
+              }
              }
            }
       }

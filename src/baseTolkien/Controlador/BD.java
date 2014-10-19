@@ -225,6 +225,60 @@ public class BD {
         }
         return usuarioPesquisa;
     }
+    public static ArrayList<Usuario> getAllAlunoComAtraso(){
+        ArrayList<Usuario> usuarioPesquisa = new ArrayList<Usuario>();
+        Usuario usuarioEmprestimo;
+        for (Emprestimo emprestimo : biblioteca.getAllEmprestimo()) {
+            for(Item item: emprestimo.getItens())
+            if (item.isAtrasado()) {
+                Usuario usuarioRelatorio = getUsuarioByCod(emprestimo.getCodUsuario());
+                if(!usuarioPesquisa.contains(usuarioRelatorio)){
+                    if(usuarioRelatorio instanceof Aluno){
+                        usuarioEmprestimo = new AlunoRelatorio(usuarioRelatorio.getCodUsuario(),
+                                usuarioRelatorio.getNome(), ((Aluno)usuarioRelatorio).getCurso(), ((Aluno)usuarioRelatorio).getAno(),
+                                usuarioRelatorio.getDiasEmprestimo(),
+                                new ArrayList<LivroRelatorio>());
+                    usuarioPesquisa.add(usuarioEmprestimo);
+                }
+                break;
+            }
+        }
+       }
+        for(Usuario usuario: usuarioPesquisa){
+            if(usuario instanceof Aluno)
+            {
+                ((AlunoRelatorio)usuario).setLivros(getAllLivrosNaoDevolvidosOf(usuario.getCodUsuario()));
+            }
+        }
+        return usuarioPesquisa;
+     }
+          
+    public static ArrayList<Usuario> getAllProfessorComAtraso(){
+        ArrayList<Usuario> usuarioPesquisa = new ArrayList<Usuario>();
+        Usuario usuarioEmprestimo;
+        for (Emprestimo emprestimo : biblioteca.getAllEmprestimo()) {
+            for(Item item: emprestimo.getItens())
+            if (item.isAtrasado()) {
+                Usuario usuarioRelatorio = getUsuarioByCod(emprestimo.getCodUsuario());
+                if(!usuarioPesquisa.contains(usuarioRelatorio)){
+                    if(usuarioRelatorio instanceof Professor){
+                        usuarioEmprestimo = new ProfessorRelatorio(usuarioRelatorio.getCodUsuario(), 
+                                usuarioRelatorio.getNome(), ((Professor)usuarioRelatorio).getTitulacao(), usuarioRelatorio.getDiasEmprestimo(),
+                                new ArrayList<LivroRelatorio>());
+                    usuarioPesquisa.add(usuarioEmprestimo);
+                   }
+                }
+                break;
+            }
+        }
+        for(Usuario usuario: usuarioPesquisa){
+            if(usuario instanceof ProfessorRelatorio){
+                ((ProfessorRelatorio)usuario).setLivros(getAllLivrosNaoDevolvidosOf(usuario.getCodUsuario()));
+            }
+        }
+        return usuarioPesquisa;
+    }
+    
     
     public static Usuario getUsuarioByCod(String codUsuario) {
         for (Usuario usuarioRelatorio : biblioteca.getAllUsuario()) {
