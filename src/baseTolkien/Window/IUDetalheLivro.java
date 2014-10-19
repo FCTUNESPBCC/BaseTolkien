@@ -32,7 +32,7 @@ public class IUDetalheLivro extends javax.swing.JFrame {
         jTextFieldAno.setText(livro.getAno()+"");
         jTextAreaDescricao.setText(livro.getDescricao());
         if(livro.isEmprestado())
-            jLabelEmprestimo.setText("Emprestado para "+livro.getNomeUsuario()+" com data prevista de devolução em "+livro.getDataDevolucao());
+            jLabelEmprestimo.setText("Emprestado para "+livro.getNomeUsuario()+".");
         else
             jLabelEmprestimo.setText("");
         setResizable(false);
