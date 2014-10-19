@@ -9,6 +9,7 @@ package baseTolkien.Window;
 import baseTolkien.Controlador.BD;
 import baseTolkien.Entidades.Relatorios.LivroRelatorio;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -17,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Eloigdn
  */
-public class IULocalizarLivroADevolver extends IULocalizar {
+public class IULocalizarLivroADevolver extends JFrame{
    
     
     /**
