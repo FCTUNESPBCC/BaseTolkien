@@ -477,7 +477,7 @@ public class BD {
     public static ArrayList<Usuario> getAllAluno(){
         ArrayList<Usuario> usuarioPesquisa = new ArrayList<Usuario>();
         for (Usuario usuarioRelatorio : biblioteca.getAllUsuario()) {
-            if(usuarioRelatorio instanceof Professor)
+            if(usuarioRelatorio instanceof Aluno)
                 usuarioPesquisa.add(new AlunoRelatorio(usuarioRelatorio.getCodUsuario(),
                                 usuarioRelatorio.getNome(), ((Aluno)usuarioRelatorio).getCurso(), ((Aluno)usuarioRelatorio).getAno(),
                                 usuarioRelatorio.getDiasEmprestimo(),

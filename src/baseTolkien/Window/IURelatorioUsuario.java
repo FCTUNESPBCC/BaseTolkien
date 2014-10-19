@@ -23,6 +23,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class IURelatorioUsuario extends javax.swing.JFrame {
    private String codigo;
+   ArrayList<Usuario> usuarios;
+    DefaultTableModel modelo;
+       
     /**
      * Creates new form IURelatorioUsuario
      */
@@ -242,7 +245,9 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
 
     private void radioAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioAlunosActionPerformed
         ArrayList<Usuario> usuarios;
-       DefaultTableModel modelo = (DefaultTableModel) usuarios_Table.getModel();
+       modelo = (DefaultTableModel) usuarios_Table.getModel();
+       while(modelo.getRowCount()>0)
+           modelo.removeRow(0);
         
        if(jRadioTodos.isSelected()){
            
@@ -327,7 +332,10 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
     private void radioTodosUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioTodosUsuariosActionPerformed
        ArrayList<Usuario> usuarios;
        DefaultTableModel modelo = (DefaultTableModel) usuarios_Table.getModel();
-        
+       
+       while(modelo.getRowCount()>0)
+           modelo.removeRow(0);
+       
        if(jRadioTodos.isSelected()){
            
         usuarios  = BD.getAllUsuario();   
@@ -406,7 +414,10 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
     private void radioProfessoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioProfessoresActionPerformed
         ArrayList<Usuario> usuarios;
        DefaultTableModel modelo = (DefaultTableModel) usuarios_Table.getModel();
-        
+       
+       while(modelo.getRowCount()>0)
+           modelo.removeRow(0);
+       
        if(jRadioTodos.isSelected()){
            
             usuarios  = BD.getAllProfessor();   
