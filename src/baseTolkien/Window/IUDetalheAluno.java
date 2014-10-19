@@ -220,7 +220,7 @@ public class IUDetalheAluno extends javax.swing.JFrame implements WindowFocusLis
 
     private void jButtonDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDevolverActionPerformed
         if(jTableLivros.getSelectedRow()!=-1)
-            (aluno.getLivros()).get(jTableLivros.getSelectedRow()).devolver();
+            BD.devolverLivro((aluno.getLivros()).get(jTableLivros.getSelectedRow()).getCodLivro(), aluno.getCodUsuario());
         while(model.getRowCount()>0)
             model.removeRow(0);
         aluno.setLivros(BD.getAllLivrosNaoDevolvidosOf(aluno.getCodUsuario()));

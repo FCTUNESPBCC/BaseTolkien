@@ -185,9 +185,7 @@ public class BD {
         for (Emprestimo emprestimo : biblioteca.getAllEmprestimo()) {
             if(emprestimo.getCodUsuario().equals(codUsuario)){
                 for(Item item: emprestimo.getItens())
-                    if (!item.isAtrasado()) {
-                        return true;
-                    }
+                    return item.isAtrasado();
             }
         }
         return false;
@@ -333,6 +331,15 @@ public class BD {
                         livro.isEmprestado()?user.getCodUsuario():"", livro.isEmprestado()?user.getNome():"", livro.isEmprestado()?getDataDevolucaoOf(livro.getCodLivro(), user.getCodUsuario()):"", livro.isEmprestado(),
                         false));
             }
+        }
+        return null;
+    }
+    
+    public static Livro getLivroByCodSimples(String codLivro) {
+        Usuario user = null;
+        for (Livro livro : biblioteca.getAllLivros()) {
+            if(livro.getCodLivro().equals(codLivro))
+                return livro;
         }
         return null;
     }

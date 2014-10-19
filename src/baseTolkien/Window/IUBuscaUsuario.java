@@ -13,6 +13,8 @@ import baseTolkien.Entidades.Relatorios.AlunoRelatorio;
 import baseTolkien.Entidades.Relatorios.LivroRelatorio;
 import baseTolkien.Entidades.Relatorios.ProfessorRelatorio;
 import baseTolkien.Entidades.Usuario;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Leonardo Dias
  */
-public class IUBuscaUsuario extends javax.swing.JFrame {
+public class IUBuscaUsuario extends javax.swing.JFrame implements WindowFocusListener{
 
     ArrayList<Usuario> usuarios = null;
     /**
@@ -33,6 +35,7 @@ public class IUBuscaUsuario extends javax.swing.JFrame {
         model = (DefaultTableModel) jTableUsuarios.getModel();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setTitle("Buscar Usuário");
+        addWindowFocusListener(this);
     }
 
     /**
@@ -285,4 +288,23 @@ public class IUBuscaUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextNome;
     // End of variables declaration//GEN-END:variables
     private DefaultTableModel model;
+
+    public void windowGainedFocus(WindowEvent we) {
+        if(usuarios!=null){
+            usuarios.clear();
+            while(model.getRowCount()>0)
+                model.removeRow(0);
+        }
+        usuarios = BD.getUsuarioByNome(jTextNome.getText());
+        if(!usuarios.isEmpty())
+            for(Usuario usuario: usuarios){
+                model.addRow(new Object[]{usuario.getCodUsuario(), usuario.getNome(), (usuario instanceof Aluno)?"Aluno":"Professor"
+                ,!BD.isUsuarioComEmprestimo(usuario.getCodUsuario())?"Sem empréstimos":
+                        (!BD.isUsuarioComAtraso(usuario.getCodUsuario())?"Com empréstimos":"Bloqueado")});
+            }
+    }
+
+    public void windowLostFocus(WindowEvent we) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
