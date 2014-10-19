@@ -215,6 +215,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Livros a Devolver"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEmprestimosActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioAtraso">
       <Properties>

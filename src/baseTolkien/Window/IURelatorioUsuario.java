@@ -150,6 +150,11 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
 
         jButtonEmprestimos.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jButtonEmprestimos.setText("Livros a Devolver");
+        jButtonEmprestimos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEmprestimosActionPerformed(evt);
+            }
+        });
 
         jRadioAtraso.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jRadioAtraso.setText("Possui Livros em Atraso");
@@ -297,7 +302,7 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
             IUHistoricoEmprestimos emprestimos = new IUHistoricoEmprestimos();
             DefaultTableModel modelo = (DefaultTableModel) emprestimos.getLivros_Table().getModel();
             
-            //Como adicionar a linha nessa tabele? do jeito do professor nas outras eu consegui
+            
             for(LivroRelatorio livr: livros){
                 Object[] linha = new Object[3];
                 linha[0] = livr.getNome();
@@ -442,6 +447,35 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
            }
       }
     }//GEN-LAST:event_radioProfessoresActionPerformed
+
+    private void jButtonEmprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmprestimosActionPerformed
+       
+        IULocalizarLivroADevolver localizarLivros = new IULocalizarLivroADevolver();
+        if(usuarios_Table.getSelectedRowCount()>0){
+            int index = usuarios_Table.getSelectedRow();
+            ArrayList<LivroRelatorio> livros = BD.getAllLivrosNaoDevolvidosOf(codigo);
+           
+            DefaultTableModel modelo = (DefaultTableModel) localizarLivros.getLocalizar_Table().getModel();
+            
+            
+            for(LivroRelatorio livr: livros){
+                Object[] linha = new Object[3];
+                linha[0] = livr.getNome();
+                linha[1] = livr.getCodLivro();
+                linha[2] = livr.getAno();
+                modelo.addRow(linha);
+            }
+            this.codigo = (String) usuarios_Table.getModel().getValueAt(index,1);
+            
+            
+            localizarLivros.setVisible(true);
+         }
+         else{
+            JOptionPane.showMessageDialog(null,"É necessário selecionar um Usuário!!!");
+          this.codigo=null;
+        }
+             
+    }//GEN-LAST:event_jButtonEmprestimosActionPerformed
 
     /**
      * @param args the command line arguments

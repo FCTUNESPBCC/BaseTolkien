@@ -124,6 +124,24 @@ public class BD {
         }
         return livroPesquisa;
     }
+    public static ArrayList<LivroRelatorio> getAllLivrosEmAtrasoOf(String codUsuario){
+        ArrayList<LivroRelatorio> livroPesquisa = new ArrayList<LivroRelatorio>();
+        Usuario usuarioEmprestimo = getUsuarioByCod(codUsuario);
+        for(Emprestimo emprestimo: biblioteca.getAllEmprestimo()){
+            if(emprestimo.getCodUsuario().equals(codUsuario)){
+                for(Item item: emprestimo.getItens()){
+                    if(item.isAtrasado()){
+                        Livro livroEmprestimo = getLivroByCod(item.getCodLivro());
+                        livroPesquisa.add(
+                            new LivroRelatorio(item.getCodLivro(), livroEmprestimo.getNome(),livroEmprestimo.getDescricao(),
+                            livroEmprestimo.getAno(), usuarioEmprestimo.getCodUsuario(), usuarioEmprestimo.getNome(),
+                            item.getDataDevolucao().toString(), livroEmprestimo.isEmprestado(), item.isAtrasado()));
+                    }
+                }
+            }
+        }
+        return livroPesquisa;
+    }
     
     public static ArrayList<LivroRelatorio> getAllLivroDisponivel(){
         ArrayList<LivroRelatorio> livroPesquisa = new ArrayList<LivroRelatorio>();
@@ -136,6 +154,7 @@ public class BD {
         }
         return livroPesquisa;
     }
+    
     
     public static ArrayList<LivroRelatorio> getAllLivroEmprestado(){
         ArrayList<LivroRelatorio> livroPesquisa = new ArrayList<LivroRelatorio>();
