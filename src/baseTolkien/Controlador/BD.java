@@ -185,9 +185,7 @@ public class BD {
         for (Emprestimo emprestimo : biblioteca.getAllEmprestimo()) {
             if(emprestimo.getCodUsuario().equals(codUsuario)){
                 for(Item item: emprestimo.getItens())
-                    if (!item.isAtrasado()) {
-                        return true;
-                    }
+                    return item.isAtrasado();
             }
         }
         return false;
