@@ -59,8 +59,8 @@ public class BD {
     
     public static void emprestarLivro(String codLivro){
         for (Livro livro: biblioteca.getAllLivros()) {
-                if(livro.getCodLivro().equals(codLivro))
-                    livro.emprestar();
+                if(livro.getCodLivro().equals(codLivro)){
+                    livro.emprestar();System.out.println("foi");}
         }
     }
      
@@ -307,12 +307,13 @@ public class BD {
         return livroPesquisa;
     }
     
-    public static ArrayList<LivroRelatorio> getLivroByNomeDisponivel(String nome){
-        ArrayList<LivroRelatorio> livroPesquisa = new ArrayList<LivroRelatorio>();
+    public static ArrayList<Livro> getLivroByNomeDisponivel(String nome){
+        ArrayList<Livro> livroPesquisa = new ArrayList<Livro>();
         for (Livro livro : biblioteca.getAllLivros()) {
             if (livro.getNome().contains(nome) && !livro.isEmprestado()) {
-                livroPesquisa.add(new LivroRelatorio(livro.getCodLivro(), livro.getNome(),livro.getDescricao(), livro.getAno(),
-                        "", "", "", false));
+                //livroPesquisa.add(new LivroRelatorio(livro.getCodLivro(), livro.getNome(),livro.getDescricao(), livro.getAno(),
+                //        "", "", "", false));
+                livroPesquisa.add(livro);
             }
         }
         return livroPesquisa;

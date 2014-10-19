@@ -21,8 +21,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class IUSelecionarEmprestimo extends javax.swing.JFrame{
 
-    ArrayList<LivroRelatorio> livros;
-    ArrayList<LivroRelatorio> livrosEmprestimo;
+    ArrayList<Livro> livros;
+    ArrayList<Livro> livrosEmprestimo;
     Usuario usuario;
     
     /**
@@ -34,7 +34,7 @@ public class IUSelecionarEmprestimo extends javax.swing.JFrame{
         setVisible(true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.usuario = usuario;
-        livrosEmprestimo = new ArrayList<LivroRelatorio>();
+        livrosEmprestimo = new ArrayList<Livro>();
         model = (DefaultTableModel) jTableLivros.getModel();
         modelEmprestimo = (DefaultTableModel) jTableLivrosEmprestimo.getModel();
     }
@@ -262,7 +262,7 @@ public class IUSelecionarEmprestimo extends javax.swing.JFrame{
         livros = BD.getLivroByNomeDisponivel(jTextNome.getText());
         
         for(int cont = 0; cont < livros.size();cont++){
-            for(LivroRelatorio livro: livrosEmprestimo){
+            for(Livro livro: livrosEmprestimo){
                 if(livro.getCodLivro().equals((livros.get(cont).getCodLivro()))){
                     livros.remove(cont);
                     cont--;
@@ -272,7 +272,7 @@ public class IUSelecionarEmprestimo extends javax.swing.JFrame{
         }
         
         if(!livros.isEmpty())
-            for(LivroRelatorio livro: livros){
+            for(Livro livro: livros){
                 if(!livrosEmprestimo.contains(livro))
                     model.addRow(new Object[]{livro.getCodLivro(), livro.getNome()});
             }
@@ -298,13 +298,13 @@ public class IUSelecionarEmprestimo extends javax.swing.JFrame{
             model.removeRow(0);
         }
         else{
-            livros = new ArrayList<LivroRelatorio>();
+            livros = new ArrayList<Livro>();
         }
         LivroRelatorio livroTemp = BD.getLivroByCodDisponivel(jTextCodigo.getText());
         if(livroTemp!=null)
             livros.add(livroTemp);
         for(int cont = 0; cont < livros.size();cont++){
-            for(LivroRelatorio livro: livrosEmprestimo){
+            for(Livro livro: livrosEmprestimo){
                 if(livro.getCodLivro().equals((livros.get(cont).getCodLivro()))){
                     livros.remove(cont);
                     cont--;
@@ -313,7 +313,7 @@ public class IUSelecionarEmprestimo extends javax.swing.JFrame{
             }
         }
         if(!livros.isEmpty())
-            for(LivroRelatorio livro: livros){
+            for(Livro livro: livros){
                 model.addRow(new Object[]{livro.getCodLivro(), livro.getNome()});
             }
     }//GEN-LAST:event_btPesquisarCodActionPerformed
@@ -344,7 +344,7 @@ public class IUSelecionarEmprestimo extends javax.swing.JFrame{
             while(model.getRowCount()>0)
                 model.removeRow(0);
             if(!livros.isEmpty())
-            for(LivroRelatorio livro: livros){
+            for(Livro livro: livros){
                 if(!livrosEmprestimo.contains(livro))
                     model.addRow(new Object[]{livro.getCodLivro(), livro.getNome()});
             }
