@@ -19,8 +19,8 @@ public class LivroRelatorio extends Livro{
     private boolean atrasado;
     private String dataDevolucao;
     
-    public LivroRelatorio(String codLivro, String nome,String descricao, int ano, String codUsuario, String nomeUsuario, String dataDevolucao, boolean atrasado) {
-        super(codLivro, nome,descricao, ano);
+    public LivroRelatorio(String codLivro, String nome,String descricao, int ano, String codUsuario, String nomeUsuario, String dataDevolucao, boolean emprestado, boolean atrasado) {
+        super(codLivro, nome,descricao, ano, emprestado);
         this.codUsuario = codUsuario;
         this.nomeUsuario = nomeUsuario;
         this.dataDevolucao = dataDevolucao;

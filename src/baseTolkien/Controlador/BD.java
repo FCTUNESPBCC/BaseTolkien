@@ -63,6 +63,19 @@ public class BD {
                     livro.emprestar();System.out.println("foi");}
         }
     }
+    
+    public static boolean isAtrasado(String codLivro){
+        for(Emprestimo emprestimo: biblioteca.getAllEmprestimo()){
+                for(Item item: emprestimo.getItens()){
+                    if(codLivro.equals(item.getCodLivro()))
+                        if(!item.isDevolvido()){
+                            System.out.println(item.getDataDevolucao().toString());
+                            return item.isAtrasado();
+                        }
+                }
+        }
+        return false;
+    }
      
     
     public static ArrayList<LivroRelatorio> getAllLivros(){
@@ -70,7 +83,7 @@ public class BD {
         for (Livro livro: biblioteca.getAllLivros()) {
                 livroPesquisa.add(
                             new LivroRelatorio(livro.getCodLivro(), livro.getNome(),livro.getDescricao(),
-                            livro.getAno(), "", "", "", false));
+                            livro.getAno(), "", "", "", livro.isEmprestado(), false));
             
         }
         return livroPesquisa;
@@ -86,7 +99,7 @@ public class BD {
                     livroPesquisa.add(
                             new LivroRelatorio(item.getCodLivro(), livroEmprestimo.getNome(),livroEmprestimo.getDescricao(),
                             livroEmprestimo.getAno(), usuarioEmprestimo.getCodUsuario(), usuarioEmprestimo.getNome(),
-                            item.getDataDevolucao().toString(), item.isAtrasado()));
+                            item.getDataDevolucao().toString(), livroEmprestimo.isEmprestado(), item.isAtrasado()));
                 }
             }
         }
@@ -104,7 +117,7 @@ public class BD {
                         livroPesquisa.add(
                             new LivroRelatorio(item.getCodLivro(), livroEmprestimo.getNome(),livroEmprestimo.getDescricao(),
                             livroEmprestimo.getAno(), usuarioEmprestimo.getCodUsuario(), usuarioEmprestimo.getNome(),
-                            item.getDataDevolucao().toString(), item.isAtrasado()));
+                            item.getDataDevolucao().toString(), livroEmprestimo.isEmprestado(), item.isAtrasado()));
                     }
                 }
             }
@@ -118,7 +131,7 @@ public class BD {
             if (!livro.isEmprestado()) {
                 livroPesquisa.add(
                             new LivroRelatorio(livro.getCodLivro(), livro.getNome(),livro.getDescricao(),
-                            livro.getAno(), "", "", "", false));
+                            livro.getAno(), "", "", "", livro.isEmprestado(), false));
             }
         }
         return livroPesquisa;
@@ -134,7 +147,7 @@ public class BD {
                         livroPesquisa.add(
                             new LivroRelatorio(item.getCodLivro(), livroEmprestimo.getNome(),livroEmprestimo.getDescricao(),
                             livroEmprestimo.getAno(), usuarioEmprestimo.getCodUsuario(), usuarioEmprestimo.getNome(),
-                            item.getDataDevolucao().toString(), item.isAtrasado()));
+                            item.getDataDevolucao().toString(), livroEmprestimo.isEmprestado(), item.isAtrasado()));
             }
         }
         return livroPesquisa;
@@ -150,7 +163,7 @@ public class BD {
                         livroPesquisa.add(
                             new LivroRelatorio(item.getCodLivro(), livroEmprestimo.getNome(),livroEmprestimo.getDescricao(),
                             livroEmprestimo.getAno(), usuarioEmprestimo.getCodUsuario(), usuarioEmprestimo.getNome(),
-                            item.getDataDevolucao().toString(), item.isAtrasado()));
+                            item.getDataDevolucao().toString(), livroEmprestimo.isEmprestado(), item.isAtrasado()));
             }
         }
         return livroPesquisa;
@@ -263,7 +276,8 @@ public class BD {
                     user = getUsuarioQueEmprestouLivro(livro.getCodLivro());
                 }
                 return (new LivroRelatorio(livro.getCodLivro(), livro.getNome(),livro.getDescricao(), livro.getAno(),
-                        livro.isEmprestado()?user.getCodUsuario():"", livro.isEmprestado()?user.getNome():"", livro.isEmprestado()?getDataDevolucaoOf(livro.getCodLivro(), user.getCodUsuario()):"", false));
+                        livro.isEmprestado()?user.getCodUsuario():"", livro.isEmprestado()?user.getNome():"", livro.isEmprestado()?getDataDevolucaoOf(livro.getCodLivro(), user.getCodUsuario()):"", livro.isEmprestado(),
+                        false));
             }
         }
         return null;
@@ -276,7 +290,7 @@ public class BD {
                 if(livro.isEmprestado())
                     return null;
                 return (new LivroRelatorio(livro.getCodLivro(), livro.getNome(),livro.getDescricao(), livro.getAno(),
-                        livro.isEmprestado()?user.getCodUsuario():"", livro.isEmprestado()?user.getNome():"", livro.isEmprestado()?getDataDevolucaoOf(livro.getCodLivro(), user.getCodUsuario()):"", false));
+                        livro.isEmprestado()?user.getCodUsuario():"", livro.isEmprestado()?user.getNome():"", livro.isEmprestado()?getDataDevolucaoOf(livro.getCodLivro(), user.getCodUsuario()):"", livro.isEmprestado(), false));
             }
         }
         return null;
@@ -301,7 +315,7 @@ public class BD {
                     user = getUsuarioQueEmprestouLivro(livro.getCodLivro());
                 }
                 livroPesquisa.add(new LivroRelatorio(livro.getCodLivro(), livro.getNome(),livro.getDescricao(), livro.getAno(),
-                        livro.isEmprestado()?user.getCodUsuario():"", livro.isEmprestado()?user.getNome():"", livro.isEmprestado()?getDataDevolucaoOf(livro.getCodLivro(), user.getCodUsuario()):"", false));
+                        livro.isEmprestado()?user.getCodUsuario():"", livro.isEmprestado()?user.getNome():"", livro.isEmprestado()?getDataDevolucaoOf(livro.getCodLivro(), user.getCodUsuario()):"", livro.isEmprestado(), livro.isEmprestado()?isAtrasado(livro.getCodLivro()):false));
             }
         }
         return livroPesquisa;
@@ -328,7 +342,7 @@ public class BD {
                     user = getUsuarioQueEmprestouLivro(livro.getCodLivro());
                 }
                 livroPesquisa.add(new LivroRelatorio(livro.getCodLivro(), livro.getNome(),livro.getDescricao(), livro.getAno(),
-                        livro.isEmprestado()?user.getCodUsuario():"", livro.isEmprestado()?user.getNome():"", livro.isEmprestado()?getDataDevolucaoOf(livro.getCodLivro(), user.getCodUsuario()):"", false));
+                        livro.isEmprestado()?user.getCodUsuario():"", livro.isEmprestado()?user.getNome():"", livro.isEmprestado()?getDataDevolucaoOf(livro.getCodLivro(), user.getCodUsuario()):"", livro.isEmprestado(), false));
             }
         }
         return livroPesquisa;

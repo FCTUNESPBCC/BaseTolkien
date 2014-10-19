@@ -26,6 +26,7 @@ public class Item implements Serializable{
         //a data de devolução é atribuida na devolução do livro,
         //não é passada no construtor
         this.dataDevolucao = dataDevolucao;
+        this.devolvido = false;
     }
 
     public Calendar getDataDevolucao() {
@@ -63,8 +64,8 @@ public class Item implements Serializable{
     
     public boolean isAtrasado(){
         if(this.dataDevolucao.after(Calendar.getInstance()))
-            return true;
-        return false;
+            return false;
+        return true;
     }
     
     

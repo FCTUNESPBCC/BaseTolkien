@@ -26,6 +26,14 @@ public class Livro implements Serializable{
         this.descricao = descricao;
         this.emprestado = false;
     }
+    
+    public Livro(String codLivro, String nome,String descricao, int ano, boolean emprestado) {
+        this.codLivro = codLivro;
+        this.nome = nome;
+        this.ano = ano;
+        this.descricao = descricao;
+        this.emprestado = emprestado;
+    }
 
     public String getDescricao() {
         return descricao;
