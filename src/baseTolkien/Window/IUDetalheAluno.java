@@ -220,22 +220,25 @@ public class IUDetalheAluno extends javax.swing.JFrame implements WindowFocusLis
     }//GEN-LAST:event_jTextFieldCursoActionPerformed
 
     private void jButtonDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDevolverActionPerformed
-        if(jTableLivros.getSelectedRow()!=-1)
-            BD.devolverLivro((aluno.getLivros()).get(jTableLivros.getSelectedRow()).getCodLivro(), aluno.getCodUsuario());
+        int index = jTableLivros.getSelectedRow();
+        if(index!=-1)
+            BD.devolverLivro((aluno.getLivros()).get(index).getCodLivro(), aluno.getCodUsuario());
         while(model.getRowCount()>0)
             model.removeRow(0);
         aluno.setLivros(BD.getAllLivrosNaoDevolvidosOf(aluno.getCodUsuario()));
         for(LivroRelatorio livro: aluno.getLivros()){
-                model.addRow(new Object[]{livro.getCodLivro(), livro.getNome(), livro.getAno(), !livro.isEmprestado()?"Disponível":(!livro.isAtrasado()?"Emprestado":"Atrasado")});
+                model.addRow(new Object[]{livro.getCodLivro(), livro.getNome(), livro.getAno(), !livro.isEmprestado()?"Disponível":(!BD.isAtrasado(livro.getCodLivro())?"Emprestado":"Atrasado")});
         }
+        BD.salvarLivros();
+        BD.salvarUsuarios();
+        BD.salvarEmprestimos();
     }//GEN-LAST:event_jButtonDevolverActionPerformed
 
     private void btNovoEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoEmprestimoActionPerformed
         if(!BD.isUsuarioComAtraso((aluno.getCodUsuario())))
-        new  IUSelecionarEmprestimo(aluno);
+            new IUSelecionarEmprestimo(aluno);
         else
             JOptionPane.showMessageDialog(this, "Impossível fazer empréstimo com atrasos pendentes.", "ERRO", 0);
-        
     }//GEN-LAST:event_btNovoEmprestimoActionPerformed
 
     /**

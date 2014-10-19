@@ -198,8 +198,9 @@ public class IUDetalheProfessor extends javax.swing.JFrame implements WindowFocu
     }//GEN-LAST:event_jTextFieldNomeActionPerformed
 
     private void jButtonDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDevolverActionPerformed
-        if(jTableLivros.getSelectedRow()!=-1)
-            BD.devolverLivro((professor.getLivros()).get(jTableLivros.getSelectedRow()).getCodLivro(), professor.getCodUsuario());
+        int index = jTableLivros.getSelectedRow();
+        if(index!=-1)
+            BD.devolverLivro((professor.getLivros()).get(index).getCodLivro(), professor.getCodUsuario());
         while(model.getRowCount()>0)
             model.removeRow(0);
         professor.setLivros(BD.getAllLivrosNaoDevolvidosOf(professor.getCodUsuario()));

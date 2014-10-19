@@ -52,11 +52,15 @@ public class BD {
     
     public static void devolverLivro(String codLivro, String codUsuario){
         for(Emprestimo emprestimo: biblioteca.getAllEmprestimo()){
+            System.out.println(emprestimo.getCodEmprestimo());
             if(emprestimo.getCodUsuario().equals(codUsuario)){
+                System.out.println("entrou");
                 for(Item item: emprestimo.getItens()){
-                    if(item.getCodLivro().equals(codLivro))
+                    System.out.println(item.getCodLivro());
+                    if(item.getCodLivro().equals(codLivro)){
                         item.devolver();
                     return;
+                    }
                 }
             }
         }
