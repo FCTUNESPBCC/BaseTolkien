@@ -58,8 +58,8 @@ public class Item implements Serializable{
     }
 
     public void devolver() {
+        BD.getLivroByCodSimples(codLivro).devolver();
         this.devolvido = true;
-        BD.getLivroByCod(codLivro).devolver();
     }
     
     public boolean isAtrasado(){

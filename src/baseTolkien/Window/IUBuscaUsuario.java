@@ -35,6 +35,7 @@ public class IUBuscaUsuario extends javax.swing.JFrame implements WindowFocusLis
         model = (DefaultTableModel) jTableUsuarios.getModel();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setTitle("Buscar Usuário");
+        addWindowFocusListener(this);
     }
 
     /**

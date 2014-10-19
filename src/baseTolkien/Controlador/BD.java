@@ -281,6 +281,15 @@ public class BD {
         return null;
     }
     
+    public static Livro getLivroByCodSimples(String codLivro) {
+        Usuario user = null;
+        for (Livro livro : biblioteca.getAllLivros()) {
+            if(livro.getCodLivro().equals(codLivro))
+                return livro;
+        }
+        return null;
+    }
+    
     public static LivroRelatorio getLivroByCodDisponivel(String codLivro) {
         Usuario user = null;
         for (Livro livro : biblioteca.getAllLivros()) {
