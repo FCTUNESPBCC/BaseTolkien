@@ -26,6 +26,11 @@ public class IULocalizarLivroADevolver extends IULocalizar {
     public IULocalizarLivroADevolver() {
         initComponents();
         
+        setResizable(false);
+        setVisible(true);
+        setTitle("Empréstimos Pendentes");
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
     }    
     
     public JTable getLocalizar_Table() {

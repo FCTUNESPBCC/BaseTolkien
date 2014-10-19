@@ -23,6 +23,11 @@ public class IUHistoricoEmprestimos extends javax.swing.JFrame {
     public IUHistoricoEmprestimos() {
         initComponents();
         
+        setResizable(false);
+        setVisible(true);
+        setTitle("Histórico de Empréstimos");
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
     }
 
     public JTable getLivros_Table() {

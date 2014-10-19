@@ -20,11 +20,17 @@ public class IULocalizarLivro extends IULocalizar {
    
     private ArrayList<LivroRelatorio> livros;
     
+    
     /**
      * Creates new form IULocalizarLivro
      */
     public IULocalizarLivro() {
         initComponents();
+        
+        setResizable(false);
+        setVisible(true);
+        setTitle("Histórico de Empréstimos");
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         livros = BD.getAllLivroDisponivel();
         DefaultTableModel modelo = (DefaultTableModel) localizar_Table.getModel();

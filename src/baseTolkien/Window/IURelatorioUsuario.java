@@ -191,17 +191,17 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRadioAtraso)
+                                    .addComponent(jRadioDevolver)
+                                    .addComponent(jRadioTodos)
+                                    .addComponent(jLabelExibicao))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(radioTodosUsuarios, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(radioAlunos)
                                         .addComponent(radioProfessores))
-                                    .addComponent(jLabelUsuario))
-                                .addGap(154, 154, 154)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioAtraso)
-                                    .addComponent(jRadioDevolver)
-                                    .addComponent(jRadioTodos)
-                                    .addComponent(jLabelExibicao)))
+                                    .addComponent(jLabelUsuario)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButtonHistoricoEmprestimos)
                                 .addGap(45, 45, 45)
@@ -244,7 +244,7 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void radioAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioAlunosActionPerformed
-        ArrayList<Usuario> usuarios;
+       ArrayList<Usuario> usuarios;
        modelo = (DefaultTableModel) usuarios_Table.getModel();
        while(modelo.getRowCount()>0)
            modelo.removeRow(0);
@@ -469,6 +469,7 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
         IULocalizarLivroADevolver localizarLivros = new IULocalizarLivroADevolver();
         if(usuarios_Table.getSelectedRowCount()>0){
             int index = usuarios_Table.getSelectedRow();
+            this.codigo = (String) usuarios_Table.getModel().getValueAt(index,1);
             ArrayList<LivroRelatorio> livros = BD.getAllLivrosNaoDevolvidosOf(codigo);
            
             DefaultTableModel modelo = (DefaultTableModel) localizarLivros.getLocalizar_Table().getModel();
@@ -480,8 +481,8 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
                 linha[1] = livr.getCodLivro();
                 linha[2] = livr.getAno();
                 modelo.addRow(linha);
+                System.out.println(livr.getNome());
             }
-            this.codigo = (String) usuarios_Table.getModel().getValueAt(index,1);
             
             
             localizarLivros.setVisible(true);

@@ -34,7 +34,6 @@ public class JPanelRelatorio extends javax.swing.JPanel {
         icone = new javax.swing.JLabel();
         btInserir = new javax.swing.JButton();
         btBuscar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         livrosLabel = new javax.swing.JLabel();
         livrosLabel1 = new javax.swing.JLabel();
 
@@ -59,8 +58,6 @@ public class JPanelRelatorio extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Empréstimos");
-
         livrosLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/relatoriosLabel.jpg"))); // NOI18N
 
         livrosLabel1.setBackground(new java.awt.Color(250, 250, 250));
@@ -76,9 +73,8 @@ public class JPanelRelatorio extends javax.swing.JPanel {
                         .addComponent(icone)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btInserir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btInserir, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                            .addComponent(btBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -96,9 +92,7 @@ public class JPanelRelatorio extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btInserir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btBuscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
+                        .addComponent(btBuscar))
                     .addComponent(icone, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(livrosLabel))
@@ -118,7 +112,6 @@ public class JPanelRelatorio extends javax.swing.JPanel {
     private javax.swing.JButton btBuscar;
     private javax.swing.JButton btInserir;
     private javax.swing.JLabel icone;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel livrosLabel;
     private javax.swing.JLabel livrosLabel1;
     // End of variables declaration//GEN-END:variables

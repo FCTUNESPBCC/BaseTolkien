@@ -36,9 +36,8 @@
                       <Component id="icone" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButton1" max="32767" attributes="0"/>
-                          <Component id="btBuscar" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btInserir" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btInserir" pref="87" max="32767" attributes="0"/>
+                          <Component id="btBuscar" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -64,8 +63,6 @@
                       <Component id="btInserir" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btBuscar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="icone" min="-2" pref="120" max="-2" attributes="0"/>
               </Group>
@@ -98,11 +95,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btBuscarActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Empr&#xe9;stimos"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="livrosLabel">
       <Properties>

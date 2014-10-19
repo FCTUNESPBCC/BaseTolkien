@@ -37,19 +37,19 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jRadioAtraso" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioDevolver" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioTodos" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelExibicao" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
                                       <Component id="radioTodosUsuarios" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="radioAlunos" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="radioProfessores" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jLabelUsuario" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jRadioAtraso" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioDevolver" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioTodos" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelExibicao" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
