@@ -7,7 +7,6 @@
 package baseTolkien.Window;
 
 import baseTolkien.Controlador.BD;
-import java.awt.Rectangle;
 
 
 /**
@@ -52,13 +51,13 @@ public class IUPrincipal extends javax.swing.JFrame {
         barraDeFerramentasLayout.setHorizontalGroup(
             barraDeFerramentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(barraDeFerramentasLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
+                .addGap(5, 5, 5)
                 .addComponent(jPanelLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(5, 5, 5)
                 .addComponent(jPanelRelatorio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(5, 5, 5))
         );
         barraDeFerramentasLayout.setVerticalGroup(
             barraDeFerramentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,7 +101,6 @@ public class IUPrincipal extends javax.swing.JFrame {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
-                System.out.println(info.getName());
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(IUPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -114,13 +112,9 @@ public class IUPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(IUPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new IUPrincipal().setVisible(true);
-            }
-        });
+        
+        IUPrincipal principal = new IUPrincipal();
+        principal.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

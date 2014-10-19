@@ -7,6 +7,7 @@ package baseTolkien.Controlador;
 
 import baseTolkien.Entidades.Aluno;
 import baseTolkien.Entidades.Biblioteca;
+import baseTolkien.Entidades.Config;
 import baseTolkien.Entidades.Emprestimo;
 import baseTolkien.Entidades.Item;
 import baseTolkien.Entidades.Livro;
@@ -501,6 +502,63 @@ public class BD {
                 ((ProfessorRelatorio)usuario).setLivros(getAllLivrosNaoDevolvidosOf(usuario.getCodUsuario()));
         }
         return usuarioPesquisa;
+    }
+    
+    
+    private static void salvaConfig(){
+        String nomeArquivo = biblioteca.getConfiguracoes().getArquivoConfig();
+            File arquivo = (new File(BD.biblioteca.getConfiguracoes().getPathArquivos() + nomeArquivo));
+            if(!arquivo.exists()){
+                if(!(new File(arquivo.getAbsolutePath())).exists())
+                    arquivo.mkdir();
+                try {
+                    arquivo.getParentFile().createNewFile();
+                } catch (IOException ex) {
+                    Logger.getLogger(BD.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+            fos = new FileOutputStream(nomeArquivo);
+            oos = new ObjectOutputStream(fos);
+            //oos.writeObject(this.livros);
+            //ou salvar livro a livro
+            oos.writeObject(BD.biblioteca.getConfiguracoes());
+        } catch (IOException ex) {
+            Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                oos.close();
+                fos.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    private static void recuperarConfig() {
+        String nomeArquivo = biblioteca.getConfiguracoes().getArquivoConfig();
+        if((new File(nomeArquivo)).exists()){
+            FileInputStream fis = null;
+            ObjectInputStream ois = null;
+            try {
+                fis = new FileInputStream(nomeArquivo);
+                ois = new ObjectInputStream(fis);
+                    BD.biblioteca.setConfiguracoes((Config)ois.readObject());
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
+            } finally{
+                try {
+                    ois.close();
+                    fis.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }
     
     private static void salvarDados(String dados) {
