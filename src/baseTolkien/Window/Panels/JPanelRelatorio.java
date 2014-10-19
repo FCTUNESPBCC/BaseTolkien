@@ -7,6 +7,7 @@
 package baseTolkien.Window.Panels;
 
 import baseTolkien.Window.IURelatorioLivros;
+import baseTolkien.Window.IURelatorioUsuario;
 
 /**
  *
@@ -105,7 +106,7 @@ public class JPanelRelatorio extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
-        // TODO add your handling code here:
+        new IURelatorioUsuario();
     }//GEN-LAST:event_btInserirActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed

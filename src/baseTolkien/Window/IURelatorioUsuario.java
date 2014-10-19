@@ -29,6 +29,11 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
     public IURelatorioUsuario() {
         initComponents();
         
+        setResizable(false);
+        setVisible(true);
+        setTitle("Relatório Usuários");
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
         exibition_GrupoBut.clearSelection();
         tipo_GrupoBut.clearSelection();
         
