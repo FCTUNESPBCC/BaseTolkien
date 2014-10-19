@@ -37,6 +37,9 @@ public class IUSelecionarEmprestimo extends javax.swing.JFrame{
         livrosEmprestimo = new ArrayList<Livro>();
         model = (DefaultTableModel) jTableLivros.getModel();
         modelEmprestimo = (DefaultTableModel) jTableLivrosEmprestimo.getModel();
+        
+        setTitle("Novo empréstimo");
+        
     }
 
     /**

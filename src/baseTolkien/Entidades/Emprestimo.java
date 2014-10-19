@@ -5,6 +5,7 @@
 
 package baseTolkien.Entidades;
 
+import baseTolkien.Controlador.BD;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -26,7 +27,10 @@ public class Emprestimo implements Serializable {
         this.itens = new ArrayList<Item>();
         this.dataEmprestimo = Calendar.getInstance();
         this.dataDevolucao = Calendar.getInstance();
-        this.dataDevolucao.add(Calendar.DAY_OF_MONTH, usuario.getDiasEmprestimo());        
+        if(usuario instanceof Professor)
+            this.dataDevolucao.add(Calendar.DAY_OF_MONTH, BD.biblioteca.getConfiguracoes().getDiasProfessor());        
+        else
+            this.dataDevolucao.add(Calendar.DAY_OF_MONTH, BD.biblioteca.getConfiguracoes().getDiasAluno());
     }
 
     public String getCodEmprestimo() {

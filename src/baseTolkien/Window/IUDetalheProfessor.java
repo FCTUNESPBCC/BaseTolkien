@@ -46,6 +46,7 @@ public class IUDetalheProfessor extends javax.swing.JFrame implements WindowFocu
         setResizable(false);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
+        setTitle(professor.getNome());
     }       
 
     /**

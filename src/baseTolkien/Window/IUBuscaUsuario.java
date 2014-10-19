@@ -32,6 +32,7 @@ public class IUBuscaUsuario extends javax.swing.JFrame {
         setResizable(false);
         model = (DefaultTableModel) jTableUsuarios.getModel();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setTitle("Buscar Usuário");
     }
 
     /**

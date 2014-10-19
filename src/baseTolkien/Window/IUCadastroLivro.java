@@ -25,6 +25,7 @@ public class IUCadastroLivro extends javax.swing.JFrame {
         setVisible(true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
+        setTitle("Cadastro Livro");
         jTextAreaDescricao.setLineWrap(true);
     }
 

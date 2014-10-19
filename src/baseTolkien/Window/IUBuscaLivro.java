@@ -25,8 +25,10 @@ public class IUBuscaLivro extends javax.swing.JFrame {
     public IUBuscaLivro() {
         initComponents();
         setVisible(true);
+        setResizable(false);
         model = (DefaultTableModel) jTableLivros.getModel();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setTitle("Buscar Livro");
     }
 
     /**

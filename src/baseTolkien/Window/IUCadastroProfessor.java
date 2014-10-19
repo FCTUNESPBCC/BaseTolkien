@@ -26,6 +26,8 @@ public class IUCadastroProfessor extends javax.swing.JFrame {
         initComponents();
         setVisible(true);
         setResizable(false);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setTitle("Cadastro Professor");
     }
 
     /**

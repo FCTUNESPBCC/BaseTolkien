@@ -23,6 +23,8 @@ import javax.swing.table.DefaultTableModel;
 public class IUDetalheAluno extends javax.swing.JFrame implements WindowFocusListener{
 
     AlunoRelatorio aluno = null;
+    
+        
     /**
      * Creates new form IUDetalheLivro
      */
@@ -46,6 +48,7 @@ public class IUDetalheAluno extends javax.swing.JFrame implements WindowFocusLis
         setResizable(false);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
+        setTitle(aluno.getNome());
     }       
 
     /**

@@ -28,6 +28,8 @@ public class IUCadastroAluno extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setVisible(true);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setTitle("Cadastro Aluno");
     }
 
     /**

@@ -38,6 +38,8 @@ public class IUDetalheLivro extends javax.swing.JFrame {
         setResizable(false);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
+        
+        setTitle(livro.getNome());
     }       
 
     /**
