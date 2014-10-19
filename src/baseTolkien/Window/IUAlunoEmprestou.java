@@ -7,6 +7,8 @@
 package baseTolkien.Window;
 
 import javax.swing.JTextField;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +21,10 @@ public class IUAlunoEmprestou extends javax.swing.JFrame {
      */
     public IUAlunoEmprestou() {
         initComponents();
+        setVisible(true);
+        setResizable(false);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setTitle("Descrição Aluno");
     }
 
     /**

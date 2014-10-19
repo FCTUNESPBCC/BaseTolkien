@@ -23,6 +23,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
+import static java.util.Calendar.DAY_OF_MONTH;
+import static java.util.Calendar.MONTH;
+import static java.util.Calendar.YEAR;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -446,7 +450,7 @@ public class BD {
                 for(Item item: emprestimo.getItens())
                     if (!item.isDevolvido()){
                         if(codLivro.equals(item.getCodLivro()))
-                            return item.getDataDevolucao().toString();
+                            return (item.getDataDevolucao().get(DAY_OF_MONTH)+"/"+(item.getDataDevolucao().get(MONTH)+1)+"/"+item.getDataDevolucao().get(YEAR));
                     }
             }
         }

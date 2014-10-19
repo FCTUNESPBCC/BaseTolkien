@@ -19,6 +19,10 @@ public class IUProfessorEmprestou extends javax.swing.JFrame {
      */
     public IUProfessorEmprestou() {
         initComponents();
+        setVisible(true);
+        setResizable(false);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setTitle("Descrição Professor");
     }
 
     public JTextField getCod_Text() {

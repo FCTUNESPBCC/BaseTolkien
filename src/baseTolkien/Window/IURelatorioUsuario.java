@@ -14,6 +14,7 @@ import baseTolkien.Entidades.Relatorios.LivroRelatorio;
 import baseTolkien.Entidades.Relatorios.ProfessorRelatorio;
 import baseTolkien.Entidades.Usuario;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -473,13 +474,12 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
             ArrayList<LivroRelatorio> livros = BD.getAllLivrosNaoDevolvidosOf(codigo);
            
             DefaultTableModel modelo = (DefaultTableModel) localizarLivros.getLocalizar_Table().getModel();
-            
-            
+                        
             for(LivroRelatorio livr: livros){
                 Object[] linha = new Object[3];
                 linha[0] = livr.getNome();
                 linha[1] = livr.getCodLivro();
-                linha[2] = livr.getAno();
+                linha[2] = BD.getDataDevolucaoOf(livr.getCodLivro(), livr.getCodUsuario());
                 modelo.addRow(linha);
                 System.out.println(livr.getNome());
             }
