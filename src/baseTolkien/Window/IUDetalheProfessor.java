@@ -205,6 +205,9 @@ public class IUDetalheProfessor extends javax.swing.JFrame implements WindowFocu
         for(LivroRelatorio livro: professor.getLivros()){
                 model.addRow(new Object[]{livro.getCodLivro(), livro.getNome(), livro.getAno(), !livro.isEmprestado()?"Disponível":(!livro.isAtrasado()?"Emprestado":"Atrasado")});
         }
+        BD.salvarLivros();
+        BD.salvarUsuarios();
+        BD.salvarEmprestimos();
     }//GEN-LAST:event_jButtonDevolverActionPerformed
 
     private void jComboTitulacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboTitulacaoActionPerformed

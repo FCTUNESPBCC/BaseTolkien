@@ -202,7 +202,6 @@ public class IUCadastroAluno extends javax.swing.JFrame {
         else{
             BD.addAluno(new Aluno(jTextFieldCod.getText(), jTextFieldNome.getText(), jTextFieldCurso.getText(),Ano, BD.biblioteca.getConfiguracoes().getDiasAluno()));
             BD.salvarUsuarios();
-            BD.salvarLivros();
             dispose();
         }
         

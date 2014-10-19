@@ -7,6 +7,7 @@
 package baseTolkien.Window;
 
 import baseTolkien.Controlador.BD;
+import java.awt.Rectangle;
 
 
 /**
@@ -44,6 +45,7 @@ public class MainWindow extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(815, 198));
 
         barraDeFerramentas.setBackground(new java.awt.Color(200, 200, 200));
+        barraDeFerramentas.setPreferredSize(new java.awt.Dimension(800, 150));
 
         javax.swing.GroupLayout barraDeFerramentasLayout = new javax.swing.GroupLayout(barraDeFerramentas);
         barraDeFerramentas.setLayout(barraDeFerramentasLayout);
@@ -73,9 +75,7 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(barraDeFerramentas, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(barraDeFerramentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

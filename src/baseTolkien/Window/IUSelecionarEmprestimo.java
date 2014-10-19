@@ -290,6 +290,9 @@ public class IUSelecionarEmprestimo extends javax.swing.JFrame{
                 BD.emprestarLivro(livrosEmprestimo.get(cont).getCodLivro());
             }
             BD.biblioteca.addEmprestimo(emprestimo);
+            BD.salvarUsuarios();
+            BD.salvarLivros();
+            BD.salvarEmprestimos();
             dispose();
         }
     }//GEN-LAST:event_btConfirmarEmprestimoActionPerformed
