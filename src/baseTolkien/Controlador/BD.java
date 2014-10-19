@@ -56,6 +56,13 @@ public class BD {
             }
         }
     }
+    
+    public static void emprestarLivro(String codLivro){
+        for (Livro livro: biblioteca.getAllLivros()) {
+                if(livro.getCodLivro().equals(codLivro))
+                    livro.emprestar();
+        }
+    }
      
     
     public static ArrayList<LivroRelatorio> getAllLivros(){
@@ -262,6 +269,19 @@ public class BD {
         return null;
     }
     
+    public static LivroRelatorio getLivroByCodDisponivel(String codLivro) {
+        Usuario user = null;
+        for (Livro livro : biblioteca.getAllLivros()) {
+            if(livro.getCodLivro().equals(codLivro)) {
+                if(livro.isEmprestado())
+                    return null;
+                return (new LivroRelatorio(livro.getCodLivro(), livro.getNome(),livro.getDescricao(), livro.getAno(),
+                        livro.isEmprestado()?user.getCodUsuario():"", livro.isEmprestado()?user.getNome():"", livro.isEmprestado()?getDataDevolucaoOf(livro.getCodLivro(), user.getCodUsuario()):"", false));
+            }
+        }
+        return null;
+    }
+    
     public static boolean existeLivro(String codLivro) {
         Usuario user = null;
         for (Livro livro : biblioteca.getAllLivros()) {
@@ -287,6 +307,17 @@ public class BD {
         return livroPesquisa;
     }
     
+    public static ArrayList<LivroRelatorio> getLivroByNomeDisponivel(String nome){
+        ArrayList<LivroRelatorio> livroPesquisa = new ArrayList<LivroRelatorio>();
+        for (Livro livro : biblioteca.getAllLivros()) {
+            if (livro.getNome().contains(nome) && !livro.isEmprestado()) {
+                livroPesquisa.add(new LivroRelatorio(livro.getCodLivro(), livro.getNome(),livro.getDescricao(), livro.getAno(),
+                        "", "", "", false));
+            }
+        }
+        return livroPesquisa;
+    }
+    
     public static ArrayList<LivroRelatorio> getLivroByNomeAndAno(String nome, int ano){
         ArrayList<LivroRelatorio> livroPesquisa = new ArrayList<LivroRelatorio>();
         Usuario user = null;
@@ -307,7 +338,7 @@ public class BD {
             for(Item item: emprestimo.getItens())
             if (!item.isDevolvido()){
                 if(codLivro.equals(item.getCodLivro()))
-                    return getUsuarioByCod(codLivro);
+                    return getUsuarioByCod(emprestimo.getCodUsuario());
             }
         }
         return null;

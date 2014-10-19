@@ -26,7 +26,6 @@ public class Emprestimo implements Serializable {
         this.itens = new ArrayList<Item>();
         this.dataEmprestimo = Calendar.getInstance();
         this.dataDevolucao = Calendar.getInstance();
-                //acrestenca dias na data de emprestimo
         this.dataDevolucao.add(Calendar.DAY_OF_MONTH, usuario.getDiasEmprestimo());        
     }
 

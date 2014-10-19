@@ -9,13 +9,18 @@ package baseTolkien.Window;
 import baseTolkien.Controlador.BD;
 import baseTolkien.Entidades.Relatorios.AlunoRelatorio;
 import baseTolkien.Entidades.Relatorios.LivroRelatorio;
+import baseTolkien.Entidades.Usuario;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Leonardo Dias
  */
-public class IUDetalheAluno extends javax.swing.JFrame {
+public class IUDetalheAluno extends javax.swing.JFrame implements WindowFocusListener{
 
     AlunoRelatorio aluno = null;
     /**
@@ -27,10 +32,8 @@ public class IUDetalheAluno extends javax.swing.JFrame {
         initComponents();
         
         model = (DefaultTableModel) jTableLivros.getModel();
-        for(LivroRelatorio livro: aluno.getLivros()){
-                model.addRow(new Object[]{livro.getCodLivro(), livro.getNome(), livro.getAno(), !livro.isEmprestado()?"Disponível":(!livro.isAtrasado()?"Emprestado":"Atrasado")});
-            }
         
+        addWindowFocusListener(this);
         jTextFieldAno.setEditable(false);
         jTextFieldNome.setEditable(false);
         jTextFieldCod.setEditable(false);
@@ -65,6 +68,7 @@ public class IUDetalheAluno extends javax.swing.JFrame {
         jButtonDevolver = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableLivros = new javax.swing.JTable();
+        btNovoEmprestimo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,6 +135,14 @@ public class IUDetalheAluno extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTableLivros);
 
+        btNovoEmprestimo.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        btNovoEmprestimo.setText("Novo Empréstimo");
+        btNovoEmprestimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btNovoEmprestimoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -160,6 +172,8 @@ public class IUDetalheAluno extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btNovoEmprestimo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonDevolver))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
@@ -184,8 +198,10 @@ public class IUDetalheAluno extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonDevolver)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonDevolver)
+                    .addComponent(btNovoEmprestimo))
+                .addGap(0, 10, Short.MAX_VALUE))
         );
 
         pack();
@@ -202,7 +218,17 @@ public class IUDetalheAluno extends javax.swing.JFrame {
     private void jButtonDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDevolverActionPerformed
         if(jTableLivros.getSelectedRow()!=-1)
             (aluno.getLivros()).get(jTableLivros.getSelectedRow()).devolver();
+        while(model.getRowCount()>0)
+            model.removeRow(0);
+        aluno.setLivros(BD.getAllLivrosNaoDevolvidosOf(aluno.getCodUsuario()));
+        for(LivroRelatorio livro: aluno.getLivros()){
+                model.addRow(new Object[]{livro.getCodLivro(), livro.getNome(), livro.getAno(), !livro.isEmprestado()?"Disponível":(!livro.isAtrasado()?"Emprestado":"Atrasado")});
+        }
     }//GEN-LAST:event_jButtonDevolverActionPerformed
+
+    private void btNovoEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoEmprestimoActionPerformed
+        new  IUSelecionarEmprestimo(aluno);
+    }//GEN-LAST:event_btNovoEmprestimoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,6 +259,7 @@ public class IUDetalheAluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btNovoEmprestimo;
     private javax.swing.JButton jButtonDevolver;
     private javax.swing.JLabel jLabelAno;
     private javax.swing.JLabel jLabelAno1;
@@ -246,4 +273,21 @@ public class IUDetalheAluno extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNome;
     // End of variables declaration//GEN-END:variables
     private DefaultTableModel model;
+    
+    public void windowDeactivated(WindowEvent we) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void windowGainedFocus(WindowEvent we) {
+        while(model.getRowCount()>0)
+            model.removeRow(0);
+        aluno.setLivros(BD.getAllLivrosNaoDevolvidosOf(aluno.getCodUsuario()));
+        for(LivroRelatorio livro: aluno.getLivros()){
+                model.addRow(new Object[]{livro.getCodLivro(), livro.getNome(), livro.getAno(), !livro.isEmprestado()?"Disponível":(!livro.isAtrasado()?"Emprestado":"Atrasado")});
+        }
+    }
+
+    public void windowLostFocus(WindowEvent we) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

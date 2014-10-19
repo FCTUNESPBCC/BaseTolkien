@@ -18,18 +18,17 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Eloigdn
  */
-public class IUEmprestimo extends javax.swing.JFrame {
+public class IUEmprestimoCopia extends javax.swing.JFrame {
 
     Usuario usuario = null;
     Calendar data = Calendar.getInstance();
     Calendar dataEntrega = Calendar.getInstance();
-    public static String codLivro_Text;
-    public static String nomeLivro_Text;
+    
     /**
      * Creates new form IUEmprestimo
      */
     
-    public IUEmprestimo(Usuario usuarioExt){
+    public IUEmprestimoCopia(Usuario usuarioExt){
         initComponents();
         usuario = usuarioExt;
         codEmprestimo_Text.setEditable(false);
@@ -70,11 +69,17 @@ public class IUEmprestimo extends javax.swing.JFrame {
         dataEmprestimo_Text = new javax.swing.JTextField();
         jLabelDataDevolucao = new javax.swing.JLabel();
         dataDevolucao_Text = new javax.swing.JTextField();
+        jPanelLivro = new javax.swing.JPanel();
+        jLabelCodEmprestimo1 = new javax.swing.JLabel();
+        codLivro_Text = new javax.swing.JTextField();
+        jLabelNomeLivro = new javax.swing.JLabel();
+        nomeLivro_Text = new javax.swing.JTextField();
+        jButtonLocalizarLivro = new javax.swing.JButton();
+        add_Button = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableLivros = new javax.swing.JTable();
         jButtonSalvar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
-        add_Button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -139,7 +144,7 @@ public class IUEmprestimo extends javax.swing.JFrame {
                         .addComponent(dataEmprestimo_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23)
                         .addComponent(dataDevolucao_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(nomeUsuario_Text, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE))
+                    .addComponent(nomeUsuario_Text))
                 .addContainerGap())
         );
         jPanelUsuarioLayout.setVerticalGroup(
@@ -163,6 +168,76 @@ public class IUEmprestimo extends javax.swing.JFrame {
                     .addComponent(codUsuario_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nomeUsuario_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 34, Short.MAX_VALUE))
+        );
+
+        jPanelLivro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Adicionar Livros", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14), java.awt.Color.black)); // NOI18N
+
+        jLabelCodEmprestimo1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabelCodEmprestimo1.setText("Codigo do Livro");
+
+        codLivro_Text.setEditable(false);
+        codLivro_Text.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        jLabelNomeLivro.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabelNomeLivro.setText("Nome");
+
+        nomeLivro_Text.setEditable(false);
+        nomeLivro_Text.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        jButtonLocalizarLivro.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonLocalizarLivro.setText("Localizar");
+        jButtonLocalizarLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLocalizarLivroActionPerformed(evt);
+            }
+        });
+
+        add_Button.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        add_Button.setText("Adicionar");
+        add_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_ButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelLivroLayout = new javax.swing.GroupLayout(jPanelLivro);
+        jPanelLivro.setLayout(jPanelLivroLayout);
+        jPanelLivroLayout.setHorizontalGroup(
+            jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelLivroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelLivroLayout.createSequentialGroup()
+                        .addGroup(jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelCodEmprestimo1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(codLivro_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelLivroLayout.createSequentialGroup()
+                                .addComponent(nomeLivro_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonLocalizarLivro, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
+                            .addGroup(jPanelLivroLayout.createSequentialGroup()
+                                .addComponent(jLabelNomeLivro)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLivroLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(add_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanelLivroLayout.setVerticalGroup(
+            jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelLivroLayout.createSequentialGroup()
+                .addGroup(jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelCodEmprestimo1)
+                    .addComponent(jLabelNomeLivro))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(codLivro_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeLivro_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonLocalizarLivro))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(add_Button))
         );
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Livros do Empréstimo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
@@ -213,32 +288,23 @@ public class IUEmprestimo extends javax.swing.JFrame {
             }
         });
 
-        add_Button.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        add_Button.setText("Adicionar");
-        add_Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add_ButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(add_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
+                    .addComponent(jPanelUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelLivro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,18 +312,23 @@ public class IUEmprestimo extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(jPanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(add_Button)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCancelar)
-                    .addComponent(jButtonSalvar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonSalvar)
+                    .addComponent(jButtonCancelar))
+                .addGap(22, 22, 22))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonLocalizarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizarLivroActionPerformed
+        IULocalizarLivro localiza = new IULocalizarLivro();
+        localiza.setVisible(true);
+    }//GEN-LAST:event_jButtonLocalizarLivroActionPerformed
 
     private void dataEmprestimo_TextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataEmprestimo_TextActionPerformed
         // TODO add your handling code here:
@@ -269,19 +340,15 @@ public class IUEmprestimo extends javax.swing.JFrame {
 
     private void add_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_ButtonActionPerformed
 
-        new IULocalizarLivro();
+       
        DefaultTableModel model = (DefaultTableModel) jTableLivros.getModel();
        Object[] linha = new Object[4];
-       linha[0] = codLivro_Text;
-       linha[1] = nomeLivro_Text;
+       linha[0] = codLivro_Text.getText();
+       linha[1] = nomeLivro_Text.getText();
        linha[2] = data.get(Calendar.DAY_OF_MONTH)+"//"+(data.get(Calendar.MONTH)+1)+"//"+data.get(Calendar.YEAR);
        linha[3] = dataEntrega.get(Calendar.DAY_OF_MONTH)+"//"+(dataEntrega.get(Calendar.MONTH)+1)+"//"+dataEntrega.get(Calendar.YEAR);
-       while(!codLivro_Text.equals(""))
-        if(!codLivro_Text.equals("")){
-         model.addRow(linha);
-         codLivro_Text = "";
-        }
-             
+       model.addRow(linha);
+       
     }//GEN-LAST:event_add_ButtonActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
@@ -305,13 +372,13 @@ public class IUEmprestimo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(IUEmprestimo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IUEmprestimoCopia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(IUEmprestimo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IUEmprestimoCopia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(IUEmprestimo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IUEmprestimoCopia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(IUEmprestimo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IUEmprestimoCopia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -321,19 +388,25 @@ public class IUEmprestimo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add_Button;
     private javax.swing.JTextField codEmprestimo_Text;
+    public static javax.swing.JTextField codLivro_Text;
     private javax.swing.JTextField codUsuario_Text;
     private javax.swing.JTextField dataDevolucao_Text;
     private javax.swing.JTextField dataEmprestimo_Text;
     private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonLocalizarLivro;
     private javax.swing.JButton jButtonSalvar;
     private javax.swing.JLabel jLabelCodEmprestimo;
+    private javax.swing.JLabel jLabelCodEmprestimo1;
     private javax.swing.JLabel jLabelCodUsuario;
     private javax.swing.JLabel jLabelDataDevolucao;
     private javax.swing.JLabel jLabelDataEmprestimo;
+    private javax.swing.JLabel jLabelNomeLivro;
     private javax.swing.JLabel jLabelNomeUsuario;
+    private javax.swing.JPanel jPanelLivro;
     private javax.swing.JPanel jPanelUsuario;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableLivros;
+    public static javax.swing.JTextField nomeLivro_Text;
     private javax.swing.JTextField nomeUsuario_Text;
     // End of variables declaration//GEN-END:variables
 }

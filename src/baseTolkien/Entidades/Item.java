@@ -20,12 +20,12 @@ public class Item implements Serializable{
     private boolean devolvido = false;
 
     
-    public Item(String codEmprestimo, String codLivro) {
+    public Item(String codEmprestimo, String codLivro, Calendar dataDevolucao) {
         this.codEmprestimo = codEmprestimo;
         this.codLivro = codLivro;
         //a data de devolução é atribuida na devolução do livro,
         //não é passada no construtor
-        this.dataDevolucao = null;
+        this.dataDevolucao = dataDevolucao;
     }
 
     public Calendar getDataDevolucao() {

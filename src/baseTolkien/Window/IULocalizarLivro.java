@@ -7,9 +7,7 @@
 package baseTolkien.Window;
 
 import baseTolkien.Controlador.BD;
-import baseTolkien.Entidades.Livro;
 import baseTolkien.Entidades.Relatorios.LivroRelatorio;
-import baseTolkien.Entidades.Usuario;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -20,20 +18,19 @@ import javax.swing.table.DefaultTableModel;
  */
 public class IULocalizarLivro extends IULocalizar {
    
+    ArrayList<LivroRelatorio> livros;
+    
     /**
      * Creates new form IULocalizarLivro
      */
     public IULocalizarLivro() {
         initComponents();
         
-        ArrayList<LivroRelatorio> livros = BD.getAllLivros();
+        livros = BD.getAllLivroDisponivel();
         DefaultTableModel modelo = (DefaultTableModel) localizar_Table.getModel();
         
         for(LivroRelatorio book:livros){
-            Object[] linha = new Object[2];
-            linha[0] = book.getNome();
-            linha[1] = book.getCodUsuario();
-            modelo.addRow(linha);
+            modelo.addRow(new Object[]{book.getNome(), book.getCodUsuario()});
         }
     }
 
@@ -116,11 +113,11 @@ public class IULocalizarLivro extends IULocalizar {
     private void selecionar_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionar_ButtonActionPerformed
      if(localizar_Table.getSelectedRowCount() > 0){
             int index = localizar_Table.getSelectedRow();
-            this.codigo = (String) localizar_Table.getModel().getValueAt(index, 1);
-            this.setVisible(false);
+            IUEmprestimo.codLivro_Text = livros.get(index).getCodLivro();
+            IUEmprestimo.nomeLivro_Text = livros.get(index).getNomeUsuario();
+            dispose();
         }else {
-            JOptionPane.showMessageDialog(null, "É necessario selecionar um usuário!!!");
-            this.codigo = null;
+            JOptionPane.showMessageDialog(null, "É necessario selecionar um livro!!!");
         }
         
     }//GEN-LAST:event_selecionar_ButtonActionPerformed

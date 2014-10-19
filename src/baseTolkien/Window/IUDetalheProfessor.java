@@ -10,34 +10,39 @@ import baseTolkien.Controlador.BD;
 import baseTolkien.Entidades.Relatorios.AlunoRelatorio;
 import baseTolkien.Entidades.Relatorios.LivroRelatorio;
 import baseTolkien.Entidades.Relatorios.ProfessorRelatorio;
+import baseTolkien.Entidades.Usuario;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
+import java.awt.event.WindowListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Leonardo Dias
  */
-public class IUDetalheProfessor extends javax.swing.JFrame {
+public class IUDetalheProfessor extends javax.swing.JFrame implements WindowFocusListener{
 
     ProfessorRelatorio professor = null;
     /**
      * Creates new form IUDetalheLivro
      */
     public IUDetalheProfessor(ProfessorRelatorio professorExt) {
+        this.addWindowFocusListener(this);
         professor = professorExt;
-        professor.setLivros(BD.getAllLivrosNaoDevolvidosOf(professor.getCodUsuario()));
         initComponents();
         
         model = (DefaultTableModel) jTableLivros.getModel();
-        for(LivroRelatorio livro: professor.getLivros()){
-                model.addRow(new Object[]{livro.getCodLivro(), livro.getNome(), livro.getAno(), !livro.isEmprestado()?"Disponível":(!livro.isAtrasado()?"Emprestado":"Atrasado")});
-            }
         
         jTextFieldNome.setEditable(false);
         jTextFieldCod.setEditable(false);
+        jComboTitulacao.setEditable(false);
         
         jTextFieldNome.setText(professor.getNome());
         jTextFieldCod.setText(professor.getCodUsuario());
         jComboTitulacao.setSelectedItem(professor.getTitulacao());
+       
         setResizable(false);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
@@ -61,6 +66,7 @@ public class IUDetalheProfessor extends javax.swing.JFrame {
         jTableLivros = new javax.swing.JTable();
         jComboTitulacao = new javax.swing.JComboBox();
         jLabelTitulacao = new javax.swing.JLabel();
+        btNovoEmprestimo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,6 +129,14 @@ public class IUDetalheProfessor extends javax.swing.JFrame {
         jLabelTitulacao.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelTitulacao.setText("Titulação :");
 
+        btNovoEmprestimo.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        btNovoEmprestimo.setText("Novo Empréstimo");
+        btNovoEmprestimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btNovoEmprestimoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -137,6 +151,8 @@ public class IUDetalheProfessor extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btNovoEmprestimo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonDevolver))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -159,16 +175,17 @@ public class IUDetalheProfessor extends javax.swing.JFrame {
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextFieldCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelTitulacao)
-                            .addComponent(jComboTitulacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabelTitulacao)
+                        .addComponent(jComboTitulacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCod, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(55, 55, 55)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonDevolver)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonDevolver)
+                    .addComponent(btNovoEmprestimo))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         pack();
@@ -186,6 +203,10 @@ public class IUDetalheProfessor extends javax.swing.JFrame {
     private void jComboTitulacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboTitulacaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboTitulacaoActionPerformed
+
+    private void btNovoEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoEmprestimoActionPerformed
+        new IUSelecionarEmprestimo(professor);
+    }//GEN-LAST:event_btNovoEmprestimoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,6 +237,7 @@ public class IUDetalheProfessor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btNovoEmprestimo;
     private javax.swing.JButton jButtonDevolver;
     private javax.swing.JComboBox jComboTitulacao;
     private javax.swing.JLabel jLabelCod;
@@ -227,4 +249,19 @@ public class IUDetalheProfessor extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNome;
     // End of variables declaration//GEN-END:variables
     private DefaultTableModel model;
+
+    public void windowDeactivated(WindowEvent we) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void windowGainedFocus(WindowEvent we) {
+        professor.setLivros(BD.getAllLivrosNaoDevolvidosOf(professor.getCodUsuario()));
+        for(LivroRelatorio livro: professor.getLivros()){
+                model.addRow(new Object[]{livro.getCodLivro(), livro.getNome(), livro.getAno(), !livro.isEmprestado()?"Disponível":(!livro.isAtrasado()?"Emprestado":"Atrasado")});
+        }
+    }
+
+    public void windowLostFocus(WindowEvent we) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
