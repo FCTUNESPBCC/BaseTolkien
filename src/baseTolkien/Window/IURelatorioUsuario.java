@@ -28,6 +28,19 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
      */
     public IURelatorioUsuario() {
         initComponents();
+        
+        exibition_GrupoBut.clearSelection();
+        tipo_GrupoBut.clearSelection();
+        
+        exibition_GrupoBut.add(jRadioTodos);
+        exibition_GrupoBut.add(jRadioDevolver);
+        exibition_GrupoBut.add(jRadioAtraso);
+        
+        tipo_GrupoBut.add(radioTodosUsuarios);
+        tipo_GrupoBut.add(radioProfessores);
+        tipo_GrupoBut.add(radioAlunos);
+        
+        
     }
 
     public String getCodigo() {
@@ -43,7 +56,8 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroupOpcoes = new javax.swing.ButtonGroup();
+        exibition_GrupoBut = new javax.swing.ButtonGroup();
+        tipo_GrupoBut = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         usuarios_Table = new javax.swing.JTable();
         radioTodosUsuarios = new javax.swing.JRadioButton();
@@ -217,21 +231,54 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void radioAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioAlunosActionPerformed
-      ArrayList<Usuario> usuarios = IUPrincipal.dataB.getAllUsuario();
-      DefaultTableModel modelo = (DefaultTableModel) usuarios_Table.getModel();  
+        ArrayList<Usuario> usuarios;
+       DefaultTableModel modelo = (DefaultTableModel) usuarios_Table.getModel();
         
-        
+       if(jRadioTodos.isSelected()){
+           
+        usuarios  = BD.getAllAluno();   
         for(int i=0;i<usuarios.size();i++) {
             Object[] linha = new Object[4];
             
+                AlunoRelatorio aluno = (AlunoRelatorio) usuarios.get(i);    
+                linha[0] = aluno.getNome();
+                linha[1] = aluno.getCodUsuario();
+                linha[2] = aluno.getCurso();
+                linha[3] = aluno.getAno();
+                modelo.addRow(linha);
+         }
+       }
+       else{
+           if(jRadioAtraso.isSelected()){
+             usuarios = BD.getAllUsuarioComAtraso();
+             for(int i=0;i<usuarios.size();i++) {
+             Object[] linha = new Object[4];
+           
+                AlunoRelatorio aluno = (AlunoRelatorio) usuarios.get(i);    
+                linha[0] = aluno.getNome();
+                linha[1] = aluno.getCodUsuario();
+                linha[2] = aluno.getCurso();
+                linha[3] = aluno.getAno();
+                modelo.addRow(linha);
+             } 
+           }
+           else{
+             if(jRadioDevolver.isSelected()){  
+             usuarios = BD.getAllAluno();
+             for(int i=0;i<usuarios.size();i++) {
+             Object[] linha = new Object[4];
             
-            AlunoRelatorio aluno = (AlunoRelatorio) usuarios.get(i);    
-            linha[0] = aluno.getNome();
-            linha[1] = aluno.getCodUsuario();
-            linha[2] = aluno.getCurso();
-            linha[3] = aluno.getAno();
-            modelo.addRow(linha);
-        }    
+                AlunoRelatorio aluno = (AlunoRelatorio) usuarios.get(i);    
+                linha[0] = aluno.getNome();
+                linha[1] = aluno.getCodUsuario();
+                linha[2] = aluno.getCurso();
+                linha[3] = aluno.getAno();
+                modelo.addRow(linha);
+            
+             }
+            } 
+           }
+      }     
             
     }//GEN-LAST:event_radioAlunosActionPerformed
 
@@ -267,10 +314,12 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonHistoricoEmprestimosActionPerformed
 
     private void radioTodosUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioTodosUsuariosActionPerformed
-       ArrayList<Usuario> usuarios = BD.getAllUsuario();
+       ArrayList<Usuario> usuarios;
        DefaultTableModel modelo = (DefaultTableModel) usuarios_Table.getModel();
         
-        
+       if(jRadioTodos.isSelected()){
+           
+        usuarios  = BD.getAllUsuario();   
         for(int i=0;i<usuarios.size();i++) {
             Object[] linha = new Object[4];
             
@@ -289,23 +338,104 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
                 linha[2] = professor.getTitulacao();
                 modelo.addRow(linha);
             }
-        }
+         }
+       }
+       else{
+           if(jRadioAtraso.isSelected()){
+             usuarios = BD.getAllUsuarioComAtraso();
+             for(int i=0;i<usuarios.size();i++) {
+             Object[] linha = new Object[4];
+            
+             if(usuarios.get(i) instanceof AlunoRelatorio){
+                AlunoRelatorio aluno = (AlunoRelatorio) usuarios.get(i);    
+                linha[0] = aluno.getNome();
+                linha[1] = aluno.getCodUsuario();
+                linha[2] = aluno.getCurso();
+                linha[3] = aluno.getAno();
+                modelo.addRow(linha);
+            }
+             else{
+                ProfessorRelatorio professor = (ProfessorRelatorio) usuarios.get(i);    
+                linha[0] = professor.getNome();
+                linha[1] = professor.getCodUsuario();
+                linha[2] = professor.getTitulacao();
+                modelo.addRow(linha);
+                }
+             } 
+           }
+           else{
+             if(jRadioDevolver.isSelected()){  
+             usuarios = BD.getAllUsuario();
+             for(int i=0;i<usuarios.size();i++) {
+             Object[] linha = new Object[4];
+            
+             if(usuarios.get(i) instanceof AlunoRelatorio){
+                AlunoRelatorio aluno = (AlunoRelatorio) usuarios.get(i);    
+                linha[0] = aluno.getNome();
+                linha[1] = aluno.getCodUsuario();
+                linha[2] = aluno.getCurso();
+                linha[3] = aluno.getAno();
+                modelo.addRow(linha);
+            }
+             else{
+                ProfessorRelatorio professor = (ProfessorRelatorio) usuarios.get(i);    
+                linha[0] = professor.getNome();
+                linha[1] = professor.getCodUsuario();
+                linha[2] = professor.getTitulacao();
+                modelo.addRow(linha);
+                }
+             }
+            } 
+           }
+      }     
     }//GEN-LAST:event_radioTodosUsuariosActionPerformed
 
     private void radioProfessoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioProfessoresActionPerformed
-        ArrayList<Usuario> usuarios = BD.getAllUsuario();
-        DefaultTableModel modelo = (DefaultTableModel) usuarios_Table.getModel();
+        ArrayList<Usuario> usuarios;
+       DefaultTableModel modelo = (DefaultTableModel) usuarios_Table.getModel();
         
-        
-        for(int i=0;i<usuarios.size();i++) {
-            Object[] linha = new Object[4];
+       if(jRadioTodos.isSelected()){
+           
+            usuarios  = BD.getAllProfessor();   
+            for(int i=0;i<usuarios.size();i++) {
+                Object[] linha = new Object[4];
             
-            ProfessorRelatorio professor = (ProfessorRelatorio) usuarios.get(i);    
-            linha[0] = professor.getNome();
-            linha[1] = professor.getCodUsuario();
-            linha[2] = professor.getTitulacao();
-            modelo.addRow(linha);
-            }
+                ProfessorRelatorio professor = (ProfessorRelatorio) usuarios.get(i);    
+                linha[0] = professor.getNome();
+                linha[1] = professor.getCodUsuario();
+                linha[2] = professor.getTitulacao();
+                modelo.addRow(linha); 
+         }
+       }
+       else{
+           if(jRadioAtraso.isSelected()){
+             usuarios = BD.getAllUsuarioComAtraso();
+             for(int i=0;i<usuarios.size();i++) {
+                Object[] linha = new Object[4];
+            
+                ProfessorRelatorio professor = (ProfessorRelatorio) usuarios.get(i);    
+                linha[0] = professor.getNome();
+                linha[1] = professor.getCodUsuario();
+                linha[2] = professor.getTitulacao();
+                modelo.addRow(linha);
+                
+             } 
+           }
+           else{
+             if(jRadioDevolver.isSelected()){  
+             usuarios = BD.getAllProfessor();
+             for(int i=0;i<usuarios.size();i++) {
+                Object[] linha = new Object[4];
+            
+                ProfessorRelatorio professor = (ProfessorRelatorio) usuarios.get(i);    
+                linha[0] = professor.getNome();
+                linha[1] = professor.getCodUsuario();
+                linha[2] = professor.getTitulacao();
+                modelo.addRow(linha);
+                }
+             }
+           }
+      }
     }//GEN-LAST:event_radioProfessoresActionPerformed
 
     /**
@@ -344,7 +474,7 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroupOpcoes;
+    private javax.swing.ButtonGroup exibition_GrupoBut;
     private javax.swing.JButton jButtonEmprestimos;
     private javax.swing.JButton jButtonHistoricoEmprestimos;
     private javax.swing.JButton jButtonVoltar;
@@ -357,6 +487,7 @@ public class IURelatorioUsuario extends javax.swing.JFrame {
     private javax.swing.JRadioButton radioAlunos;
     private javax.swing.JRadioButton radioProfessores;
     private javax.swing.JRadioButton radioTodosUsuarios;
+    private javax.swing.ButtonGroup tipo_GrupoBut;
     private javax.swing.JTable usuarios_Table;
     // End of variables declaration//GEN-END:variables
 }

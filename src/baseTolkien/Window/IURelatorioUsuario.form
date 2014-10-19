@@ -2,7 +2,9 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroupOpcoes">
+    <Component class="javax.swing.ButtonGroup" name="exibition_GrupoBut">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="tipo_GrupoBut">
     </Component>
   </NonVisualComponents>
   <Properties>

@@ -5,10 +5,11 @@
 
 package trabalho02;
 
-import baseTolkien.Window.IUPrincipal;
+
 import baseTolkien.Entidades.Aluno;
 import baseTolkien.Entidades.Emprestimo;
 import baseTolkien.Entidades.Professor;
+import baseTolkien.Window.MainWindow;
 
 /**
  *
@@ -21,7 +22,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        IUPrincipal principal = new IUPrincipal();
+        MainWindow principal = new MainWindow();
         principal.setTitle("Sistema Biblioteca - Trabalho 02 - POO");
         principal.setVisible(true);
 

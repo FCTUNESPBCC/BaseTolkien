@@ -7,6 +7,7 @@
 package baseTolkien.Window;
 
 
+import baseTolkien.Controlador.BD;
 import baseTolkien.Entidades.Aluno;
 import baseTolkien.Entidades.Professor;
 import baseTolkien.Entidades.Relatorios.LivroRelatorio;
@@ -194,7 +195,7 @@ public class IURelatorioLivros extends javax.swing.JFrame {
 
     private void jButtonTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTodosActionPerformed
         
-        ArrayList<LivroRelatorio> livros = IUPrincipal.dataB.getAllLivros();
+        ArrayList<LivroRelatorio> livros = BD.getAllLivros();
         DefaultTableModel modelo = (DefaultTableModel) livros_Table.getModel();
         
         for(LivroRelatorio liv: livros) {
@@ -212,7 +213,7 @@ public class IURelatorioLivros extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonDisponivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDisponivelActionPerformed
-        ArrayList<LivroRelatorio> livros = IUPrincipal.dataB.getAllLivroDisponivel();
+        ArrayList<LivroRelatorio> livros = BD.getAllLivroDisponivel();
         DefaultTableModel modelo = (DefaultTableModel) livros_Table.getModel();
         
         for(LivroRelatorio liv: livros) {
@@ -225,7 +226,7 @@ public class IURelatorioLivros extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDisponivelActionPerformed
 
     private void jButtonEmprestadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmprestadosActionPerformed
-        ArrayList<LivroRelatorio> livros = IUPrincipal.dataB.getAllLivroEmprestado();
+        ArrayList<LivroRelatorio> livros = BD.getAllLivroEmprestado();
         DefaultTableModel modelo = (DefaultTableModel) livros_Table.getModel();
         
         for(LivroRelatorio liv: livros) {
@@ -238,7 +239,7 @@ public class IURelatorioLivros extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEmprestadosActionPerformed
 
     private void jButtonAtrasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrasoActionPerformed
-        ArrayList<LivroRelatorio> livros = IUPrincipal.dataB.getAllLivroAtrasado();
+        ArrayList<LivroRelatorio> livros = BD.getAllLivroAtrasado();
         DefaultTableModel modelo = (DefaultTableModel) livros_Table.getModel();
         
         for(LivroRelatorio liv: livros) {
@@ -258,7 +259,7 @@ public class IURelatorioLivros extends javax.swing.JFrame {
             int index = livros_Table.getSelectedRow();
             this.codLivro = (String) livros_Table.getModel().getValueAt(index,1);
             
-            Usuario user =  IUPrincipal.dataB.getUsuarioQueEmprestouLivro(codLivro);
+            Usuario user =  BD.getUsuarioQueEmprestouLivro(codLivro);
             
             String codUsuario= user.getCodUsuario();
             String nome = user.getNome();
