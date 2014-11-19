@@ -6,6 +6,8 @@
 
 package baseTolkien.Window.Panels;
 
+import baseTolkien.Window.IURelatorioLivros;
+
 /**
  *
  * @author Leonardo Dias
@@ -50,6 +52,11 @@ public class JPanelRelatorio extends javax.swing.JPanel {
         });
 
         btBuscar.setText("Livros");
+        btBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Empréstimos");
 
@@ -100,6 +107,10 @@ public class JPanelRelatorio extends javax.swing.JPanel {
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btInserirActionPerformed
+
+    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+        new IURelatorioLivros();
+    }//GEN-LAST:event_btBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

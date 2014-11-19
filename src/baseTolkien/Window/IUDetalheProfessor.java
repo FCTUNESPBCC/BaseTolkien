@@ -16,6 +16,7 @@ import java.awt.event.FocusListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
 import java.awt.event.WindowListener;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -215,7 +216,10 @@ public class IUDetalheProfessor extends javax.swing.JFrame implements WindowFocu
     }//GEN-LAST:event_jComboTitulacaoActionPerformed
 
     private void btNovoEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoEmprestimoActionPerformed
-        new IUSelecionarEmprestimo(professor);
+        if(!BD.isUsuarioComAtraso((professor.getCodUsuario())))
+            new IUSelecionarEmprestimo(professor);
+        else
+            JOptionPane.showMessageDialog(this, "Impossível fazer empréstimo com atrasos pendentes.", "ERRO", 0);
     }//GEN-LAST:event_btNovoEmprestimoActionPerformed
 
     /**
@@ -265,6 +269,8 @@ public class IUDetalheProfessor extends javax.swing.JFrame implements WindowFocu
     }
 
     public void windowGainedFocus(WindowEvent we) {
+        while(model.getRowCount()>0)
+            model.removeRow(0);
         professor.setLivros(BD.getAllLivrosNaoDevolvidosOf(professor.getCodUsuario()));
         for(LivroRelatorio livro: professor.getLivros()){
                 model.addRow(new Object[]{livro.getCodLivro(), livro.getNome(), livro.getAno(), !livro.isEmprestado()?"Disponível":(!livro.isAtrasado()?"Emprestado":"Atrasado")});

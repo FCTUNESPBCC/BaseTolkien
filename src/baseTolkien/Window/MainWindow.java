@@ -36,9 +36,9 @@ public class MainWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         barraDeFerramentas = new baseTolkien.Window.Panels.barraDeFerramentas();
-        jPanelRelatorio = new baseTolkien.Window.Panels.JPanelRelatorio();
         jPanelLivro = new baseTolkien.Window.Panels.JPanelLivro();
         jPanelUsuario1 = new baseTolkien.Window.Panels.JPanelUsuario();
+        jPanelRelatorio2 = new baseTolkien.Window.Panels.JPanelRelatorio();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -56,8 +56,8 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(jPanelLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jPanelRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelRelatorio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         barraDeFerramentasLayout.setVerticalGroup(
@@ -65,9 +65,9 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(barraDeFerramentasLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(barraDeFerramentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanelRelatorio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanelUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanelLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanelRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanelLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5))
         );
 
@@ -125,7 +125,7 @@ public class MainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private baseTolkien.Window.Panels.barraDeFerramentas barraDeFerramentas;
     private baseTolkien.Window.Panels.JPanelLivro jPanelLivro;
-    private baseTolkien.Window.Panels.JPanelRelatorio jPanelRelatorio;
+    private baseTolkien.Window.Panels.JPanelRelatorio jPanelRelatorio2;
     private baseTolkien.Window.Panels.JPanelUsuario jPanelUsuario1;
     // End of variables declaration//GEN-END:variables
 

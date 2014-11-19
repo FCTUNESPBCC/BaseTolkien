@@ -14,6 +14,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -230,7 +231,11 @@ public class IUDetalheAluno extends javax.swing.JFrame implements WindowFocusLis
     }//GEN-LAST:event_jButtonDevolverActionPerformed
 
     private void btNovoEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoEmprestimoActionPerformed
+        if(!BD.isUsuarioComAtraso((aluno.getCodUsuario())))
         new  IUSelecionarEmprestimo(aluno);
+        else
+            JOptionPane.showMessageDialog(this, "Impossível fazer empréstimo com atrasos pendentes.", "ERRO", 0);
+        
     }//GEN-LAST:event_btNovoEmprestimoActionPerformed
 
     /**

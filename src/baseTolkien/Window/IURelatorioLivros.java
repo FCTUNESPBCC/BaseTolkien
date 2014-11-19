@@ -22,11 +22,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class IURelatorioLivros extends javax.swing.JFrame {
     private String codLivro;
+    ArrayList<LivroRelatorio> livros;
+    DefaultTableModel modelo;
+        
     /**
      * Creates new form IURelatorioLivros
      */
     public IURelatorioLivros() {
         initComponents();
+        setResizable(false);
+        setVisible(true);
+        setTitle("Relatório Livros");
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         grupo_Button.clearSelection();
         grupo_Button.add(jButtonDisponivel);
@@ -60,6 +67,7 @@ public class IURelatorioLivros extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        grupo_Button.add(jButtonTodos);
         jButtonTodos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonTodos.setText("Todos");
         jButtonTodos.addActionListener(new java.awt.event.ActionListener() {
@@ -68,6 +76,7 @@ public class IURelatorioLivros extends javax.swing.JFrame {
             }
         });
 
+        grupo_Button.add(jButtonDisponivel);
         jButtonDisponivel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonDisponivel.setText("Disponíveis");
         jButtonDisponivel.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +85,7 @@ public class IURelatorioLivros extends javax.swing.JFrame {
             }
         });
 
+        grupo_Button.add(jButtonEmprestados);
         jButtonEmprestados.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonEmprestados.setText("Emprestados");
         jButtonEmprestados.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +94,7 @@ public class IURelatorioLivros extends javax.swing.JFrame {
             }
         });
 
+        grupo_Button.add(jButtonAtraso);
         jButtonAtraso.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonAtraso.setText("Em atraso");
         jButtonAtraso.addActionListener(new java.awt.event.ActionListener() {
@@ -101,14 +112,14 @@ public class IURelatorioLivros extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Codigo", "Ano"
+                "Nome", "Codigo", "Ano", "Situação"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -195,14 +206,17 @@ public class IURelatorioLivros extends javax.swing.JFrame {
 
     private void jButtonTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTodosActionPerformed
         
-        ArrayList<LivroRelatorio> livros = BD.getAllLivros();
-        DefaultTableModel modelo = (DefaultTableModel) livros_Table.getModel();
+        livros = BD.getAllLivros();
+        modelo = (DefaultTableModel) livros_Table.getModel();
+        while(modelo.getRowCount()>0)
+            modelo.removeRow(0);
         
         for(LivroRelatorio liv: livros) {
-            Object[] linha = new Object[3];
-            linha[0] = liv.getNomeUsuario();
-            linha[1] = liv.getCodUsuario();
+            Object[] linha = new Object[4];
+            linha[0] = liv.getNome();
+            linha[1] = liv.getCodLivro();
             linha[2] = liv.getAno();
+            linha[3] = liv.isEmprestado()?(liv.isAtrasado()?"Atrasado":"Emprestado"):"Disponível";
             modelo.addRow(linha);
         }
         
@@ -213,40 +227,51 @@ public class IURelatorioLivros extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonDisponivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDisponivelActionPerformed
-        ArrayList<LivroRelatorio> livros = BD.getAllLivroDisponivel();
-        DefaultTableModel modelo = (DefaultTableModel) livros_Table.getModel();
+        livros = BD.getAllLivroDisponivel();
+        modelo = (DefaultTableModel) livros_Table.getModel();
+        while(modelo.getRowCount()>0)
+            modelo.removeRow(0);
         
         for(LivroRelatorio liv: livros) {
-            Object[] linha = new Object[3];
-            linha[0] = liv.getNomeUsuario();
-            linha[1] = liv.getCodUsuario();
+            Object[] linha = new Object[4];
+            linha[0] = liv.getNome();
+            linha[1] = liv.getCodLivro();
             linha[2] = liv.getAno();
+            linha[3] = liv.isEmprestado()?(liv.isAtrasado()?"Atrasado":"Emprestado"):"Disponível";
             modelo.addRow(linha);
         }
     }//GEN-LAST:event_jButtonDisponivelActionPerformed
 
     private void jButtonEmprestadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmprestadosActionPerformed
-        ArrayList<LivroRelatorio> livros = BD.getAllLivroEmprestado();
-        DefaultTableModel modelo = (DefaultTableModel) livros_Table.getModel();
+        livros = BD.getAllLivroEmprestado();
+        modelo = (DefaultTableModel) livros_Table.getModel();
+        
+        while(modelo.getRowCount()>0)
+            modelo.removeRow(0);
         
         for(LivroRelatorio liv: livros) {
-            Object[] linha = new Object[3];
-            linha[0] = liv.getNomeUsuario();
-            linha[1] = liv.getCodUsuario();
+            Object[] linha = new Object[4];
+            linha[0] = liv.getNome();
+            linha[1] = liv.getCodLivro();
             linha[2] = liv.getAno();
+            linha[3] = liv.isEmprestado()?(liv.isAtrasado()?"Atrasado":"Emprestado"):"Disponível";
             modelo.addRow(linha);
         }
     }//GEN-LAST:event_jButtonEmprestadosActionPerformed
 
     private void jButtonAtrasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrasoActionPerformed
-        ArrayList<LivroRelatorio> livros = BD.getAllLivroAtrasado();
-        DefaultTableModel modelo = (DefaultTableModel) livros_Table.getModel();
+        livros = BD.getAllLivroAtrasado();
+        modelo = (DefaultTableModel) livros_Table.getModel();
+        
+        while(modelo.getRowCount()>0)
+            modelo.removeRow(0);
         
         for(LivroRelatorio liv: livros) {
-            Object[] linha = new Object[3];
-            linha[0] = liv.getNomeUsuario();
-            linha[1] = liv.getCodUsuario();
+            Object[] linha = new Object[4];
+            linha[0] = liv.getNome();
+            linha[1] = liv.getCodLivro();
             linha[2] = liv.getAno();
+            linha[3] = liv.isEmprestado()?(liv.isAtrasado()?"Atrasado":"Emprestado"):"Disponível";
             modelo.addRow(linha);
         }
     }//GEN-LAST:event_jButtonAtrasoActionPerformed
@@ -260,35 +285,38 @@ public class IURelatorioLivros extends javax.swing.JFrame {
             this.codLivro = (String) livros_Table.getModel().getValueAt(index,1);
             
             Usuario user =  BD.getUsuarioQueEmprestouLivro(codLivro);
-            
-            String codUsuario= user.getCodUsuario();
-            String nome = user.getNome();
-            if(user instanceof Aluno){
-                IUAlunoEmprestou emprestimoAluno = new IUAlunoEmprestou();
-                Aluno aluno = (Aluno)user;
-            
-                String curso = aluno.getCurso();
-                String ano = aluno.getAno()+"";
-            
-                emprestimoAluno.getJTextFieldNome().setText(nome);
-                emprestimoAluno.getJTextFieldCod().setText(codUsuario);
-                emprestimoAluno.getJTextFieldCurso().setText(curso);
-                emprestimoAluno.getJTextFieldAno().setText(ano);
-                emprestimoAluno.setVisible(true);
+            if(user!=null){
+                String codUsuario= user.getCodUsuario();
+                String nome = user.getNome();
+                if(user instanceof Aluno){
+                    IUAlunoEmprestou emprestimoAluno = new IUAlunoEmprestou();
+                    Aluno aluno = (Aluno)user;
+
+                    String curso = aluno.getCurso();
+                    String ano = aluno.getAno()+"";
+
+                    emprestimoAluno.getJTextFieldNome().setText(nome);
+                    emprestimoAluno.getJTextFieldCod().setText(codUsuario);
+                    emprestimoAluno.getJTextFieldCurso().setText(curso);
+                    emprestimoAluno.getJTextFieldAno().setText(ano);
+                    emprestimoAluno.setVisible(true);
+                }
+                else{
+                    IUProfessorEmprestou emprestimoProfessor = new IUProfessorEmprestou();
+                    Professor prof = (Professor)user;
+
+
+                    String titulacao = prof.getTitulacao();
+
+
+                    emprestimoProfessor.getNome_Text().setText(nome);
+                    emprestimoProfessor.getCod_Text().setText(codUsuario);
+                    emprestimoProfessor.getTitulacao_Text().setText(titulacao);
+                    emprestimoProfessor.setVisible(true);
+                }
             }
-            else{
-                IUProfessorEmprestou emprestimoProfessor = new IUProfessorEmprestou();
-                Professor prof = (Professor)user;
-            
-            
-                String titulacao = prof.getTitulacao();
-                
-            
-                emprestimoProfessor.getNome_Text().setText(nome);
-                emprestimoProfessor.getCod_Text().setText(codUsuario);
-                emprestimoProfessor.getTitulacao_Text().setText(titulacao);
-                emprestimoProfessor.setVisible(true);
-            }
+            else
+                JOptionPane.showMessageDialog(null,"Este livro está disponível no momento!!!");
         }
         else{
           JOptionPane.showMessageDialog(null,"É necessário selecionar um livro!!!");

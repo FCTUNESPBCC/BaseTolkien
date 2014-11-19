@@ -60,8 +60,8 @@
                   <Component id="jPanelLivro" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanelUsuario1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                  <Component id="jPanelRelatorio" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jPanelRelatorio2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -71,9 +71,9 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jPanelRelatorio2" min="-2" max="-2" attributes="0"/>
                       <Component id="jPanelUsuario1" min="-2" max="-2" attributes="0"/>
                       <Component id="jPanelLivro" min="-2" max="-2" attributes="0"/>
-                      <Component id="jPanelRelatorio" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               </Group>
@@ -81,11 +81,11 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="baseTolkien.Window.Panels.JPanelRelatorio" name="jPanelRelatorio">
-        </Component>
         <Component class="baseTolkien.Window.Panels.JPanelLivro" name="jPanelLivro">
         </Component>
         <Component class="baseTolkien.Window.Panels.JPanelUsuario" name="jPanelUsuario1">
+        </Component>
+        <Component class="baseTolkien.Window.Panels.JPanelRelatorio" name="jPanelRelatorio2">
         </Component>
       </SubComponents>
     </Container>
